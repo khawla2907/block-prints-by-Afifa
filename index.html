@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Block Prints by Afifa</title>
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-color: #8b1e3f;
+      --accent-color: #b3365a;
+      --light-color: #ffffff;
+      --text-dark: #502f2c;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--light-color);
+      color: var(--text-dark);
+    }
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      background-color: rgba(139, 30, 63, 0.75);
+      padding: 20px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo img {
+      height: 70px;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      cursor: pointer;
+    }
+
+    .menu-toggle div {
+      height: 3px;
+      background-color: var(--light-color);
+      border-radius: 2px;
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    nav a {
+      color: var(--light-color);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
+    }
+
+  .sale-banner {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* keep container to the left */
+  background: url('images/hero.png') no-repeat center center/cover;
+  height: 100vh;
+  position: relative;
+  padding: 0 8%;
+}
+
+
+.sale-text {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 40px;
+  border-radius: 10px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;         /* center-aligns content inside */
+  text-align: center;          /* centers text inside */
+}
+
+
+.shop-button {
+  padding: 12px 30px;
+  background-color: var(--primary-color);
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+
+    .sale-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+
+    .sale-text p {
+      font-size: 18px;
+      color: var(--text-dark);
+      margin-bottom: 25px;
+    }
+
+   
+    .shop-button:hover {
+      background-color: var(--accent-color);
+    }
+
+    .section {
+      padding: 100px 50px;
+      text-align: center;
+      background-color: var(--light-color);
+    }
+
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+
+    .section p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      color: #4a2c35;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .gallery-item {
+      flex: 1 1 300px;
+      max-width: 300px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallery-item p {
+      margin-top: 10px;
+      font-weight: 500;
+      color: var(--primary-color);
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: rgba(139, 30, 63, 0.95);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 20px 0;
+        text-align: center;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      nav a {
+        padding: 10px 0;
+      }
+
+    .sale-banner {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+}
+.sale-banner::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 0;
+}
+
+.sale-text {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+
+      .sale-text h1 {
+        font-size: 34px;
+      }
+
+      .sale-text p {
+        font-size: 16px;
+      }
+
+      .shop-button {
+        font-size: 13px;
+        padding: 10px 20px;
+      }
+
+      .section {
+        padding: 60px 20px;
+      }
+
+      .gallery {
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Block Prints by Afifa">
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <nav id="main-nav">
+      <a href="#about">ABOUT</a>
+      <a href="#collections">COLLECTIONS</a>
+      <a href="#wedding">WEDDING</a>
+      <a href="#festive">FESTIVE</a>
+      <a href="#boutiques">BOUTIQUES</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <section class="sale-banner">
+    <div class="sale-text">
+      <h1>BLOCK PRINTS BY AFIFA</h1>
+      <p>Celebrate timeless tradition with handcrafted beauty</p>
+      <a href="#collections" class="shop-button">SHOP NOW</a>
+    </div>
+  </section>
+
+  <section class="section" id="collections">
+    <h2>Our Signature Collections</h2>
+    <p>
+      Each piece is a story in color and craft—designed to elevate your elegance with timeless block print artistry.
+    </p>
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="https://blockprintsbyafifa.chikoo.app/products_img/mauve_block_print_set_with_gota-2422.webp" alt="Mauve Block Print Set" />
+        <p>Mauve Gota Work Set</p>
+      </div>
+      <div class="gallery-item">
+        <img src="https://blockprintsbyafifa.chikoo.app/products_img/green_angrakha_cotton_kurta-4887.webp" alt="Green Angrakha Kurta" />
+        <p>Green Angrakha Kurta</p>
+      </div>
+      <div class="gallery-item">
+        <img src="https://blockprintsbyafifa.chikoo.app/products_img/hand_block_print_two_piece_cotton_suit-7277.webp" alt="Two-Piece Cotton Suit" />
+        <p>Block Print Cotton Suit</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('main-nav').classList.toggle('show');
+    }
+  </script>
+
+</body>
+</html>
