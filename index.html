@@ -85,7 +85,7 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      background: url('images/HERO.png') no-repeat center center/cover;
+      background: url('images/hero.png') no-repeat center center/cover;
       height: 100vh;
       padding: 0 8%;
       position: relative;
@@ -214,7 +214,211 @@
     .text-box a:hover {
       background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
     }
+    .visit-shop-section {
+  padding: 100px 6%;
+  background-color: #fef6f8;
+}
 
+.visit-shop-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* TEXT */
+.visit-shop-text {
+  flex: 1 1 40%;
+}
+
+.visit-shop-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  color: #8b1e3f;
+  margin-bottom: 20px;
+}
+
+.visit-shop-text p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #502f2c;
+  margin-bottom: 15px;
+}
+
+.visit-shop-text a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 28px;
+  background: linear-gradient(90deg, #8b1e3f, #b3365a);
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.visit-shop-text a:hover {
+  background: linear-gradient(90deg, #b3365a, #8b1e3f);
+}
+
+/* MEDIA */
+.visit-shop-media {
+  flex: 1 1 55%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.media-item {
+  flex: 1 1 280px;
+  max-width: 400px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.media-item video,
+.media-item iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  border: none;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 3 / 4; /* Portrait ratio for video */
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .visit-shop-wrapper {
+    flex-direction: column;
+  }
+
+  .visit-shop-text {
+    text-align: center;
+  }
+
+  .visit-shop-media {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .media-item {
+    max-width: 100%;
+  }
+}
+.site-footer {
+  background-color: #8b1e3f;
+  color: #fff;
+  padding: 60px 6% 30px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer-brand {
+  flex: 1 1 300px;
+}
+
+.footer-logo {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+.footer-brand p {
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+.footer-brand a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-brand a:hover {
+  text-decoration: underline;
+}
+
+.social-icons {
+  margin-top: 15px;
+}
+
+.social-icons a {
+  margin-right: 15px;
+  display: inline-block;
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+  transition: opacity 0.3s;
+}
+
+.social-icons img:hover {
+  opacity: 0.7;
+}
+
+.footer-links {
+  flex: 1 1 200px;
+}
+
+.footer-links h4 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-family: 'Playfair Display', serif;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+  color: #f8ddea;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-links {
+    margin-top: 30px;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+}
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       .menu-toggle {
@@ -277,6 +481,7 @@
         margin-top: 30px;
         padding: 40px 30px;
       }
+
     }
   </style>
 </head>
@@ -292,10 +497,10 @@
     </div>
     <nav id="main-nav">
       <a href="#about">ABOUT</a>
-      <a href="#collections">COLLECTIONS</a>
-      <a href="#wedding">WEDDING</a>
-      <a href="#festive">FESTIVE</a>
-      <a href="#boutiques">BOUTIQUES</a>
+      <a href="#collections">STITCHED</a>
+      <a href="#wedding">UNSTITCHED</a>
+      <a href="#festive">HOME DECOR</a>
+      <a href="#boutiques">TOTE BAG</a>
       <a href="#contact">CONTACT</a>
     </nav>
   </header>
@@ -333,11 +538,184 @@
     </div>
   </div>
 
+  <!-- Category Circle Section -->
+<section style="padding: 60px 20px; background-color: #fef6f8;">
+  <h2 style="text-align: center; font-family: 'Playfair Display', serif; font-size: 50px; color: #8b1e3f; margin-bottom: 40px;">
+    Shop By Category
+  </h2>
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; max-width: 1200px; margin: 0 auto;">
+    
+    <!-- Category 1 -->
+    <a href="unstitch.html" style="text-align: center; max-width: 130px; text-decoration: none;">
+      <img src="images/3.jpeg" alt="Unstitch Collection" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"/>
+      <p style="margin-top: 10px; font-weight: 500; color: #333;">Unstitch<br>Collection</p>
+    </a>
+
+    <!-- Category 2 -->
+    <a href="stitched.html" style="text-align: center; max-width: 130px; text-decoration: none;">
+      <img src="images/4.jpg" alt="Stitched Collection" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"/>
+      <p style="margin-top: 10px; font-weight: 500; color: #333;">Stitched<br>Collection</p>
+    </a>
+
+    <!-- Category 3 -->
+    <a href="stoles.html" style="text-align: center; max-width: 130px; text-decoration: none;">
+      <img src="images/stole.avif" alt="Stoles" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"/>
+      <p style="margin-top: 10px; font-weight: 500; color: #333;">Stoles</p>
+    </a>
+
+    <!-- Category 4 -->
+    <a href="dupattas.html" style="text-align: center; max-width: 130px; text-decoration: none;">
+      <img src="images/2.jpg" alt="Dupattas" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"/>
+      <p style="margin-top: 10px; font-weight: 500; color: #333;">Dupattas</p>
+    </a>
+
+    <!-- Category 5 -->
+    <a href="totes.html" style="text-align: center; max-width: 130px; text-decoration: none;">
+      <img src="images/tote.PNG" alt="Tote Bags" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"/>
+      <p style="margin-top: 10px; font-weight: 500; color: #333;">Tote Bags</p>
+    </a>
+
+    <!-- Category 6 -->
+    <a href="decor.html" style="text-align: center; max-width: 130px; text-decoration: none;">
+      <img src="images/decor.jpeg" alt="Home Decor" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"/>
+      <p style="margin-top: 10px; font-weight: 500; color: #333;">Home<br>Decor</p>
+    </a>
+
+  </div>
+</section>
+<section style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 100px 50px; background: linear-gradient(to right, #fef6f8, #f9e1e9);">
+  
+  <!-- Media Block -->
+  <div style="flex: 1 1 48%; padding: 20px; animation: fadeInUp 1s ease;">
+    <div style="overflow: hidden; border-radius: 16px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); transition: transform 0.4s ease;">
+      <video src="images/video.mp4" autoplay muted loop playsinline style="width: 100%; display: block; border-radius: 16px; object-fit: cover;"></video>
+    </div>
+  </div>
+
+  <!-- Text Block -->
+  <div style="flex: 1 1 48%; padding: 20px 40px; animation: fadeInUp 1.3s ease;">
+    <h2 style="font-family: 'Playfair Display', serif; font-size: 42px; color: #8b1e3f; margin-bottom: 25px;">The Art Behind the Craft</h2>
+    <p style="font-size: 18px; line-height: 1.8; color: #502f2c;">
+      Every motif begins with a hand-carved wooden block, dipped in natural dye and gently pressed onto cotton fabric. What follows is not just printing — it’s storytelling. It’s precision guided by patience.
+    </p>
+    <p style="font-size: 18px; line-height: 1.8; color: #502f2c; margin-top: 20px;">
+      From drying in open sunlight to layering each shade with care, this is slow fashion at its purest — rooted in heritage and brought to life by the hands of Afifa’s skilled artisans.
+    </p>
+  </div>
+</section>
+<section class="visit-shop-section">
+  <div class="visit-shop-wrapper">
+
+    <!-- Text Block -->
+    <div class="visit-shop-text">
+      <h2>Visit Our Shop</h2>
+      <p>
+        Step into the world where fabrics come to life. Our studio is more than a store — it's an experience. Explore handcrafted collections in person, meet our artisans, and feel the texture of tradition.
+      </p>
+      <p>
+        Located in the heart of Karachi, we invite you to browse, learn, and fall in love with block printing all over again.
+      </p>
+      <a href="https://www.google.com/maps/place/Block+Prints+by+Afifa/data=!4m2!3m1!1s0x0:0x7c22432cad0b9899?sa=X&ved=1t:2428&ictx=111" target="_blank">Get Directions</a>
+    </div>
+
+    <!-- Media Block -->
+    <div class="visit-shop-media">
+      <div class="media-item">
+        <video src="images/shop.mp4" autoplay muted loop playsinline></video>
+      </div>
+      <div class="media-item">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28921.654961437486!2d67.030199!3d24.875796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33f95f7c0d7d9%3A0x7c22432cad0b9899!2sBlock%20Prints%20by%20Afifa!5e0!3m2!1sen!2s!4v1718012999512"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<style>
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+
+<!-- ===== FOOTER SECTION ===== -->
+<footer class="site-footer">
+  <div class="footer-container">
+
+    <!-- Brand Info -->
+    <div class="footer-brand">
+      <img src="images/logo.png" alt="Block Prints by Afifa Logo" class="footer-logo">
+      <p>Handcrafted block prints rooted in tradition and made with love in Karachi.</p>
+      <p><strong>Email:</strong> <a href="mailto:hello@afifaprints.com">hello@afifaprints.com</a></p>
+      <p><strong>Phone:</strong> <a href="tel:+923000000000">+92 300 0000000</a></p>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/blockprintsbyafifa/" target="_blank">
+          <img src="images/instagram.svg" alt="Instagram">
+        </a>
+        <a href="https://www.facebook.com/blockprintsbyafifa" target="_blank">
+          <img src="images/facebook.svg" alt="Facebook">
+        </a>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#collections">Collections</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#wedding">Wedding</a></li>
+        <li><a href="#festive">Festive</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 Block Prints by Afifa. All rights reserved.</p>
+  </div>
+</footer>
+
+
   <script>
     function toggleMenu() {
       document.getElementById('main-nav').classList.toggle('show');
     }
+
+     const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.section, .sale-banner').forEach(sec => {
+      observer.observe(sec);
+    });
   </script>
 
 </body>
-</html>
+</html>  
+
+
+
+
+
+
+
+
+
+
