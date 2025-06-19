@@ -6,6 +6,8 @@
   <title>Block Prints by Afifa</title>
   <link rel="icon" href="images/logo.png" type="image/png"/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 
   <style>
     :root {
@@ -85,7 +87,7 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      background: url('images/HERO.png') no-repeat center center/cover;
+      background: url('images/hero.png') no-repeat center center/cover;
       height: 100vh;
       padding: 0 8%;
       position: relative;
@@ -403,6 +405,40 @@
   color: #f8ddea;
 }
 
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -350px;
+  width: 300px;
+  height: 100%;
+  background: white;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  z-index: 2000;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+}
+
+.sidebar.open {
+  right: 0;
+}
+
+.sidebar h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.sidebar button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #8b1e3f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .footer-container {
@@ -495,14 +531,17 @@
     <div class="menu-toggle" onclick="toggleMenu()">
       <div></div><div></div><div></div>
     </div>
-    <nav id="main-nav">
-      <a href="#about">ABOUT</a>
-      <a href="#collections">STITCHED</a>
-      <a href="#wedding">UNSTITCHED</a>
-      <a href="#festive">HOME DECOR</a>
-      <a href="#boutiques">TOTE BAG</a>
-      <a href="#contact">CONTACT</a>
-    </nav>
+  <nav id="main-nav">
+  <a href="index.html">HOME</a>
+  <a href="#about">ABOUT</a>
+  <a href="#collections">STITCHED</a>
+  <a href="#wedding">UNSTITCHED</a>
+  <a href="#festive">HOME DECOR</a>
+  <a href="#boutiques">TOTE BAG</a>
+  <a href="#contact">CONTACT</a>
+ <a href="#" onclick="toggleCartSidebar()"><i class="fa-solid fa-cart-shopping"></i></a>
+<a href="#" onclick="toggleWishlistSidebar()"><i class="fa-regular fa-heart"></i></a>
+</nav>
   </header>
 
   <!-- ===== HERO ===== -->
@@ -543,46 +582,42 @@
   <h2 style="text-align: center; font-family: 'Playfair Display', serif; font-size: 50px; color: #8b1e3f; margin-bottom: 40px;">
     Shop By Category
   </h2>
-  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; max-width: 1200px; margin: 0 auto;">
-    
-    <!-- Category 1 -->
-    <a href="unstitch.html" style="text-align: center; max-width: 130px; text-decoration: none;">
-      <img src="images/3.jpeg" alt="Unstitch Collection" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"/>
-      <p style="margin-top: 10px; font-weight: 500; color: #333;">Unstitch<br>Collection</p>
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 10px; max-width: 1400px; margin: 0 auto;">
+
+    <!-- Category Item Template -->
+    <a href="unstitch.html" style="text-align: center; width: 220px; text-decoration: none;">
+      <img src="images/3.jpeg" alt="Unstitch Collection" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1);" />
+      <p style="margin-top: 15px; font-weight: 500; color: #333;">Unstitch<br>Collection</p>
     </a>
 
-    <!-- Category 2 -->
-    <a href="stitched.html" style="text-align: center; max-width: 130px; text-decoration: none;">
-      <img src="images/4.jpg" alt="Stitched Collection" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"/>
-      <p style="margin-top: 10px; font-weight: 500; color: #333;">Stitched<br>Collection</p>
+    <a href="stitched.html" style="text-align: center; width: 220px; text-decoration: none;">
+      <img src="images/4.jpg" alt="Stitched Collection" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1);" />
+      <p style="margin-top: 15px; font-weight: 500; color: #333;">Stitched<br>Collection</p>
     </a>
 
-    <!-- Category 3 -->
-    <a href="stoles.html" style="text-align: center; max-width: 130px; text-decoration: none;">
-      <img src="images/stole.avif" alt="Stoles" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"/>
-      <p style="margin-top: 10px; font-weight: 500; color: #333;">Stoles</p>
+    <a href="stoles.html" style="text-align: center; width: 220px; text-decoration: none;">
+      <img src="images/stole.avif" alt="Stoles" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1);" />
+      <p style="margin-top: 15px; font-weight: 500; color: #333;">Stoles</p>
     </a>
 
-    <!-- Category 4 -->
-    <a href="dupattas.html" style="text-align: center; max-width: 130px; text-decoration: none;">
-      <img src="images/2.jpg" alt="Dupattas" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"/>
-      <p style="margin-top: 10px; font-weight: 500; color: #333;">Dupattas</p>
+    <a href="dupattas.html" style="text-align: center; width: 220px; text-decoration: none;">
+      <img src="images/2.jpg" alt="Dupattas" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1);" />
+      <p style="margin-top: 15px; font-weight: 500; color: #333;">Dupattas</p>
     </a>
 
-    <!-- Category 5 -->
-    <a href="totes.html" style="text-align: center; max-width: 130px; text-decoration: none;">
-      <img src="images/tote.PNG" alt="Tote Bags" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"/>
-      <p style="margin-top: 10px; font-weight: 500; color: #333;">Tote Bags</p>
+    <a href="totes.html" style="text-align: center; width: 220px; text-decoration: none;">
+      <img src="images/tote.PNG" alt="Tote Bags" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1);" />
+      <p style="margin-top: 15px; font-weight: 500; color: #333;">Tote Bags</p>
     </a>
 
-    <!-- Category 6 -->
-    <a href="decor.html" style="text-align: center; max-width: 130px; text-decoration: none;">
-      <img src="images/cushion.jpg" alt="Home Decor" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"/>
-      <p style="margin-top: 10px; font-weight: 500; color: #333;">Home<br>Decor</p>
+    <a href="decor.html" style="text-align: center; width: 220px; text-decoration: none;">
+      <img src="images/cushion.jpg" alt="Home Decor" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1);" />
+      <p style="margin-top: 15px; font-weight: 500; color: #333;">Home<br>Decor</p>
     </a>
 
   </div>
 </section>
+
 <section style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 100px 50px; background: linear-gradient(to right, #fef6f8, #f9e1e9);">
   
   <!-- Media Block -->
@@ -657,8 +692,8 @@
     <div class="footer-brand">
       <img src="images/logo.png" alt="Block Prints by Afifa Logo" class="footer-logo">
       <p>Handcrafted block prints rooted in tradition and made with love in Karachi.</p>
-      <p><strong>Email:</strong> <a href="mailto:hello@afifaprints.com">hello@afifaprints.com</a></p>
-      <p><strong>Phone:</strong> <a href="tel:+923000000000">+92 300 0000000</a></p>
+      <p><strong>Email:</strong> <a href="mailto:blockprintsbyafifa@hotmail.com">blockprintsbyafifa@hotmail.com</a></p>
+      <p><strong>Phone:</strong> <a href="tel:+923252041288">+923252041288</a></p>
       <div class="social-icons">
         <a href="https://www.instagram.com/blockprintsbyafifa/" target="_blank">
           <img src="images/instagram.svg" alt="Instagram">
@@ -705,7 +740,37 @@
     document.querySelectorAll('.section, .sale-banner').forEach(sec => {
       observer.observe(sec);
     });
+
+    function toggleCartSidebar() {
+  document.getElementById('cart-sidebar').classList.toggle('open');
+}
+
+function closeCartSidebar() {
+  document.getElementById('cart-sidebar').classList.remove('open');
+}
+
+function toggleWishlistSidebar() {
+  document.getElementById('wishlist-sidebar').classList.toggle('open');
+}
+
+function closeWishlistSidebar() {
+  document.getElementById('wishlist-sidebar').classList.remove('open');
+}
+
   </script>
+<!-- Cart Sidebar -->
+<div id="cart-sidebar" class="sidebar">
+  <h2>Your Cart</h2>
+  <p id="cart-content">Your cart is currently empty.</p>
+  <button onclick="closeCartSidebar()">Close</button>
+</div>
+
+<!-- Wishlist Sidebar -->
+<div id="wishlist-sidebar" class="sidebar">
+  <h2>Your Wishlist</h2>
+  <p id="wishlist-content">No items liked yet.</p>
+  <button onclick="closeWishlistSidebar()">Close</button>
+</div>
 
 </body>
 </html>  
