@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Block Prints by Afifa</title>
+  <link rel="icon" href="images/logo.png" type="image/png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <style>
+    :root {
+      --primary-color: #8b1e3f;
+      --accent-color: #b3365a;
+      --light-color: #ffffff;
+      --text-dark: #502f2c;
+      --background-pink: #f8ddea;
+      --background-darkpink: #c1557f;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--light-color);
+      color: var(--text-dark);
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: rgba(139, 30, 63, 0.75);
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo img {
+      height: 70px;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      width: 30px;
+      height: 21px;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .menu-toggle div {
+      height: 3px;
+      background-color: var(--light-color);
+      border-radius: 2px;
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    nav a {
+      color: var(--light-color);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
+    }
+
+    /* ===== HERO SECTION ===== */
+    .sale-banner {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      background: url('images/hero.png') no-repeat center center/cover;
+      height: 100vh;
+      padding: 0 8%;
+      position: relative;
+    }
+
+    .sale-text {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 40px;
+      border-radius: 10px;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .sale-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+
+    .sale-text p {
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    .shop-button {
+      padding: 12px 30px;
+      background-color: var(--primary-color);
+      color: #fff;
+      font-weight: bold;
+      font-size: 14px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .shop-button:hover {
+      background-color: var(--accent-color);
+    }
+
+    /* ===== COLLECTION SECTIONS ===== */
+    .section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 100px 6%;
+      position: relative;
+      background-color: var(--background-pink);
+      gap: 40px;
+    }
+
+    .section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -50%;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--background-darkpink) 50%, var(--background-pink) 50%);
+      z-index: 0;
+      transform: rotate(-2deg);
+    }
+
+    .section.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .image-container,
+    .text-box {
+      flex: 1 1 48%;
+      z-index: 1;
+    }
+
+    .image-container img {
+      width: 100%;
+      border-radius: 18px;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.2);
+      transition: transform 0.4s ease;
+    }
+
+    .image-container img:hover {
+      transform: scale(1.03);
+    }
+
+    .text-box {
+      background-color: white;
+      padding: 50px;
+      border-radius: 18px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      max-width: 550px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .text-box:hover {
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    }
+
+    .text-box h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+
+    .text-box p {
+      font-size: 17px;
+      color: var(--text-dark);
+      margin-bottom: 30px;
+    }
+
+    .text-box a {
+      display: inline-block;
+      padding: 12px 30px;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .text-box a:hover {
+      background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+    }
+    .visit-shop-section {
+  padding: 100px 6%;
+  background-color: #fef6f8;
+}
+
+.visit-shop-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* TEXT */
+.visit-shop-text {
+  flex: 1 1 40%;
+}
+
+.visit-shop-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  color: #8b1e3f;
+  margin-bottom: 20px;
+}
+
+.visit-shop-text p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #502f2c;
+  margin-bottom: 15px;
+}
+
+.visit-shop-text a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 28px;
+  background: linear-gradient(90deg, #8b1e3f, #b3365a);
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.visit-shop-text a:hover {
+  background: linear-gradient(90deg, #b3365a, #8b1e3f);
+}
+
+/* MEDIA */
+.visit-shop-media {
+  flex: 1 1 55%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.media-item {
+  flex: 1 1 280px;
+  max-width: 400px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.media-item video,
+.media-item iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  border: none;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 3 / 4; /* Portrait ratio for video */
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .visit-shop-wrapper {
+    flex-direction: column;
+  }
+
+  .visit-shop-text {
+    text-align: center;
+  }
+
+  .visit-shop-media {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .media-item {
+    max-width: 100%;
+  }
+}
+.site-footer {
+  background-color: #8b1e3f;
+  color: #fff;
+  padding: 60px 6% 30px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer-brand {
+  flex: 1 1 300px;
+}
+
+.footer-logo {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+.footer-brand p {
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+.footer-brand a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-brand a:hover {
+  text-decoration: underline;
+}
+
+.social-icons {
+  margin-top: 15px;
+}
+
+.social-icons a {
+  margin-right: 15px;
+  display: inline-block;
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+  transition: opacity 0.3s;
+}
+
+.social-icons img:hover {
+  opacity: 0.7;
+}
+
+.footer-links {
+  flex: 1 1 200px;
+}
+
+.footer-links h4 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-family: 'Playfair Display', serif;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+  color: #f8ddea;
+}
+
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -350px;
+  width: 300px;
+  height: 100%;
+  background: white;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  z-index: 2000;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+}
+
+.sidebar.open {
+  right: 0;
+}
+
+.sidebar h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.sidebar button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #8b1e3f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-links {
+    margin-top: 30px;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+}
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: rgba(139, 30, 63, 0.95);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        text-align: center;
+        padding: 20px 0;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      nav a {
+        padding: 10px 0;
+      }
+
+      .sale-banner {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-position: center;
+        padding: 60px 20px;
+      }
+
+      .sale-text h1 {
+        font-size: 34px;
+      }
+
+      .sale-text p {
+        font-size: 16px;
+      }
+
+      .shop-button {
+        font-size: 13px;
+        padding: 10px 20px;
+      }
+
+      .section,
+      .section.reverse {
+        flex-direction: column;
+        padding: 60px 5%;
+      }
+
+      .section::before {
+        display: none;
+      }
+
+      .text-box {
+        margin-top: 30px;
+        padding: 40px 30px;
+      }
+
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Block Prints by Afifa">
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <div></div><div></div><div></div>
+    </div>
+  <nav id="main-nav">
+  <a href="index.html">HOME</a>
+  <a href="aboutus.html">ABOUT</a>
+  <a href="#collections">STITCHED</a>
+  <a href="unstitched.html">UNSTITCHED</a>
+  <a href="#festive">HOME DECOR</a>
+  <a href="totebag.html">TOTE BAG</a>
+  <a href="#contact">CONTACT</a>
+  <a href="#boutiques">STOLES AND DUPPATTA</a>
+ <a href="#" onclick="toggleCartSidebar()"><i class="fa-solid fa-cart-shopping"></i></a>
+
+</nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="sale-banner">
+    <div class="sale-text">
+      <h1>BLOCK PRINTS BY AFIFA</h1>
+      <p>Celebrate timeless tradition with handcrafted beauty</p>
+      <a href="#collections" class="shop-button">SHOP NOW</a>
+    </div>
+  </section>
+
+  <!-- ===== COLLECTION SECTION 1 ===== -->
+  <div class="section">
+    <div class="image-container">
+      <img src="images/1.jpg" alt="Collection Image 1">
+    </div>
+    <div class="text-box">
+      <h2>EFFORTLESS ELEGANCE</h2>
+      <p>Discover artisanal charm blended with timeless beauty. This collection embodies the richness of tradition with modern grace.</p>
+      <a href="#">BROWSE</a>
+    </div>
+  </div>
+
+  <!-- ===== COLLECTION SECTION 2 (REVERSE) ===== -->
+  <div class="section reverse">
+    <div class="image-container">
+      <img src="images/2.jpg" alt="Collection Image 2">
+    </div>
+    <div class="text-box">
+      <h2>TIMELESS TEXTILES</h2>
+      <p>From intricate prints to luxurious drapes, explore craftsmanship that defines every piece of fabric with authenticity and charm.</p>
+      <a href="#">BROWSE</a>
+    </div>
+  </div>
+
+  <!-- Category Circle Section -->
+<section style="padding: 60px 20px; background-color: #fef6f8;">
+  <h2 style="text-align: center; font-family: 'Playfair Display', serif; font-size: 50px; color: #8b1e3f; margin-bottom: 40px;">
+    Shop By Category
+  </h2>
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 10px; max-width: 1400px; margin: 0 auto;">
+
+    <!-- Category Item Template -->
+    <a href="unstitched.html" style="text-align: center; width: 220px; text-decoration: none;">
+      <img src="images/3.jpeg" alt="Unstitch Collection" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1);" />
+      <p style="margin-top: 15px; font-weight: 500; color: #333;">Unstitch<br>Collection</p>
+    </a>
+
+    <a href="stitched.html" style="text-align: center; width: 220px; text-decoration: none;">
+      <img src="images/4.jpg" alt="Stitched Collection" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1);" />
+      <p style="margin-top: 15px; font-weight: 500; color: #333;">Stitched<br>Collection</p>
+    </a>
+
+    <a href="stoles.html" style="text-align: center; width: 220px; text-decoration: none;">
+      <img src="images/stole.avif" alt="Stoles" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1);" />
+      <p style="margin-top: 15px; font-weight: 500; color: #333;">Stoles</p>
+    </a>
+
+    <a href="dupattas.html" style="text-align: center; width: 220px; text-decoration: none;">
+      <img src="images/2.jpg" alt="Dupattas" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1);" />
+      <p style="margin-top: 15px; font-weight: 500; color: #333;">Dupattas</p>
+    </a>
+
+    <a href="totes.html" style="text-align: center; width: 220px; text-decoration: none;">
+      <img src="images/tote.PNG" alt="Tote Bags" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1);" />
+      <p style="margin-top: 15px; font-weight: 500; color: #333;">Tote Bags</p>
+    </a>
+
+    <a href="decor.html" style="text-align: center; width: 220px; text-decoration: none;">
+      <img src="images/cushion.jpg" alt="Home Decor" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1);" />
+      <p style="margin-top: 15px; font-weight: 500; color: #333;">Home<br>Decor</p>
+    </a>
+
+  </div>
+</section>
+
+<section style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 100px 50px; background: linear-gradient(to right, #fef6f8, #f9e1e9);">
+  
+  <!-- Media Block -->
+  <div style="flex: 1 1 48%; padding: 20px; animation: fadeInUp 1s ease;">
+    <div style="overflow: hidden; border-radius: 16px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); transition: transform 0.4s ease;">
+      <video src="images/video.mp4" autoplay muted loop playsinline style="width: 100%; display: block; border-radius: 16px; object-fit: cover;"></video>
+    </div>
+  </div>
+
+  <!-- Text Block -->
+  <div style="flex: 1 1 48%; padding: 20px 40px; animation: fadeInUp 1.3s ease;">
+    <h2 style="font-family: 'Playfair Display', serif; font-size: 42px; color: #8b1e3f; margin-bottom: 25px;">The Art Behind the Craft</h2>
+    <p style="font-size: 18px; line-height: 1.8; color: #502f2c;">
+      Every motif begins with a hand-carved wooden block, dipped in natural dye and gently pressed onto cotton fabric. What follows is not just printing — it’s storytelling. It’s precision guided by patience.
+    </p>
+    <p style="font-size: 18px; line-height: 1.8; color: #502f2c; margin-top: 20px;">
+      From drying in open sunlight to layering each shade with care, this is slow fashion at its purest — rooted in heritage and brought to life by the hands of Afifa’s skilled artisans.
+    </p>
+  </div>
+</section>
+<section class="visit-shop-section">
+  <div class="visit-shop-wrapper">
+
+    <!-- Text Block -->
+    <div class="visit-shop-text">
+      <h2>Visit Our Shop</h2>
+      <p>
+        Step into the world where fabrics come to life. Our studio is more than a store — it's an experience. Explore handcrafted collections in person, meet our artisans, and feel the texture of tradition.
+      </p>
+      <p>
+        Located in the heart of Karachi, we invite you to browse, learn, and fall in love with block printing all over again.
+      </p>
+      <a href="https://www.google.com/maps/place/Block+Prints+by+Afifa/data=!4m2!3m1!1s0x0:0x7c22432cad0b9899?sa=X&ved=1t:2428&ictx=111" target="_blank">Get Directions</a>
+    </div>
+
+    <!-- Media Block -->
+    <div class="visit-shop-media">
+      <div class="media-item">
+        <video src="images/shop.mp4" autoplay muted loop playsinline></video>
+      </div>
+      <div class="media-item">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28921.654961437486!2d67.030199!3d24.875796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33f95f7c0d7d9%3A0x7c22432cad0b9899!2sBlock%20Prints%20by%20Afifa!5e0!3m2!1sen!2s!4v1718012999512"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<style>
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+
+<!-- ===== FOOTER SECTION ===== -->
+<footer class="site-footer">
+  <div class="footer-container">
+
+    <!-- Brand Info -->
+    <div class="footer-brand">
+      <img src="images/logo.png" alt="Block Prints by Afifa Logo" class="footer-logo">
+      <p>Handcrafted block prints rooted in tradition and made with love in Karachi.</p>
+      <p><strong>Email:</strong> <a href="mailto:blockprintsbyafifa@hotmail.com">blockprintsbyafifa@hotmail.com</a></p>
+      <p><strong>Phone:</strong> <a href="tel:+923252041288">+923252041288</a></p>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/blockprintsbyafifa/" target="_blank">
+          <img src="images/instagram.svg" alt="Instagram">
+        </a>
+        <a href="https://www.facebook.com/blockprintsbyafifa" target="_blank">
+          <img src="images/facebook.svg" alt="Facebook">
+        </a>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#collections">Collections</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#wedding">Wedding</a></li>
+        <li><a href="#festive">Festive</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 Block Prints by Afifa. All rights reserved.</p>
+  </div>
+</footer>
+
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('main-nav').classList.toggle('show');
+    }
+
+     const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.section, .sale-banner').forEach(sec => {
+      observer.observe(sec);
+    });
+
+    function toggleCartSidebar() {
+  document.getElementById('cart-sidebar').classList.toggle('open');
+}
+
+function closeCartSidebar() {
+  document.getElementById('cart-sidebar').classList.remove('open');
+}
+
+function toggleWishlistSidebar() {
+  document.getElementById('wishlist-sidebar').classList.toggle('open');
+}
+
+function closeWishlistSidebar() {
+  document.getElementById('wishlist-sidebar').classList.remove('open');
+}
+
+  </script>
+<!-- Cart Sidebar -->
+<div id="cart-sidebar" class="sidebar">
+  <h2>Your Cart</h2>
+  <p id="cart-content">Your cart is currently empty.</p>
+  <button onclick="closeCartSidebar()">Close</button>
+</div>
+
+<!-- Wishlist Sidebar -->
+<div id="wishlist-sidebar" class="sidebar">
+  <h2>Your Wishlist</h2>
+  <p id="wishlist-content">No items liked yet.</p>
+  <button onclick="closeWishlistSidebar()">Close</button>
+</div>
+
+</body>
+</html>  
+
+
+
+
+
+
+
+
+
+

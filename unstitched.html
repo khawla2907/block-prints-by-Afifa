@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Block Prints by Afifa</title>
+  <link rel="icon" href="images/logo.png" type="image/png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <style>
+    :root {
+      --primary-color: #8b1e3f;
+      --accent-color: #b3365a;
+      --light-color: #ffffff;
+      --text-dark: #502f2c;
+      --background-pink: #f8ddea;
+      --background-darkpink: #c1557f;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--light-color);
+      color: var(--text-dark);
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: rgba(139, 30, 63, 0.75);
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo img {
+      height: 70px;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      width: 30px;
+      height: 21px;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .menu-toggle div {
+      height: 3px;
+      background-color: var(--light-color);
+      border-radius: 2px;
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    nav a {
+      color: var(--light-color);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
+    }
+
+    
+.site-footer {
+  background-color: #8b1e3f;
+  color: #fff;
+  padding: 60px 6% 30px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer-brand {
+  flex: 1 1 300px;
+}
+
+.footer-logo {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+.footer-brand p {
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+.footer-brand a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-brand a:hover {
+  text-decoration: underline;
+}
+
+.social-icons {
+  margin-top: 15px;
+}
+
+.social-icons a {
+  margin-right: 15px;
+  display: inline-block;
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+  transition: opacity 0.3s;
+}
+
+.social-icons img:hover {
+  opacity: 0.7;
+}
+
+.footer-links {
+  flex: 1 1 200px;
+}
+
+.footer-links h4 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-family: 'Playfair Display', serif;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+  color: #f8ddea;
+}
+
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -350px;
+  width: 300px;
+  height: 100%;
+  background: white;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  z-index: 2000;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+}
+
+.sidebar.open {
+  right: 0;
+}
+
+.sidebar h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.sidebar button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #8b1e3f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-links {
+    margin-top: 30px;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+}
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: rgba(139, 30, 63, 0.95);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        text-align: center;
+        padding: 20px 0;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      nav a {
+        padding: 10px 0;
+      }
+
+      
+
+
+    
+    }
+
+        .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      background: #fff;
+    }
+
+    .view-toggle button {
+      background: #fff;
+      border: 1px solid #ccc;
+      margin-left: 10px;
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px 5%;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .product-images {
+      position: relative;
+      width: 100%;
+      padding-top: 130%;
+      overflow: hidden;
+    }
+
+    .product-images img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .product-images img:first-child {
+      opacity: 1;
+    }
+
+    .product-card:hover img:nth-child(1) { opacity: 0; }
+    .product-card:hover img:nth-child(2) { opacity: 1; transition-delay: 0.3s; }
+    .product-card:hover img:nth-child(3) { opacity: 1; transition-delay: 0.6s; }
+
+    .product-info {
+      padding: 15px;
+    }
+
+    .product-info h4 {
+      margin: 0 0 8px;
+      font-size: 17px;
+      color: #8b1e3f;
+    }
+
+    .product-info p {
+      margin: 0;
+      font-size: 14px;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .product-price {
+      margin-top: 10px;
+      color: #000;
+      font-weight: 600;
+    }
+
+    .quick-view {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #8b1e3f;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    /* List View Mode */
+    .list-view .product-grid {
+      display: block;
+    }
+
+    .list-view .product-card {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 20px;
+    }
+
+    .list-view .product-images {
+      flex: 1;
+      padding-top: 0;
+      height: 220px;
+    }
+
+    .list-view .product-images img {
+      height: 100%;
+    }
+
+    .list-view .product-info {
+      flex: 2;
+      padding: 20px;
+    }
+  </style>
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Block Prints by Afifa">
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <div></div><div></div><div></div>
+    </div>
+  <nav id="main-nav">
+  <a href="index.html">HOME</a>
+  <a href="aboutus.html">ABOUT</a>
+  <a href="#collections">STITCHED</a>
+  <a href="#wedding">UNSTITCHED</a>
+  <a href="#festive">HOME DECOR</a>
+  <a href="totebag.html">TOTE BAG</a>
+  <a href="#contact">CONTACT</a>
+  <a href="#boutiques">STOLES AND DUPPATTA</a>
+ <a href="#" onclick="toggleCartSidebar()"><i class="fa-solid fa-cart-shopping"></i></a>
+
+</nav>
+  </header>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+  <div class="toolbar">
+    <div><strong>Sort By:</strong>
+      <select>
+        <option>New Arrival</option>
+        <option>Top Sellers</option>
+        <option>Most Popular</option>
+        <option>Price Low to High</option>
+        <option>Price High to Low</option>
+      </select>
+    </div>
+    <div class="view-toggle">
+      <button onclick="setGrid()">🔲 Grid</button>
+      <button onclick="setList()">📋 List</button>
+    </div>
+  </div>
+
+  <div class="product-grid" id="productContainer">
+    <!-- Product 1 -->
+    <div class="product-card" onclick="location.href='product-classic-duo.html'">
+      <button class="quick-view">Quick View</button>
+      <div class="product-images">
+        <img src="images/h1.jpeg" />
+        <img src="images/h2.jpeg" />
+        <img src="images/h3.jpeg" />
+      </div>
+      <div class="product-info">
+        <h4>Classic Duo</h4>
+        <p>3-piece set<br>
+        Shirt: Cotton Silk / Cotton / Raw Silk<br>
+        Dupatta: Khaddi Net / Cotton Net / Chiffon / Organza / Cotton</p>
+        <div class="product-price">PKR 5,999</div>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-card" onclick="location.href='product-citrus-charm.html'">
+      <button class="quick-view">Quick View</button>
+      <div class="product-images">
+        <img src="images/hover1.jpeg" />
+        <img src="images/hover2.jpeg" />
+        <img src="images/hover3.jpeg" />
+      </div>
+      <div class="product-info">
+        <h4>Citrus Charm</h4>
+        <p>3-piece set<br>
+        Shirt: Cotton Silk / Cotton / Raw Silk<br>
+        Dupatta: Khaddi Net / Cotton Net / Chiffon / Organza / Cotton</p>
+        <div class="product-price">PKR 5,999</div>
+      </div>
+    </div>
+
+    <div class="product-card" onclick="location.href='product-citrus-charm.html'">
+      <button class="quick-view">Quick View</button>
+      <div class="product-images">
+        <img src="images/g1.jpeg" />
+        <img src="images/g2.jpeg" />
+        <img src="images/g3.jpeg" />
+      </div>
+      <div class="product-info">
+        <h4>Gul-e-rang</h4>
+        <p>3-piece set<br>
+        Shirt: Cotton Silk / Cotton / Raw Silk<br>
+        Dupatta: Khaddi Net / Cotton Net / Chiffon / Organza / Cotton</p>
+        <div class="product-price">PKR 5,999</div>
+      </div>
+    </div>
+
+       <div class="product-card" onclick="location.href='product-citrus-charm.html'">
+      <button class="quick-view">Quick View</button>
+      <div class="product-images">
+        <img src="images/b1.jpeg" />
+        <img src="images/b2.jpeg" />
+        <img src="images/b3.jpeg" />
+      </div>
+      <div class="product-info">
+        <h4>Sapphire </h4>
+        <p>3-piece set<br>
+        Shirt: Cotton Silk / Cotton / Raw Silk<br>
+        Dupatta: Khaddi Net / Cotton Net / Chiffon / Organza / Cotton</p>
+        <div class="product-price">PKR 5,999</div>
+      </div>
+    </div>
+
+     <div class="product-card" onclick="location.href='product-citrus-charm.html'">
+      <button class="quick-view">Quick View</button>
+      <div class="product-images">
+        <img src="images/mb1.jpeg" />
+          <img src="images/mb1.jpeg" />
+            <img src="images/mb1.jpeg" />
+        
+       
+      </div>
+      <div class="product-info">
+        <h4>Midnight Bloom</h4>
+        <p>3-piece set<br>
+        Shirt: Cotton Silk / Cotton / Raw Silk<br>
+        Dupatta: Khaddi Net / Cotton Net / Chiffon / Organza / Cotton</p>
+        <div class="product-price">PKR 5,999</div>
+      </div>
+    </div>
+
+    
+
+  </div>
+
+
+
+    <script>
+    function setGrid() {
+      document.body.classList.remove('list-view');
+    }
+    function setList() {
+      document.body.classList.add('list-view');
+    }
+  </script>
+
+
+
+
+
+
+<!-- ===== FOOTER SECTION ===== -->
+<footer class="site-footer">
+  <div class="footer-container">
+
+    <!-- Brand Info -->
+    <div class="footer-brand">
+      <img src="images/logo.png" alt="Block Prints by Afifa Logo" class="footer-logo">
+      <p>Handcrafted block prints rooted in tradition and made with love in Karachi.</p>
+      <p><strong>Email:</strong> <a href="mailto:blockprintsbyafifa@hotmail.com">blockprintsbyafifa@hotmail.com</a></p>
+      <p><strong>Phone:</strong> <a href="tel:+923252041288">+923252041288</a></p>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/blockprintsbyafifa/" target="_blank">
+          <img src="images/instagram.svg" alt="Instagram">
+        </a>
+        <a href="https://www.facebook.com/blockprintsbyafifa" target="_blank">
+          <img src="images/facebook.svg" alt="Facebook">
+        </a>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#collections">Collections</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#wedding">Wedding</a></li>
+        <li><a href="#festive">Festive</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 Block Prints by Afifa. All rights reserved.</p>
+  </div>
+</footer>
+
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('main-nav').classList.toggle('show');
+    }
+
+     const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.section, .sale-banner').forEach(sec => {
+      observer.observe(sec);
+    });
+
+    function toggleCartSidebar() {
+  document.getElementById('cart-sidebar').classList.toggle('open');
+}
+
+function closeCartSidebar() {
+  document.getElementById('cart-sidebar').classList.remove('open');
+}
+
+function toggleWishlistSidebar() {
+  document.getElementById('wishlist-sidebar').classList.toggle('open');
+}
+
+function closeWishlistSidebar() {
+  document.getElementById('wishlist-sidebar').classList.remove('open');
+}
+
+  </script>
+<!-- Cart Sidebar -->
+<div id="cart-sidebar" class="sidebar">
+  <h2>Your Cart</h2>
+  <p id="cart-content">Your cart is currently empty.</p>
+  <button onclick="closeCartSidebar()">Close</button>
+</div>
+
+<!-- Wishlist Sidebar -->
+<div id="wishlist-sidebar" class="sidebar">
+  <h2>Your Wishlist</h2>
+  <p id="wishlist-content">No items liked yet.</p>
+  <button onclick="closeWishlistSidebar()">Close</button>
+</div>
+
+</body>
+</html>  
+
+
+
+
+
+
+
+
+
+
