@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tote Bag | Block Prints by Afifa</title>
+  <title>Dupatta and Stoles | Block Prints by Afifa</title>
   <link rel="icon" href="images/logo.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -825,21 +825,21 @@
   <div class="page-spacer"></div>
 
   <section class="page-heading">
-    <h1>Tote Bag Collection</h1>
-    <p>Explore handcrafted cotton tote bags and pouches with traditional block print charm.</p>
+    <h1>Dupatta and Stoles</h1>
+    <p>Discover soft cotton stoles and dupattas designed with timeless handcrafted prints.</p>
   </section>
 
   <section class="category-section">
     <div class="category-row">
 
-      <button class="category-item" onclick="filterProducts('tote')">
-        <img src="images/tb1.jpeg" alt="Totebag Collection" />
-        <span>Totebag Collection</span>
+      <button class="category-item" onclick="filterProducts('stole')">
+        <img src="images/st1.jpeg" alt="Stole Collection" />
+        <span>Stole Collection</span>
       </button>
 
-      <button class="category-item" onclick="filterProducts('bag')">
-        <img src="images/tb2.jpeg" alt="Pouches Collection" />
-        <span>Pouches Collection</span>
+      <button class="category-item" onclick="filterProducts('dupatta')">
+        <img src="images/dup1.jpeg" alt="Dupatta Collection" />
+        <span>Dupatta Collection</span>
       </button>
 
       <button class="category-item" onclick="filterProducts('all')">
@@ -951,49 +951,49 @@
   <script>
     const products = [
       {
-            "id": "blush-tote-bag",
-            "name": "Blush Tote Bag",
-            "price": 800,
+            "id": "vintage-rust-stole",
+            "name": "Vintage Rust",
+            "price": 1500,
             "images": [
-                  "images/tb1.jpeg",
-                  "images/tb1.jpeg",
-                  "images/tb1.jpeg"
+                  "images/st1.jpeg",
+                  "images/st2.jpeg",
+                  "images/st1.jpeg"
             ],
-            "description": "Tote bag<br>Material: Cotton",
-            "category": "tote",
-            "categoryLabel": "Tote Bag",
+            "description": "Stole<br>Material: Cotton",
+            "category": "stole",
+            "categoryLabel": "Stole",
             "material": "Cotton",
             "popularity": 3,
             "order": 1
       },
       {
-            "id": "midnight-bloom-tote",
-            "name": "Midnight Bloom",
-            "price": 800,
+            "id": "indigo-stole",
+            "name": "Indigo",
+            "price": 1500,
             "images": [
-                  "images/tb3.jpeg",
-                  "images/tb3.jpeg",
-                  "images/tb3.jpeg"
+                  "images/indi1.jpeg",
+                  "images/indi1.jpeg",
+                  "images/indi1.jpeg"
             ],
-            "description": "Tote bag<br>Material: Cotton",
-            "category": "tote",
-            "categoryLabel": "Tote Bag",
+            "description": "Stole<br>Material: Cotton",
+            "category": "stole",
+            "categoryLabel": "Stole",
             "material": "Cotton",
             "popularity": 2,
             "order": 2
       },
       {
-            "id": "scarlet-pouch",
-            "name": "Scarlet",
-            "price": 800,
+            "id": "black-dupatta",
+            "name": "Black",
+            "price": 2200,
             "images": [
-                  "images/tb2.jpeg",
-                  "images/tb2.jpeg",
-                  "images/tb2.jpeg"
+                  "images/dup1.jpeg",
+                  "images/dup2.jpeg",
+                  "images/dup3.jpeg"
             ],
-            "description": "Pouch / Bag<br>Material: Cotton",
-            "category": "bag",
-            "categoryLabel": "Pouch / Bag",
+            "description": "Dupatta<br>Material: Cotton",
+            "category": "dupatta",
+            "categoryLabel": "Dupatta",
             "material": "Cotton",
             "popularity": 1,
             "order": 3
@@ -1082,14 +1082,14 @@
       const selectedProduct = products.find(product => product.id === productId);
       if (!selectedProduct) return;
 
-      const existingItem = cartItems.find(item => item.id === selectedProduct.id && item.source === 'tote-bag');
+      const existingItem = cartItems.find(item => item.id === selectedProduct.id && item.source === 'dupatta-and-stoles');
 
       if (existingItem) {
         existingItem.quantity += 1;
       } else {
         cartItems.push({
           id: selectedProduct.id,
-          source: 'tote-bag',
+          source: 'dupatta-and-stoles',
           name: selectedProduct.name,
           price: selectedProduct.price,
           image: selectedProduct.images[0],

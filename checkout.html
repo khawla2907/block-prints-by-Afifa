@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout | Block Prints by Afifa</title>
+  <link rel="icon" href="images/logo.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary-color: #8b1e3f;
+      --accent-color: #b3365a;
+      --light-color: #ffffff;
+      --text-dark: #502f2c;
+      --background-pink: #f8ddea;
+      --soft-pink: #fff5f8;
+      --border-pink: #efd1dc;
+      --muted-text: #7a5a57;
+      --shadow: 0 18px 45px rgba(139, 30, 63, 0.12);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(180deg, #fff 0%, #fff5f8 55%, #ffffff 100%);
+      color: var(--text-dark);
+      min-height: 100vh;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: rgba(139, 30, 63, 0.88);
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(8px);
+    }
+
+    .logo img {
+      height: 70px;
+      display: block;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      width: 30px;
+      height: 21px;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .menu-toggle div {
+      height: 3px;
+      background-color: var(--light-color);
+      border-radius: 2px;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--light-color);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.4px;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--background-pink);
+    }
+
+    .cart-nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 999px;
+    }
+
+    #cart-count {
+      min-width: 19px;
+      height: 19px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #ffffff;
+      color: var(--primary-color);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    main {
+      padding: 160px 6% 70px;
+    }
+
+    .checkout-hero {
+      max-width: 1150px;
+      margin: 0 auto 35px;
+      padding: 34px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(139, 30, 63, 0.96), rgba(179, 54, 90, 0.92)), url('images/hero.png') center/cover;
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .checkout-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 44px;
+      margin-bottom: 10px;
+    }
+
+    .checkout-hero p {
+      max-width: 720px;
+      line-height: 1.8;
+      font-size: 15px;
+      color: #ffeef5;
+    }
+
+    .checkout-layout {
+      max-width: 1150px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.75fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .checkout-card,
+    .summary-card {
+      background: #ffffff;
+      border: 1px solid var(--border-pink);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .card-header {
+      padding: 24px 28px;
+      background: #fff5f8;
+      border-bottom: 1px solid var(--border-pink);
+    }
+
+    .card-header h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--primary-color);
+      font-size: 30px;
+      margin-bottom: 6px;
+    }
+
+    .card-header p {
+      color: var(--muted-text);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .checkout-form {
+      padding: 28px;
+    }
+
+    .form-section-title {
+      color: var(--primary-color);
+      font-size: 15px;
+      font-weight: 700;
+      margin: 8px 0 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      color: var(--text-dark);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid #e6c1cf;
+      background: #fff;
+      border-radius: 12px;
+      padding: 13px 14px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      color: var(--text-dark);
+      outline: none;
+      transition: 0.25s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 4px rgba(179, 54, 90, 0.12);
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .payment-box {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .payment-option {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 16px;
+      border: 1px solid #e6c1cf;
+      border-radius: 14px;
+      background: #fff;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .payment-option:hover {
+      border-color: var(--accent-color);
+      background: #fff9fb;
+    }
+
+    .payment-option input {
+      width: auto;
+      margin-top: 3px;
+      accent-color: var(--primary-color);
+    }
+
+    .payment-option strong {
+      display: block;
+      font-size: 14px;
+      color: var(--primary-color);
+      margin-bottom: 4px;
+    }
+
+    .payment-option span {
+      font-size: 13px;
+      color: var(--muted-text);
+      line-height: 1.5;
+    }
+
+    .place-order-btn {
+      width: 100%;
+      border: none;
+      padding: 15px 18px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 12px 24px rgba(139, 30, 63, 0.22);
+      transition: 0.25s ease;
+    }
+
+    .place-order-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px rgba(139, 30, 63, 0.28);
+    }
+
+    .secure-note {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-top: 16px;
+      padding: 14px;
+      border-radius: 14px;
+      background: #fff5f8;
+      color: var(--muted-text);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .secure-note i {
+      color: var(--primary-color);
+      margin-top: 2px;
+    }
+
+    .summary-card {
+      position: sticky;
+      top: 130px;
+    }
+
+    .summary-body {
+      padding: 22px;
+    }
+
+    .summary-items {
+      display: grid;
+      gap: 16px;
+      max-height: 370px;
+      overflow-y: auto;
+      padding-right: 5px;
+    }
+
+    .summary-item {
+      display: grid;
+      grid-template-columns: 82px 1fr;
+      gap: 14px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #f0d6df;
+    }
+
+    .summary-item img {
+      width: 82px;
+      height: 105px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid #f0d6df;
+    }
+
+    .summary-item h4 {
+      color: var(--primary-color);
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .summary-item p {
+      color: var(--muted-text);
+      font-size: 12px;
+      line-height: 1.5;
+      margin-bottom: 4px;
+    }
+
+    .summary-price {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .qty-mini {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .qty-mini button {
+      width: 25px;
+      height: 25px;
+      border: none;
+      border-radius: 50%;
+      background: var(--primary-color);
+      color: white;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .remove-summary {
+      border: none;
+      background: transparent;
+      color: var(--accent-color);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+      margin-left: 8px;
+    }
+
+    .price-lines {
+      margin-top: 22px;
+      display: grid;
+      gap: 13px;
+    }
+
+    .price-line {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted-text);
+      font-size: 14px;
+    }
+
+    .price-line.total {
+      border-top: 1px solid #e8c8d4;
+      padding-top: 16px;
+      margin-top: 4px;
+      color: var(--primary-color);
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .empty-checkout {
+      text-align: center;
+      padding: 28px 15px;
+      color: var(--muted-text);
+    }
+
+    .empty-checkout i {
+      font-size: 36px;
+      color: var(--primary-color);
+      margin-bottom: 12px;
+    }
+
+    .continue-shopping {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 11px 22px;
+      background: var(--primary-color);
+      color: white;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .success-message {
+      display: none;
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 16px;
+      background: #f0fff4;
+      border: 1px solid #b9ebc8;
+      color: #245d35;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      background-color: #8b1e3f;
+      color: #fff;
+      padding: 60px 6% 30px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .footer-brand {
+      flex: 1 1 300px;
+    }
+
+    .footer-logo {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+
+    .footer-brand p {
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .footer-brand a,
+    .footer-links a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .footer-brand a:hover,
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .social-icons {
+      margin-top: 15px;
+    }
+
+    .social-icons a {
+      margin-right: 15px;
+      display: inline-block;
+    }
+
+    .social-icons img {
+      width: 24px;
+      height: 24px;
+      filter: brightness(0) invert(1);
+      transition: opacity 0.3s;
+    }
+
+    .social-icons img:hover {
+      opacity: 0.7;
+    }
+
+    .footer-links {
+      flex: 1 1 200px;
+    }
+
+    .footer-links h4 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      font-size: 15px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #f8ddea;
+    }
+
+    @media (max-width: 992px) {
+      nav {
+        gap: 14px;
+      }
+
+      nav a {
+        font-size: 12px;
+      }
+
+      .checkout-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .summary-card {
+        position: static;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 16px 22px;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: rgba(139, 30, 63, 0.97);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        text-align: center;
+        padding: 20px 0;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      nav a {
+        padding: 10px 0;
+      }
+
+      main {
+        padding: 135px 4% 55px;
+      }
+
+      .checkout-hero {
+        padding: 28px 22px;
+      }
+
+      .checkout-hero h1 {
+        font-size: 34px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .checkout-form,
+      .summary-body {
+        padding: 22px;
+      }
+
+      .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .footer-links {
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Block Prints by Afifa" />
+    </div>
+
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <div></div><div></div><div></div>
+    </div>
+
+    <nav id="main-nav">
+      <a href="index.html">HOME</a>
+      <a href="aboutus.html">ABOUT</a>
+      <a href="stitched.html">STITCHED</a>
+      <a href="unstitched.html">UNSTITCHED</a>
+      <a href="homedecor.html">HOME DECOR</a>
+      <a href="totebag.html">TOTE BAG</a>
+      <a href="contactus.html">CONTACT</a>
+      <a href="dupandstole.html">STOLES AND DUPPATTA</a>
+      <a href="checkout.html" class="cart-nav-link active"><i class="fa-solid fa-cart-shopping"></i><span id="cart-count">0</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="checkout-hero">
+      <h1>Checkout</h1>
+      <p>Review your selected handcrafted pieces, enter your delivery details, and confirm your order. Your order will be prepared with care by Block Prints by Afifa.</p>
+    </section>
+
+    <section class="checkout-layout">
+      <div class="checkout-card">
+        <div class="card-header">
+          <h2>Delivery Details</h2>
+          <p>Please fill in your contact and delivery information to place your order.</p>
+        </div>
+
+        <form class="checkout-form" id="checkout-form">
+          <div class="form-section-title"><i class="fa-solid fa-user"></i> Customer Information</div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="fullName">Full Name *</label>
+              <input type="text" id="fullName" placeholder="Enter your full name" required />
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" placeholder="03XXXXXXXXX" required />
+            </div>
+
+            <div class="form-group full">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" placeholder="example@email.com" required />
+            </div>
+          </div>
+
+          <div class="form-section-title"><i class="fa-solid fa-truck-fast"></i> Shipping Address</div>
+          <div class="form-grid">
+            <div class="form-group full">
+              <label for="address">Complete Address *</label>
+              <textarea id="address" placeholder="House / apartment, street, area" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="city">City *</label>
+              <select id="city" required>
+                <option value="">Select city</option>
+                <option>Karachi</option>
+                <option>Lahore</option>
+                <option>Islamabad</option>
+                <option>Rawalpindi</option>
+                <option>Hyderabad</option>
+                <option>Faisalabad</option>
+                <option>Multan</option>
+                <option>Peshawar</option>
+                <option>Quetta</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="postalCode">Postal Code</label>
+              <input type="text" id="postalCode" placeholder="Optional" />
+            </div>
+
+            <div class="form-group full">
+              <label for="notes">Order Notes</label>
+              <textarea id="notes" placeholder="Any fabric, delivery or gift note? Optional"></textarea>
+            </div>
+          </div>
+
+          <div class="form-section-title"><i class="fa-solid fa-money-bill-wave"></i> Payment Method</div>
+          <div class="payment-box">
+            <label class="payment-option">
+              <input type="radio" name="payment" value="Cash on Delivery" checked />
+              <span>
+                <strong>Cash on Delivery</strong>
+                Pay when your order is delivered to your address.
+              </span>
+            </label>
+
+            <label class="payment-option">
+              <input type="radio" name="payment" value="Bank Transfer" />
+              <span>
+                <strong>Bank Transfer</strong>
+                The brand can share payment details after confirming your order.
+              </span>
+            </label>
+          </div>
+
+          <button type="submit" class="place-order-btn">Place Order</button>
+
+          <div class="secure-note">
+            <i class="fa-solid fa-lock"></i>
+            <span>This is a front-end checkout page for your website. It does not process real online payments unless connected to a payment gateway or backend later.</span>
+          </div>
+
+          <div class="success-message" id="success-message"></div>
+        </form>
+      </div>
+
+      <aside class="summary-card">
+        <div class="card-header">
+          <h2>Order Summary</h2>
+          <p>Check your items before placing the order.</p>
+        </div>
+
+        <div class="summary-body">
+          <div id="summary-items" class="summary-items"></div>
+
+          <div class="price-lines" id="price-lines">
+            <div class="price-line">
+              <span>Subtotal</span>
+              <strong id="subtotal">PKR 0</strong>
+            </div>
+            <div class="price-line">
+              <span>Delivery Charges</span>
+              <strong id="delivery">PKR 0</strong>
+            </div>
+            <div class="price-line total">
+              <span>Total</span>
+              <strong id="total">PKR 0</strong>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER SECTION ===== -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="images/logo.png" alt="Block Prints by Afifa Logo" class="footer-logo" />
+        <p>Handcrafted block prints rooted in tradition and made with love in Karachi.</p>
+        <p><strong>Email:</strong> <a href="mailto:blockprintsbyafifa@hotmail.com">blockprintsbyafifa@hotmail.com</a></p>
+        <p><strong>Phone:</strong> <a href="tel:+923252041288">+923252041288</a></p>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/blockprintsbyafifa/" target="_blank">
+            <img src="images/instagram.svg" alt="Instagram" />
+          </a>
+          <a href="https://www.facebook.com/blockprintsbyafifa" target="_blank">
+            <img src="images/facebook.svg" alt="Facebook" />
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="aboutus.html">About</a></li>
+          <li><a href="contactus.html">Contact</a></li>
+          <li><a href="unstitched.html">Unstitched</a></li>
+          <li><a href="totebag.html">Totebag</a></li>
+          <li><a href="dupandstole.html">Duppatta and Stoles</a></li>
+          <li><a href="homedecor.html">Home Decor</a></li>
+          <li><a href="stitched.html">Stitched</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Block Prints by Afifa. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const deliveryCharge = 200;
+    let checkoutCart = loadCheckoutCart();
+
+    function toggleMenu() {
+      document.getElementById('main-nav').classList.toggle('show');
+    }
+
+    function loadCheckoutCart() {
+      const savedCheckout = JSON.parse(localStorage.getItem('checkoutCart')) || [];
+      const savedCart = JSON.parse(localStorage.getItem('cartItems')) || [];
+      return savedCheckout.length ? savedCheckout : savedCart;
+    }
+
+    function saveCheckoutCart() {
+      localStorage.setItem('checkoutCart', JSON.stringify(checkoutCart));
+      localStorage.setItem('cartItems', JSON.stringify(checkoutCart));
+    }
+
+    function formatPrice(amount) {
+      return 'PKR ' + amount.toLocaleString();
+    }
+
+    function cartSubtotal() {
+      return checkoutCart.reduce((sum, item) => sum + (Number(item.price) * Number(item.quantity)), 0);
+    }
+
+    function renderCheckout() {
+      const summaryItems = document.getElementById('summary-items');
+      const priceLines = document.getElementById('price-lines');
+      const cartCount = document.getElementById('cart-count');
+      const subtotalEl = document.getElementById('subtotal');
+      const deliveryEl = document.getElementById('delivery');
+      const totalEl = document.getElementById('total');
+      const totalQuantity = checkoutCart.reduce((sum, item) => sum + Number(item.quantity), 0);
+      const subtotal = cartSubtotal();
+      const delivery = subtotal > 0 ? deliveryCharge : 0;
+      const total = subtotal + delivery;
+
+      cartCount.textContent = totalQuantity;
+      subtotalEl.textContent = formatPrice(subtotal);
+      deliveryEl.textContent = formatPrice(delivery);
+      totalEl.textContent = formatPrice(total);
+
+      if (!checkoutCart.length) {
+        summaryItems.innerHTML = `
+          <div class="empty-checkout">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <h3>Your cart is empty</h3>
+            <p>Please add an item before checkout.</p>
+            <a href="classicdou.html" class="continue-shopping">Continue Shopping</a>
+          </div>
+        `;
+        priceLines.style.display = 'none';
+        document.querySelector('.place-order-btn').disabled = true;
+        document.querySelector('.place-order-btn').style.opacity = '0.6';
+        document.querySelector('.place-order-btn').style.cursor = 'not-allowed';
+        return;
+      }
+
+      priceLines.style.display = 'grid';
+      document.querySelector('.place-order-btn').disabled = false;
+      document.querySelector('.place-order-btn').style.opacity = '1';
+      document.querySelector('.place-order-btn').style.cursor = 'pointer';
+
+      summaryItems.innerHTML = checkoutCart.map((item, index) => `
+        <div class="summary-item">
+          <img src="${item.image || 'images/logo.png'}" alt="${item.name}">
+          <div>
+            <h4>${item.name}</h4>
+            <p><strong>Shirt:</strong> ${item.shirtFabric || 'Not selected'}</p>
+            <p><strong>Dupatta:</strong> ${item.dupattaFabric || 'Not selected'}</p>
+            <div class="qty-mini">
+              <button type="button" onclick="changeQty(${index}, -1)">−</button>
+              <span>${item.quantity}</span>
+              <button type="button" onclick="changeQty(${index}, 1)">+</button>
+              <button type="button" class="remove-summary" onclick="removeItem(${index})">Remove</button>
+            </div>
+            <div class="summary-price">
+              <span>${formatPrice(Number(item.price))} each</span>
+              <strong>${formatPrice(Number(item.price) * Number(item.quantity))}</strong>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function changeQty(index, amount) {
+      if (!checkoutCart[index]) return;
+      checkoutCart[index].quantity = Number(checkoutCart[index].quantity) + amount;
+
+      if (checkoutCart[index].quantity <= 0) {
+        checkoutCart.splice(index, 1);
+      }
+
+      saveCheckoutCart();
+      renderCheckout();
+    }
+
+    function removeItem(index) {
+      checkoutCart.splice(index, 1);
+      saveCheckoutCart();
+      renderCheckout();
+    }
+
+    document.getElementById('checkout-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      if (!checkoutCart.length) {
+        alert('Your cart is empty. Please add an item first.');
+        return;
+      }
+
+      const selectedPayment = document.querySelector('input[name="payment"]:checked').value;
+      const orderNumber = 'BPA-' + Math.floor(100000 + Math.random() * 900000);
+      const total = cartSubtotal() + deliveryCharge;
+      const customerName = document.getElementById('fullName').value.trim();
+      const city = document.getElementById('city').value;
+      const successBox = document.getElementById('success-message');
+
+      successBox.innerHTML = `
+        <strong>Thank you, ${customerName}!</strong><br>
+        Your order <strong>${orderNumber}</strong> has been placed successfully for <strong>${formatPrice(total)}</strong>.<br>
+        Payment method: <strong>${selectedPayment}</strong>. Delivery city: <strong>${city}</strong>.
+      `;
+      successBox.classList.add('show');
+
+      localStorage.removeItem('cartItems');
+      localStorage.removeItem('checkoutCart');
+      checkoutCart = [];
+      renderCheckout();
+      this.reset();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    renderCheckout();
+  </script>
+</body>
+</html>

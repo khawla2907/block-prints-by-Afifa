@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tote Bag | Block Prints by Afifa</title>
+  <title>Unstitched Collection | Block Prints by Afifa</title>
   <link rel="icon" href="images/logo.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -15,8 +15,9 @@
       --light-color: #ffffff;
       --text-dark: #502f2c;
       --background-pink: #f8ddea;
-      --background-soft: #fff5f8;
-      --border-soft: #f0d3dd;
+      --soft-pink: #fff5f8;
+      --border-soft: #efd3dd;
+      --shadow-soft: 0 12px 30px rgba(139, 30, 63, 0.12);
     }
 
     * {
@@ -31,24 +32,40 @@
       color: var(--text-dark);
     }
 
+    /* ===== HEADER ===== */
     header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       z-index: 1000;
-      background-color: rgba(139, 30, 63, 0.84);
+      background-color: rgba(139, 30, 63, 0.82);
       padding: 18px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 3px 18px rgba(0, 0, 0, 0.08);
-      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(6px);
     }
 
     .logo img {
       height: 70px;
       display: block;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      width: 30px;
+      height: 21px;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .menu-toggle div {
+      height: 3px;
+      background-color: var(--light-color);
+      border-radius: 2px;
     }
 
     nav {
@@ -92,32 +109,17 @@
       align-items: center;
       justify-content: center;
       font-size: 11px;
-      font-weight: 800;
+      font-weight: 700;
       box-shadow: 0 4px 12px rgba(0,0,0,0.18);
     }
 
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      width: 30px;
-      height: 21px;
-      justify-content: space-between;
-      cursor: pointer;
-    }
-
-    .menu-toggle div {
-      height: 3px;
-      background-color: var(--light-color);
-      border-radius: 2px;
-    }
-
     .page-spacer {
-      height: 126px;
+      height: 135px;
     }
 
     .page-heading {
       text-align: center;
-      padding: 44px 6% 30px;
+      padding: 34px 6% 22px;
       background: linear-gradient(135deg, #fff5f8, #f8ddea);
     }
 
@@ -129,125 +131,91 @@
     }
 
     .page-heading p {
-      max-width: 760px;
+      max-width: 720px;
       margin: 0 auto;
       line-height: 1.7;
       color: #6f4a47;
       font-size: 15px;
     }
 
-    .category-section {
-      padding: 34px 5% 14px;
-      background-color: white;
-    }
-
-    .category-row {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 24px;
-    }
-
-    .category-item {
-      border: none;
-      background: transparent;
-      text-align: center;
-      cursor: pointer;
-      color: var(--text-dark);
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    .category-item img {
-      width: 118px;
-      height: 118px;
-      object-fit: cover;
-      border-radius: 50%;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.12);
-      border: 3px solid #fff;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .category-item:hover img {
-      transform: translateY(-4px) scale(1.03);
-      box-shadow: 0 13px 28px rgba(139,30,63,0.2);
-    }
-
-    .category-item span {
-      display: block;
-      margin-top: 10px;
-      font-weight: 700;
-      font-size: 14px;
-    }
-
+    /* ===== TOOLBAR ===== */
     .toolbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 14px;
+      gap: 18px;
       padding: 24px 5%;
       background: #fff;
-      border-top: 1px solid #fae6ed;
-      border-bottom: 1px solid #fae6ed;
+      border-bottom: 1px solid #f4d9e2;
+    }
+
+    .toolbar label {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-right: 8px;
     }
 
     .toolbar select {
-      padding: 9px 14px;
-      border: 1px solid #dfb5c4;
-      border-radius: 22px;
-      color: var(--primary-color);
-      font-weight: 600;
+      border: 1px solid #dec0ca;
+      padding: 9px 12px;
+      border-radius: 8px;
+      color: var(--text-dark);
+      background-color: #fff;
       outline: none;
-      background: #fff;
+    }
+
+    .view-toggle {
+      display: flex;
+      gap: 10px;
     }
 
     .view-toggle button {
       background: #fff;
-      border: 1px solid #dfb5c4;
-      color: var(--primary-color);
-      margin-left: 8px;
-      padding: 8px 13px;
+      border: 1px solid #dec0ca;
+      border-radius: 8px;
+      padding: 9px 13px;
       cursor: pointer;
-      border-radius: 20px;
-      font-weight: 700;
-      transition: 0.3s ease;
+      color: var(--primary-color);
+      font-weight: 600;
+      transition: 0.3s;
     }
 
     .view-toggle button:hover {
       background: var(--primary-color);
-      color: white;
+      color: #fff;
     }
 
+    /* ===== PRODUCT GRID ===== */
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
-      gap: 28px;
-      padding: 34px 5% 70px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 26px;
+      padding: 36px 5% 70px;
       background: #fff;
     }
 
     .product-card {
       background: #fff;
-      border-radius: 16px;
+      border-radius: 18px;
       overflow: hidden;
       position: relative;
-      transition: 0.3s ease;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-      border: 1px solid #f6e3ea;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+      border: 1px solid #f5e0e7;
     }
 
     .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 30px rgba(139, 30, 63, 0.15);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-soft);
     }
 
     .product-images {
       position: relative;
       width: 100%;
-      padding-top: 125%;
+      padding-top: 130%;
       overflow: hidden;
-      background: #fff7fa;
+      background: var(--soft-pink);
     }
 
     .product-images img {
@@ -267,15 +235,15 @@
 
     .product-card:hover .product-images img:nth-child(1) { opacity: 0; }
     .product-card:hover .product-images img:nth-child(2) { opacity: 1; }
-    .product-card:hover .product-images img:nth-child(3) { opacity: 1; transition-delay: 0.25s; }
+    .product-card:hover .product-images img:nth-child(3) { opacity: 1; transition-delay: 0.35s; }
 
     .product-info {
-      padding: 18px 18px 12px;
+      padding: 17px;
     }
 
     .product-info h4 {
       margin: 0 0 8px;
-      font-size: 21px;
+      font-size: 19px;
       color: var(--primary-color);
       font-family: 'Playfair Display', serif;
     }
@@ -289,27 +257,28 @@
 
     .product-price {
       margin-top: 12px;
-      color: #111;
-      font-weight: 800;
+      color: #000;
+      font-weight: 700;
       font-size: 15px;
     }
 
     .product-actions {
       display: flex;
       gap: 10px;
-      padding: 0 18px 20px;
+      padding: 0 17px 18px;
     }
 
     .details-btn,
     .add-listing-btn {
       flex: 1;
+      text-align: center;
       border-radius: 30px;
-      padding: 11px 12px;
+      padding: 11px 10px;
       font-size: 13px;
-      font-weight: 800;
+      font-weight: 700;
       cursor: pointer;
       transition: 0.3s ease;
-      font-family: 'Montserrat', sans-serif;
+      text-decoration: none;
     }
 
     .details-btn {
@@ -333,32 +302,38 @@
       box-shadow: 0 8px 18px rgba(139, 30, 63, 0.25);
     }
 
+    /* List View Mode */
     .list-view .product-grid {
       display: block;
     }
 
     .list-view .product-card {
       display: grid;
-      grid-template-columns: 250px 1fr;
+      grid-template-columns: 260px 1fr;
       margin-bottom: 24px;
       align-items: stretch;
     }
 
     .list-view .product-images {
       padding-top: 0;
-      min-height: 250px;
+      min-height: 260px;
       height: 100%;
     }
 
     .list-view .product-info {
-      padding: 30px 28px 10px;
+      padding: 28px 28px 10px;
+    }
+
+    .list-view .product-info h4 {
+      font-size: 28px;
     }
 
     .list-view .product-actions {
       padding: 0 28px 28px;
-      max-width: 430px;
+      max-width: 420px;
     }
 
+    /* ===== CART SIDEBAR ===== */
     .cart-overlay {
       position: fixed;
       inset: 0;
@@ -398,7 +373,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 22px;
-      border-bottom: 1px solid var(--border-soft);
+      border-bottom: 1px solid #f0d3dd;
       background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
       color: #fff;
     }
@@ -410,69 +385,72 @@
     }
 
     .cart-close-icon {
-      border: none;
-      background: rgba(255,255,255,0.18);
-      color: white;
       width: 34px;
       height: 34px;
       border-radius: 50%;
-      font-size: 24px;
+      border: 1px solid rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      font-size: 25px;
       cursor: pointer;
+      line-height: 1;
     }
 
     .cart-content {
-      padding: 18px;
+      padding: 20px;
       flex: 1;
     }
 
     .empty-cart {
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 45px 15px;
-      color: #8b6b68;
+      color: #80605c;
+      gap: 12px;
     }
 
     .empty-cart i {
-      font-size: 38px;
-      color: var(--primary-color);
-      margin-bottom: 12px;
+      font-size: 48px;
+      color: #d8a9bb;
     }
 
     .cart-item {
-      display: flex;
-      gap: 12px;
+      display: grid;
+      grid-template-columns: 82px 1fr;
+      gap: 13px;
       padding: 14px 0;
-      border-bottom: 1px solid #f2dbe4;
+      border-bottom: 1px solid #f1dce4;
     }
 
     .cart-item img {
       width: 82px;
-      height: 100px;
-      object-fit: cover;
+      height: 105px;
       border-radius: 10px;
+      object-fit: cover;
       background: #fff5f8;
-    }
-
-    .cart-item-info {
-      flex: 1;
     }
 
     .cart-item-info h4 {
       color: var(--primary-color);
+      font-size: 15px;
       margin-bottom: 6px;
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
+      line-height: 1.3;
     }
 
     .cart-item-info p {
       font-size: 12px;
-      line-height: 1.5;
-      color: #604845;
+      color: #70514e;
+      margin-bottom: 5px;
+      line-height: 1.4;
     }
 
     .cart-price {
-      font-weight: 800;
+      font-weight: 700;
       color: #111 !important;
-      margin-top: 5px;
+      margin-top: 6px;
     }
 
     .quantity-row {
@@ -483,21 +461,21 @@
     }
 
     .qty-btn {
-      width: 25px;
-      height: 25px;
-      border: 1px solid #d7a6b8;
+      width: 28px;
+      height: 28px;
+      border: 1px solid #d6b1bd;
       background: #fff5f8;
       color: var(--primary-color);
       border-radius: 50%;
       cursor: pointer;
-      font-weight: 800;
+      font-weight: 700;
       font-size: 14px;
     }
 
     .qty-number {
       min-width: 22px;
       text-align: center;
-      font-weight: 800;
+      font-weight: 700;
       color: var(--text-dark);
     }
 
@@ -507,7 +485,7 @@
       color: #9d264c;
       cursor: pointer;
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 700;
       margin-left: auto;
       text-decoration: underline;
     }
@@ -515,7 +493,7 @@
     .cart-summary {
       display: none;
       padding: 20px;
-      border-top: 1px solid var(--border-soft);
+      border-top: 1px solid #f0d3dd;
       background: #fff8fa;
       position: sticky;
       bottom: 0;
@@ -561,80 +539,33 @@
       border-radius: 30px;
       background: white;
       color: var(--primary-color);
-      font-weight: 800;
+      font-weight: 700;
       cursor: pointer;
     }
 
     .cart-toast {
       position: fixed;
-      bottom: 24px;
-      right: 24px;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(40px);
       background: var(--primary-color);
-      color: white;
-      padding: 13px 18px;
+      color: #fff;
+      padding: 13px 22px;
       border-radius: 30px;
-      box-shadow: 0 10px 26px rgba(0,0,0,0.2);
-      z-index: 3000;
+      font-weight: 700;
       opacity: 0;
-      transform: translateY(15px);
       pointer-events: none;
+      z-index: 2500;
       transition: 0.3s ease;
-      font-weight: 800;
-      font-size: 13px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
 
     .cart-toast.show {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateX(-50%) translateY(0);
     }
 
-    .quick-modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.38);
-      z-index: 2500;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .quick-modal.open {
-      display: flex;
-    }
-
-    .quick-modal-card {
-      width: min(460px, 94vw);
-      background: white;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.25);
-    }
-
-    .quick-modal-card img {
-      width: 100%;
-      max-height: 360px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .quick-modal-body {
-      padding: 22px;
-    }
-
-    .quick-modal-body h3 {
-      color: var(--primary-color);
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      margin-bottom: 8px;
-    }
-
-    .quick-modal-actions {
-      display: flex;
-      gap: 10px;
-      margin-top: 18px;
-    }
-
+    /* ===== FOOTER ===== */
     .site-footer {
       background-color: var(--primary-color);
       color: #fff;
@@ -664,12 +595,14 @@
       margin-bottom: 10px;
     }
 
-    .footer-brand a {
+    .footer-brand a,
+    .footer-links a {
       color: #fff;
       text-decoration: none;
     }
 
-    .footer-brand a:hover {
+    .footer-brand a:hover,
+    .footer-links a:hover {
       text-decoration: underline;
     }
 
@@ -713,13 +646,7 @@
     }
 
     .footer-links a {
-      color: #fff;
-      text-decoration: none;
       font-size: 15px;
-    }
-
-    .footer-links a:hover {
-      text-decoration: underline;
     }
 
     .footer-bottom {
@@ -729,7 +656,24 @@
       color: var(--background-pink);
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 920px) {
+      nav {
+        gap: 14px;
+      }
+      nav a {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 14px 20px;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
       nav {
         display: none;
         flex-direction: column;
@@ -739,7 +683,7 @@
         top: 100%;
         left: 0;
         text-align: center;
-        padding: 20px 0;
+        padding: 18px 0;
       }
 
       nav.show {
@@ -748,14 +692,33 @@
 
       nav a {
         padding: 10px 0;
+        font-size: 13px;
       }
 
-      .menu-toggle {
-        display: flex;
+      .page-spacer {
+        height: 108px;
+      }
+
+      .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .view-toggle button {
+        flex: 1;
       }
 
       .list-view .product-card {
         grid-template-columns: 1fr;
+      }
+
+      .list-view .product-images {
+        height: auto;
+        padding-top: 130%;
+      }
+
+      .product-actions {
+        flex-direction: column;
       }
 
       .footer-container {
@@ -763,49 +726,23 @@
         align-items: center;
         text-align: center;
       }
-    }
 
-    @media (max-width: 600px) {
-      header {
-        padding: 14px 18px;
-      }
-
-      .logo img {
-        height: 58px;
-      }
-
-      .page-spacer {
-        height: 98px;
-      }
-
-      .category-item img {
-        width: 82px;
-        height: 82px;
-      }
-
-      .toolbar {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .product-actions,
-      .quick-modal-actions {
-        flex-direction: column;
+      .footer-links {
+        margin-top: 20px;
       }
     }
   </style>
 </head>
-
 <body>
+
+  <!-- ===== HEADER ===== -->
   <header>
     <div class="logo">
-      <img src="images/logo.png" alt="Block Prints by Afifa">
+      <img src="images/logo.png" alt="Block Prints by Afifa" />
     </div>
-
-    <div class="menu-toggle" onclick="toggleMenu()">
+    <div class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">
       <div></div><div></div><div></div>
     </div>
-
     <nav id="main-nav">
       <a href="index.html">HOME</a>
       <a href="aboutus.html">ABOUT</a>
@@ -814,10 +751,9 @@
       <a href="homedecor.html">HOME DECOR</a>
       <a href="totebag.html">TOTE BAG</a>
       <a href="contactus.html">CONTACT</a>
-      <a href="dupandstole.html">STOLES AND DUPATTA</a>
-      <a href="#" class="cart-nav-link" onclick="toggleCartSidebar(event)">
-        <i class="fa-solid fa-cart-shopping"></i>
-        <span id="cart-count">0</span>
+      <a href="dupandstole.html">STOLES AND DUPPATTA</a>
+      <a href="#" class="cart-nav-link" onclick="toggleCartSidebar(event)" aria-label="Open cart">
+        <i class="fa-solid fa-cart-shopping"></i><span id="cart-count">0</span>
       </a>
     </nav>
   </header>
@@ -825,33 +761,13 @@
   <div class="page-spacer"></div>
 
   <section class="page-heading">
-    <h1>Tote Bag Collection</h1>
-    <p>Explore handcrafted cotton tote bags and pouches with traditional block print charm.</p>
-  </section>
-
-  <section class="category-section">
-    <div class="category-row">
-
-      <button class="category-item" onclick="filterProducts('tote')">
-        <img src="images/tb1.jpeg" alt="Totebag Collection" />
-        <span>Totebag Collection</span>
-      </button>
-
-      <button class="category-item" onclick="filterProducts('bag')">
-        <img src="images/tb2.jpeg" alt="Pouches Collection" />
-        <span>Pouches Collection</span>
-      </button>
-
-      <button class="category-item" onclick="filterProducts('all')">
-        <img src="images/logo.png" alt="Show All" />
-        <span>Show All</span>
-      </button>
-    </div>
+    <h1>Unstitched Collection</h1>
+    <p>Explore handcrafted three-piece block print sets with elegant shirts and beautifully paired dupattas. Add directly to cart or open each product for full details.</p>
   </section>
 
   <div class="toolbar">
     <div>
-      <strong>Sort By:</strong>
+      <label for="sortSelect">Sort By:</label>
       <select id="sortSelect" onchange="sortProducts()">
         <option value="new">New Arrival</option>
         <option value="top">Top Sellers</option>
@@ -860,28 +776,28 @@
         <option value="high-low">Price High to Low</option>
       </select>
     </div>
-
     <div class="view-toggle">
       <button onclick="setGrid()">🔲 Grid</button>
       <button onclick="setList()">📋 List</button>
     </div>
   </div>
 
-  <main class="product-grid" id="productContainer"></main>
+  <div class="product-grid" id="productContainer"></div>
 
+  <!-- ===== FOOTER SECTION ===== -->
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-brand">
-        <img src="images/logo.png" alt="Block Prints by Afifa Logo" class="footer-logo">
+        <img src="images/logo.png" alt="Block Prints by Afifa Logo" class="footer-logo" />
         <p>Handcrafted block prints rooted in tradition and made with love in Karachi.</p>
         <p><strong>Email:</strong> <a href="mailto:blockprintsbyafifa@hotmail.com">blockprintsbyafifa@hotmail.com</a></p>
         <p><strong>Phone:</strong> <a href="tel:+923252041288">+923252041288</a></p>
         <div class="social-icons">
-          <a href="https://www.instagram.com/blockprintsbyafifa/" target="_blank">
-            <img src="images/instagram.svg" alt="Instagram">
+          <a href="https://www.instagram.com/blockprintsbyafifa/" target="_blank" rel="noopener">
+            <img src="images/instagram.svg" alt="Instagram" />
           </a>
-          <a href="https://www.facebook.com/blockprintsbyafifa" target="_blank">
-            <img src="images/facebook.svg" alt="Facebook">
+          <a href="https://www.facebook.com/blockprintsbyafifa" target="_blank" rel="noopener">
+            <img src="images/facebook.svg" alt="Facebook" />
           </a>
         </div>
       </div>
@@ -894,7 +810,7 @@
           <li><a href="contactus.html">Contact</a></li>
           <li><a href="unstitched.html">Unstitched</a></li>
           <li><a href="totebag.html">Totebag</a></li>
-          <li><a href="dupandstole.html">Dupatta and Stoles</a></li>
+          <li><a href="dupandstole.html">Duppatta and Stoles</a></li>
           <li><a href="homedecor.html">Home Decor</a></li>
           <li><a href="stitched.html">Stitched</a></li>
         </ul>
@@ -906,8 +822,8 @@
     </div>
   </footer>
 
+  <!-- Cart Sidebar -->
   <div id="cart-overlay" class="cart-overlay" onclick="closeCartSidebar()"></div>
-
   <div id="cart-sidebar" class="sidebar">
     <div class="cart-header">
       <h2>Your Cart</h2>
@@ -931,74 +847,56 @@
     </div>
   </div>
 
-  <div id="quick-modal" class="quick-modal" onclick="closeQuickView(event)">
-    <div class="quick-modal-card">
-      <img id="quick-image" src="images/logo.png" alt="Product preview">
-      <div class="quick-modal-body">
-        <h3 id="quick-title"></h3>
-        <p id="quick-description"></p>
-        <p class="product-price" id="quick-price"></p>
-        <div class="quick-modal-actions">
-          <button class="add-listing-btn" id="quick-add-btn">Add to Cart</button>
-          <button class="details-btn" onclick="closeQuickView()">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div id="cart-toast" class="cart-toast">Item added to cart</div>
 
   <script>
     const products = [
       {
-            "id": "blush-tote-bag",
-            "name": "Blush Tote Bag",
-            "price": 800,
-            "images": [
-                  "images/tb1.jpeg",
-                  "images/tb1.jpeg",
-                  "images/tb1.jpeg"
-            ],
-            "description": "Tote bag<br>Material: Cotton",
-            "category": "tote",
-            "categoryLabel": "Tote Bag",
-            "material": "Cotton",
-            "popularity": 3,
-            "order": 1
+        id: 'classic-duo',
+        name: 'Classic Duo',
+        price: 5999,
+        url: 'classicdou.html',
+        images: ['images/h1.jpeg', 'images/h2.jpeg', 'images/h3.jpeg'],
+        description: '3-piece set<br>Shirt: Cotton Silk / Cotton / Raw Silk<br>Dupatta: Khaddi Net / Cotton Net / Chiffon / Organza / Cotton',
+        popularity: 5
       },
       {
-            "id": "midnight-bloom-tote",
-            "name": "Midnight Bloom",
-            "price": 800,
-            "images": [
-                  "images/tb3.jpeg",
-                  "images/tb3.jpeg",
-                  "images/tb3.jpeg"
-            ],
-            "description": "Tote bag<br>Material: Cotton",
-            "category": "tote",
-            "categoryLabel": "Tote Bag",
-            "material": "Cotton",
-            "popularity": 2,
-            "order": 2
+        id: 'citrus-charm',
+        name: 'Citrus Charm',
+        price: 5999,
+        url: 'product-citrus-charm.html',
+        images: ['images/hover1.jpeg', 'images/hover2.jpeg', 'images/hover3.jpeg'],
+        description: '3-piece set<br>Shirt: Cotton Silk / Cotton / Raw Silk<br>Dupatta: Khaddi Net / Cotton Net / Chiffon / Organza / Cotton',
+        popularity: 4
       },
       {
-            "id": "scarlet-pouch",
-            "name": "Scarlet",
-            "price": 800,
-            "images": [
-                  "images/tb2.jpeg",
-                  "images/tb2.jpeg",
-                  "images/tb2.jpeg"
-            ],
-            "description": "Pouch / Bag<br>Material: Cotton",
-            "category": "bag",
-            "categoryLabel": "Pouch / Bag",
-            "material": "Cotton",
-            "popularity": 1,
-            "order": 3
+        id: 'gul-e-rang',
+        name: 'Gul-e-rang',
+        price: 5999,
+        url: 'gul-e-rang.html',
+        images: ['images/g1.jpeg', 'images/g2.jpeg', 'images/g3.jpeg'],
+        description: '3-piece set<br>Shirt: Cotton Silk / Cotton / Raw Silk<br>Dupatta: Khaddi Net / Cotton Net / Chiffon / Organza / Cotton',
+        popularity: 3
+      },
+      {
+        id: 'sapphire',
+        name: 'Sapphire',
+        price: 5999,
+        url: 'product-sapphire.html',
+        images: ['images/b1.jpeg', 'images/b2.jpeg', 'images/b3.jpeg'],
+        description: '3-piece set<br>Shirt: Cotton Silk / Cotton / Raw Silk<br>Dupatta: Khaddi Net / Cotton Net / Chiffon / Organza / Cotton',
+        popularity: 2
+      },
+      {
+        id: 'midnight-bloom',
+        name: 'Midnight Bloom',
+        price: 5999,
+        url: 'product-midnight-bloom.html',
+        images: ['images/mb1.jpeg', 'images/mb1.jpeg', 'images/mb1.jpeg'],
+        description: '3-piece set<br>Shirt: Cotton Silk / Cotton / Raw Silk<br>Dupatta: Khaddi Net / Cotton Net / Chiffon / Organza / Cotton',
+        popularity: 1
       }
-];
+    ];
 
     let visibleProducts = [...products];
     let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -1019,46 +917,31 @@
       document.body.classList.add('list-view');
     }
 
-    function getSafeImages(product) {
-      const images = product.images && product.images.length ? product.images : ['images/logo.png'];
-      return [images[0], images[1] || images[0], images[2] || images[1] || images[0]];
-    }
-
     function renderProducts() {
       const container = document.getElementById('productContainer');
-
-      container.innerHTML = visibleProducts.map(product => {
-        const images = getSafeImages(product);
-        return `
-          <div class="product-card ${product.category}">
-            <div class="product-images">
-              <img src="${images[0]}" alt="${product.name}" />
-              <img src="${images[1]}" alt="${product.name}" />
-              <img src="${images[2]}" alt="${product.name}" />
-            </div>
-            <div class="product-info">
-              <h4>${product.name}</h4>
-              <p>${product.description}</p>
-              <div class="product-price">${formatPrice(product.price)}</div>
-            </div>
-            <div class="product-actions">
-              <button class="details-btn" onclick="openQuickView('${product.id}')">Quick View</button>
-              <button class="add-listing-btn" onclick="addProductToCart('${product.id}')">Add to Cart</button>
-            </div>
+      container.innerHTML = visibleProducts.map(product => `
+        <div class="product-card">
+          <div class="product-images">
+            <img src="${product.images[0]}" alt="${product.name}" />
+            <img src="${product.images[1]}" alt="${product.name}" />
+            <img src="${product.images[2]}" alt="${product.name}" />
           </div>
-        `;
-      }).join('');
+          <div class="product-info">
+            <h4>${product.name}</h4>
+            <p>${product.description}</p>
+            <div class="product-price">${formatPrice(product.price)}</div>
+          </div>
+          <div class="product-actions">
+            <a class="details-btn" href="${product.url}">View Details</a>
+            <button class="add-listing-btn" onclick="addProductToCart('${product.id}')">Add to Cart</button>
+          </div>
+        </div>
+      `).join('');
     }
 
-    function filterProducts(category) {
-      visibleProducts = category === 'all'
-        ? [...products]
-        : products.filter(product => product.category === category);
-      sortProducts(false);
-    }
-
-    function sortProducts(renderOnly = true) {
+    function sortProducts() {
       const sortValue = document.getElementById('sortSelect').value;
+      visibleProducts = [...products];
 
       if (sortValue === 'low-high') {
         visibleProducts.sort((a, b) => a.price - b.price);
@@ -1066,8 +949,6 @@
         visibleProducts.sort((a, b) => b.price - a.price);
       } else if (sortValue === 'popular' || sortValue === 'top') {
         visibleProducts.sort((a, b) => b.popularity - a.popularity);
-      } else {
-        visibleProducts.sort((a, b) => a.order - b.order);
       }
 
       renderProducts();
@@ -1082,22 +963,20 @@
       const selectedProduct = products.find(product => product.id === productId);
       if (!selectedProduct) return;
 
-      const existingItem = cartItems.find(item => item.id === selectedProduct.id && item.source === 'tote-bag');
+      const existingItem = cartItems.find(item => item.id === selectedProduct.id && item.source === 'listing');
 
       if (existingItem) {
         existingItem.quantity += 1;
       } else {
         cartItems.push({
           id: selectedProduct.id,
-          source: 'tote-bag',
+          source: 'listing',
           name: selectedProduct.name,
           price: selectedProduct.price,
           image: selectedProduct.images[0],
           quantity: 1,
-          category: selectedProduct.categoryLabel,
-          material: selectedProduct.material,
-          shirtFabric: selectedProduct.categoryLabel,
-          dupattaFabric: selectedProduct.material
+          shirtFabric: 'Standard fabric options',
+          dupattaFabric: 'Standard dupatta options'
         });
       }
 
@@ -1135,8 +1014,8 @@
           <img src="${item.image || 'images/logo.png'}" alt="${item.name}" />
           <div class="cart-item-info">
             <h4>${item.name}</h4>
-            <p><strong>Type:</strong> ${item.category || item.shirtFabric || 'Product'}</p>
-            <p><strong>Material:</strong> ${item.material || item.dupattaFabric || 'Not selected'}</p>
+            <p><strong>Shirt:</strong> ${item.shirtFabric || 'Not selected'}</p>
+            <p><strong>Dupatta:</strong> ${item.dupattaFabric || 'Not selected'}</p>
             <p class="cart-price">${formatPrice(item.price)}</p>
             <div class="quantity-row">
               <button class="qty-btn" onclick="changeQuantity(${index}, -1)">−</button>
@@ -1192,28 +1071,6 @@
       window.location.href = 'checkout.html';
     }
 
-    function openQuickView(productId) {
-      const product = products.find(item => item.id === productId);
-      if (!product) return;
-
-      document.getElementById('quick-image').src = product.images[0];
-      document.getElementById('quick-title').textContent = product.name;
-      document.getElementById('quick-description').innerHTML = product.description;
-      document.getElementById('quick-price').textContent = formatPrice(product.price);
-      document.getElementById('quick-add-btn').onclick = function() {
-        addProductToCart(product.id);
-        closeQuickView();
-      };
-
-      document.getElementById('quick-modal').classList.add('open');
-    }
-
-    function closeQuickView(event) {
-      if (!event || event.target.id === 'quick-modal') {
-        document.getElementById('quick-modal').classList.remove('open');
-      }
-    }
-
     function showCartToast(message) {
       const toast = document.getElementById('cart-toast');
       toast.textContent = message;
@@ -1224,5 +1081,6 @@
     renderProducts();
     updateCartUI();
   </script>
+
 </body>
 </html>

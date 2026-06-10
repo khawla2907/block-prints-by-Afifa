@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Block Prints by Afifa</title>
+  <link rel="icon" href="images/logo.png" type="image/png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root {
+      --primary-color: #8b1e3f;
+      --accent-color: #b3365a;
+      --light-color: #ffffff;
+      --text-dark: #502f2c;
+      --background-pink: #f8ddea;
+      --soft-pink: #fef6f8;
+      --background-darkpink: #c1557f;
+      --border-color: #f1c6d6;
+      --shadow-soft: 0 12px 35px rgba(139, 30, 63, 0.12);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--light-color);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: rgba(139, 30, 63, 0.85);
+      padding: 18px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(8px);
+    }
+
+    .logo img {
+      height: 70px;
+      display: block;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      width: 30px;
+      height: 21px;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .menu-toggle div {
+      height: 3px;
+      background-color: var(--light-color);
+      border-radius: 2px;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--light-color);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.3px;
+      transition: color 0.3s ease, transform 0.3s ease;
+      white-space: nowrap;
+    }
+
+    nav a:hover {
+      color: #ffdce9;
+      transform: translateY(-1px);
+    }
+
+    .cart-nav-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    #cart-count {
+      position: absolute;
+      top: -12px;
+      right: -13px;
+      min-width: 19px;
+      height: 19px;
+      padding: 0 5px;
+      border-radius: 50%;
+      background: #fff;
+      color: var(--primary-color);
+      border: 1px solid var(--border-color);
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .page-spacer {
+      height: 112px;
+    }
+
+    .page-hero {
+      min-height: 380px;
+      padding: 110px 6% 80px;
+      background: linear-gradient(135deg, rgba(139,30,63,0.90), rgba(179,54,90,0.75)), url('images/hero.png') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.10);
+      right: -90px;
+      bottom: -90px;
+    }
+
+    .page-hero-content {
+      max-width: 850px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 6vw, 68px);
+      margin-bottom: 16px;
+      letter-spacing: 0.8px;
+    }
+
+    .page-hero p {
+      font-size: 18px;
+      max-width: 680px;
+      margin: 0 auto;
+      opacity: 0.96;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 13px 30px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .primary-btn {
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      color: #fff;
+      box-shadow: 0 10px 22px rgba(139, 30, 63, 0.25);
+    }
+
+    .primary-btn:hover,
+    .secondary-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(139, 30, 63, 0.28);
+    }
+
+    .secondary-btn {
+      background: #fff;
+      color: var(--primary-color);
+      border: 1px solid var(--border-color);
+    }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      background-color: var(--primary-color);
+      color: #fff;
+      padding: 60px 6% 30px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .footer-brand {
+      flex: 1 1 300px;
+    }
+
+    .footer-logo {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+
+    .footer-brand p {
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .footer-brand a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .footer-brand a:hover {
+      text-decoration: underline;
+    }
+
+    .social-icons {
+      margin-top: 15px;
+    }
+
+    .social-icons a {
+      margin-right: 15px;
+      display: inline-block;
+    }
+
+    .social-icons img {
+      width: 24px;
+      height: 24px;
+      filter: brightness(0) invert(1);
+      transition: opacity 0.3s;
+    }
+
+    .social-icons img:hover {
+      opacity: 0.7;
+    }
+
+    .footer-links {
+      flex: 1 1 200px;
+    }
+
+    .footer-links h4 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: var(--background-pink);
+    }
+
+    /* ===== CART SIDEBAR ===== */
+    .cart-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+      z-index: 1900;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .cart-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 380px;
+      max-width: 92vw;
+      height: 100%;
+      background: #fff;
+      box-shadow: -6px 0 25px rgba(0,0,0,0.16);
+      padding: 0;
+      z-index: 2000;
+      transition: right 0.3s ease;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar.open {
+      right: 0;
+    }
+
+    .cart-header {
+      padding: 22px 22px 18px;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      margin: 0;
+    }
+
+    .cart-close-icon {
+      background: rgba(255,255,255,0.16);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.35);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .cart-content {
+      padding: 20px;
+      flex: 1;
+    }
+
+    .empty-cart {
+      text-align: center;
+      padding: 45px 18px;
+      color: #7a5b58;
+      background: var(--soft-pink);
+      border-radius: 16px;
+      border: 1px dashed var(--border-color);
+    }
+
+    .empty-cart i {
+      font-size: 38px;
+      color: var(--accent-color);
+      margin-bottom: 12px;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid #f1dbe4;
+    }
+
+    .cart-item img {
+      width: 76px;
+      height: 92px;
+      object-fit: cover;
+      border-radius: 10px;
+      background: var(--soft-pink);
+    }
+
+    .cart-item-info h4 {
+      color: var(--primary-color);
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .cart-item-info p {
+      font-size: 12px;
+      color: #6b5552;
+      margin-bottom: 5px;
+      line-height: 1.5;
+    }
+
+    .cart-price {
+      color: #111 !important;
+      font-weight: 700;
+      font-size: 13px !important;
+    }
+
+    .cart-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .quantity-control {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--border-color);
+      border-radius: 999px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .quantity-control button {
+      width: 28px;
+      height: 28px;
+      border: none;
+      background: var(--soft-pink);
+      color: var(--primary-color);
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .quantity-control span {
+      min-width: 30px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .remove-btn {
+      background: none;
+      border: none;
+      color: var(--accent-color);
+      font-size: 12px;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .cart-summary {
+      display: none;
+      padding: 18px 20px 22px;
+      border-top: 1px solid #f1dbe4;
+      background: #fff;
+      position: sticky;
+      bottom: 0;
+    }
+
+    .cart-summary.show {
+      display: block;
+    }
+
+    .cart-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      color: var(--text-dark);
+      font-weight: 700;
+      font-size: 17px;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      padding: 13px 16px;
+      border: none;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      color: #fff;
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(139,30,63,0.22);
+      transition: transform 0.25s ease;
+    }
+
+    .checkout-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .continue-shopping-btn {
+      width: 100%;
+      margin-top: 10px;
+      padding: 11px 16px;
+      border: 1px solid var(--border-color);
+      background: #fff;
+      color: var(--primary-color);
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .cart-toast {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: var(--primary-color);
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 999px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.18);
+      z-index: 2500;
+      opacity: 0;
+      transform: translateY(15px);
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      font-size: 14px;
+    }
+
+    .cart-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      nav { gap: 14px; }
+      nav a { font-size: 12px; }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 14px 22px;
+      }
+
+      .logo img {
+        height: 62px;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: rgba(139, 30, 63, 0.98);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        text-align: center;
+        padding: 20px 0;
+        gap: 0;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      nav a {
+        padding: 10px 0;
+        font-size: 14px;
+      }
+
+      .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .footer-links {
+        margin-top: 10px;
+      }
+
+      .social-icons {
+        justify-content: center;
+      }
+
+      .page-hero {
+        min-height: 320px;
+        padding: 95px 24px 60px;
+      }
+    }
+
+    .contact-section {
+      padding: 80px 6%;
+      background: linear-gradient(180deg, #fff, var(--soft-pink));
+    }
+
+    .contact-grid {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.95fr 1.25fr;
+      gap: 38px;
+      align-items: start;
+    }
+
+    .contact-card,
+    .contact-form-card,
+    .map-card {
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid #f5d4df;
+    }
+
+    .contact-card {
+      padding: 34px;
+    }
+
+    .contact-card h2,
+    .contact-form-card h2,
+    .map-card h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--primary-color);
+      font-size: 34px;
+      margin-bottom: 16px;
+    }
+
+    .contact-card p {
+      color: #6b5552;
+      margin-bottom: 22px;
+    }
+
+    .info-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 15px 0;
+      border-bottom: 1px solid #f3dbe4;
+    }
+
+    .info-item:last-child {
+      border-bottom: none;
+    }
+
+    .info-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--soft-pink);
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 17px;
+    }
+
+    .info-item h4 {
+      color: var(--primary-color);
+      margin-bottom: 2px;
+      font-size: 15px;
+    }
+
+    .info-item a,
+    .info-item span {
+      color: #5f4642;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .contact-form-card {
+      padding: 34px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      border: 1px solid #ecd0db;
+      border-radius: 12px;
+      padding: 13px 14px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      color: var(--text-dark);
+      background: #fff;
+      outline: none;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .form-group textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 4px rgba(179,54,90,0.10);
+    }
+
+    .form-note {
+      margin-top: 14px;
+      color: #7a5b58;
+      font-size: 13px;
+    }
+
+    .map-section {
+      padding: 0 6% 80px;
+      background: var(--soft-pink);
+    }
+
+    .map-card {
+      max-width: 1180px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .map-card h2 {
+      padding: 30px 34px 0;
+    }
+
+    .map-card p {
+      padding: 0 34px 22px;
+      color: #6b5552;
+    }
+
+    .map-card iframe {
+      width: 100%;
+      min-height: 370px;
+      border: 0;
+      display: block;
+    }
+
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+      .contact-card, .contact-form-card { padding: 26px 22px; }
+      .contact-card h2, .contact-form-card h2, .map-card h2 { font-size: 29px; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Block Prints by Afifa">
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <div></div><div></div><div></div>
+    </div>
+    <nav id="main-nav">
+      <a href="index.html">HOME</a>
+      <a href="aboutus.html">ABOUT</a>
+      <a href="stitched.html">STITCHED</a>
+      <a href="unstitched.html">UNSTITCHED</a>
+      <a href="homedecor.html">HOME DECOR</a>
+      <a href="totebag.html">TOTE BAG</a>
+      <a href="contactus.html">CONTACT</a>
+      <a href="dupandstole.html">STOLES AND DUPATTA</a>
+      <a href="#" class="cart-nav-link" onclick="toggleCartSidebar(event)"><i class="fa-solid fa-cart-shopping"></i><span id="cart-count">0</span></a>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <h1>Contact Us</h1>
+      <p>Have a question about an order, collection, custom fabric, or store visit? Send us a message and we will get back to you soon.</p>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="contact-grid">
+      <aside class="contact-card">
+        <h2>Get in Touch</h2>
+        <p>Reach out to Block Prints by Afifa for product details, availability, order support, and collection enquiries.</p>
+
+        <div class="info-item">
+          <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+          <div>
+            <h4>Email</h4>
+            <a href="mailto:blockprintsbyafifa@hotmail.com">blockprintsbyafifa@hotmail.com</a>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+          <div>
+            <h4>Phone</h4>
+            <a href="tel:+923252041288">+92 325 2041288</a>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div>
+            <h4>Location</h4>
+            <span>Karachi, Pakistan</span>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon"><i class="fa-brands fa-instagram"></i></div>
+          <div>
+            <h4>Instagram</h4>
+            <a href="https://www.instagram.com/blockprintsbyafifa/" target="_blank">@blockprintsbyafifa</a>
+          </div>
+        </div>
+      </aside>
+
+      <div class="contact-form-card">
+        <h2>Send a Message</h2>
+        <form id="contact-form" onsubmit="submitContactForm(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="03xx xxxxxxx" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+              <label for="subject">Enquiry Type</label>
+              <select id="subject" name="subject" required>
+                <option value="">Select one</option>
+                <option>Order enquiry</option>
+                <option>Product availability</option>
+                <option>Custom design</option>
+                <option>Store visit</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+          </div>
+
+          <button type="submit" class="primary-btn">Send Message</button>
+          <p class="form-note">This is a static form for your website layout. To receive messages online, connect it later with Formspree, EmailJS, PHP, or a backend service.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="map-section">
+    <div class="map-card">
+      <h2>Find Us</h2>
+      <p>Visit our shop or use the map below for directions.</p>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28921.654961437486!2d67.030199!3d24.875796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33f95f7c0d7d9%3A0x7c22432cad0b9899!2sBlock%20Prints%20by%20Afifa!5e0!3m2!1sen!2s!4v1718012999512"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER SECTION ===== -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="images/logo.png" alt="Block Prints by Afifa Logo" class="footer-logo">
+        <p>Handcrafted block prints rooted in tradition and made with love in Karachi.</p>
+        <p><strong>Email:</strong> <a href="mailto:blockprintsbyafifa@hotmail.com">blockprintsbyafifa@hotmail.com</a></p>
+        <p><strong>Phone:</strong> <a href="tel:+923252041288">+923252041288</a></p>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/blockprintsbyafifa/" target="_blank">
+            <img src="images/instagram.svg" alt="Instagram">
+          </a>
+          <a href="https://www.facebook.com/blockprintsbyafifa" target="_blank">
+            <img src="images/facebook.svg" alt="Facebook">
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="aboutus.html">About</a></li>
+          <li><a href="contactus.html">Contact</a></li>
+          <li><a href="stitched.html">Stitched</a></li>
+          <li><a href="unstitched.html">Unstitched</a></li>
+          <li><a href="totebag.html">Totebag</a></li>
+          <li><a href="dupandstole.html">Dupatta and Stoles</a></li>
+          <li><a href="homedecor.html">Home Decor</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Block Prints by Afifa. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Cart Sidebar -->
+  <div id="cart-overlay" class="cart-overlay" onclick="closeCartSidebar()"></div>
+  <div id="cart-sidebar" class="sidebar">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button class="cart-close-icon" onclick="closeCartSidebar()" aria-label="Close cart">&times;</button>
+    </div>
+
+    <div id="cart-content" class="cart-content">
+      <div class="empty-cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <p>Your cart is currently empty.</p>
+      </div>
+    </div>
+
+    <div id="cart-summary" class="cart-summary">
+      <div class="cart-total-row">
+        <span>Subtotal</span>
+        <span id="cart-total">PKR 0</span>
+      </div>
+      <button class="checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+      <button class="continue-shopping-btn" onclick="closeCartSidebar()">Continue Shopping</button>
+    </div>
+  </div>
+
+  <div id="cart-toast" class="cart-toast">Item added to cart</div>
+
+  <script>
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    function toggleMenu() {
+      document.getElementById('main-nav').classList.toggle('show');
+    }
+
+    function formatPrice(value) {
+      return 'PKR ' + Number(value || 0).toLocaleString();
+    }
+
+    function saveCart() {
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      localStorage.setItem('checkoutCart', JSON.stringify(cartItems));
+    }
+
+    function renderCart() {
+      const cartContent = document.getElementById('cart-content');
+      const cartSummary = document.getElementById('cart-summary');
+      const cartCount = document.getElementById('cart-count');
+      const cartTotal = document.getElementById('cart-total');
+
+      if (!cartContent || !cartSummary || !cartCount || !cartTotal) return;
+
+      const totalQuantity = cartItems.reduce((sum, item) => sum + Number(item.quantity || 1), 0);
+      const subtotal = cartItems.reduce((sum, item) => sum + (Number(item.price || 0) * Number(item.quantity || 1)), 0);
+
+      cartCount.textContent = totalQuantity;
+      cartTotal.textContent = formatPrice(subtotal);
+
+      if (!cartItems.length) {
+        cartContent.innerHTML = `
+          <div class="empty-cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <p>Your cart is currently empty.</p>
+          </div>`;
+        cartSummary.classList.remove('show');
+        return;
+      }
+
+      cartSummary.classList.add('show');
+      cartContent.innerHTML = cartItems.map((item, index) => `
+        <div class="cart-item">
+          <img src="${item.image || 'images/logo.png'}" alt="${item.name}">
+          <div class="cart-item-info">
+            <h4>${item.name}</h4>
+            <p>${item.description || item.category || ''}</p>
+            <p class="cart-price">${formatPrice(item.price)}</p>
+            <div class="cart-actions">
+              <div class="quantity-control">
+                <button onclick="updateQuantity(${index}, -1)">−</button>
+                <span>${item.quantity || 1}</span>
+                <button onclick="updateQuantity(${index}, 1)">+</button>
+              </div>
+              <button class="remove-btn" onclick="removeCartItem(${index})">Remove</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function addToCart(product) {
+      const existingItem = cartItems.find(item => item.id === product.id);
+      if (existingItem) {
+        existingItem.quantity = Number(existingItem.quantity || 1) + 1;
+      } else {
+        cartItems.push({ ...product, quantity: 1 });
+      }
+      saveCart();
+      renderCart();
+      openCartSidebar();
+      showCartToast(product.name + ' added to cart');
+    }
+
+    function updateQuantity(index, amount) {
+      if (!cartItems[index]) return;
+      cartItems[index].quantity = Number(cartItems[index].quantity || 1) + amount;
+      if (cartItems[index].quantity <= 0) {
+        cartItems.splice(index, 1);
+      }
+      saveCart();
+      renderCart();
+    }
+
+    function removeCartItem(index) {
+      cartItems.splice(index, 1);
+      saveCart();
+      renderCart();
+    }
+
+    function openCartSidebar() {
+      document.getElementById('cart-sidebar').classList.add('open');
+      document.getElementById('cart-overlay').classList.add('open');
+    }
+
+    function toggleCartSidebar(event) {
+      if (event) event.preventDefault();
+      const sidebar = document.getElementById('cart-sidebar');
+      const overlay = document.getElementById('cart-overlay');
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('open');
+      renderCart();
+    }
+
+    function closeCartSidebar() {
+      document.getElementById('cart-sidebar').classList.remove('open');
+      document.getElementById('cart-overlay').classList.remove('open');
+    }
+
+    function proceedToCheckout() {
+      if (!cartItems.length) {
+        alert('Your cart is empty. Please add an item first.');
+        return;
+      }
+      localStorage.setItem('checkoutCart', JSON.stringify(cartItems));
+      window.location.href = 'checkout.html';
+    }
+
+    function showCartToast(message) {
+      const toast = document.getElementById('cart-toast');
+      if (!toast) return;
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 1800);
+    }
+
+    document.addEventListener('DOMContentLoaded', renderCart);
+  </script>
+
+  <script>
+    function submitContactForm(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      alert('Thank you, ' + name + '! Your message has been prepared. Please connect this form to an email service before publishing.');
+      document.getElementById('contact-form').reset();
+    }
+  </script>
+
+</body>
+</html>

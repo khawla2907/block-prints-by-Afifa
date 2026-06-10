@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sapphire | Block Prints by Afifa</title>
+  <link rel="icon" href="images/logo.png" type="image/png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/easyzoom/2.5.0/easyzoom.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+
+  <style>
+    :root {
+      --primary-color: #8b1e3f;
+      --accent-color: #b3365a;
+      --light-color: #ffffff;
+      --text-dark: #502f2c;
+      --background-pink: #f8ddea;
+      --background-darkpink: #c1557f;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--light-color);
+      color: var(--text-dark);
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: rgba(139, 30, 63, 0.75);
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo img {
+      height: 70px;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      width: 30px;
+      height: 21px;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .menu-toggle div {
+      height: 3px;
+      background-color: var(--light-color);
+      border-radius: 2px;
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    nav a {
+      color: var(--light-color);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
+    }
+
+    
+.site-footer {
+  background-color: #8b1e3f;
+  color: #fff;
+  padding: 60px 6% 30px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer-brand {
+  flex: 1 1 300px;
+}
+
+.footer-logo {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+.footer-brand p {
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+.footer-brand a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-brand a:hover {
+  text-decoration: underline;
+}
+
+.social-icons {
+  margin-top: 15px;
+}
+
+.social-icons a {
+  margin-right: 15px;
+  display: inline-block;
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+  transition: opacity 0.3s;
+}
+
+.social-icons img:hover {
+  opacity: 0.7;
+}
+
+.footer-links {
+  flex: 1 1 200px;
+}
+
+.footer-links h4 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-family: 'Playfair Display', serif;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+  color: #f8ddea;
+}
+
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -350px;
+  width: 300px;
+  height: 100%;
+  background: white;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  z-index: 2000;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+}
+
+.sidebar.open {
+  right: 0;
+}
+
+.sidebar h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.sidebar button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #8b1e3f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-links {
+    margin-top: 30px;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+}
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: rgba(139, 30, 63, 0.95);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        text-align: center;
+        padding: 20px 0;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      nav a {
+        padding: 10px 0;
+      }
+
+      
+
+
+    
+    }
+
+    
+    .product-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      padding: 60px 6%;
+      align-items: flex-start;
+    }
+
+    .gallery {
+      max-width: 500px;
+      flex: 1;
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .swiper-thumb {
+      margin-top: 10px;
+    }
+
+    .swiper-thumb .swiper-slide {
+      width: 80px;
+      height: 100px;
+      opacity: 0.4;
+      cursor: pointer;
+    }
+
+    .swiper-thumb .swiper-slide-thumb-active {
+      opacity: 1;
+      border: 2px solid #8b1e3f;
+    }
+
+    .details {
+      max-width: 500px;
+      flex: 1;
+    }
+
+    .details h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      color: #8b1e3f;
+      margin-bottom: 10px;
+    }
+
+    .details p.price {
+      font-size: 24px;
+      color: #b3365a;
+      margin: 10px 0;
+      font-weight: bold;
+    }
+
+    .options-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 10px 0;
+    }
+
+    .option-button {
+      padding: 8px 14px;
+      border: 1px solid #8b1e3f;
+      border-radius: 20px;
+      background-color: white;
+      color: #8b1e3f;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .option-button:hover,
+    .option-button.active {
+      background-color: #8b1e3f;
+      color: white;
+    }
+
+    .description-box {
+      border: 1px solid #ccc;
+      padding: 15px 20px;
+      margin-top: 30px;
+      border-radius: 8px;
+      background-color: #fdf3f6;
+    }
+
+    .add-to-cart {
+      margin-top: 20px;
+      padding: 12px 25px;
+      background-color: #502f2c;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .add-to-cart:hover {
+      background-color: #8b1e3f;
+    }
+
+
+    /* ===== CART SIDEBAR DESIGN ===== */
+    .cart-nav-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #cart-count {
+      position: absolute;
+      top: -10px;
+      right: -14px;
+      background: #ffffff;
+      color: #8b1e3f;
+      min-width: 18px;
+      height: 18px;
+      padding: 0 5px;
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .cart-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 1500;
+    }
+
+    .cart-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .sidebar {
+      right: -430px;
+      width: 390px;
+      max-width: 92vw;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-header {
+      padding: 22px 24px;
+      background: linear-gradient(135deg, #8b1e3f, #b3365a);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-header h2 {
+      color: white;
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 27px;
+    }
+
+    .cart-close-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.18);
+      color: white;
+      font-size: 22px;
+      cursor: pointer;
+      margin: 0;
+      padding: 0;
+    }
+
+    .cart-close-icon:hover {
+      background: rgba(255, 255, 255, 0.32);
+    }
+
+    .cart-content {
+      padding: 20px;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .empty-cart {
+      text-align: center;
+      padding: 45px 15px;
+      color: #7a5a57;
+      line-height: 1.7;
+    }
+
+    .empty-cart i {
+      font-size: 44px;
+      color: #b3365a;
+      margin-bottom: 14px;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 14px;
+      padding: 15px 0;
+      border-bottom: 1px solid #f0d8df;
+    }
+
+    .cart-item img {
+      width: 82px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+
+    .cart-item-info {
+      flex: 1;
+    }
+
+    .cart-item-info h4 {
+      margin: 0 0 5px;
+      color: #8b1e3f;
+      font-size: 16px;
+    }
+
+    .cart-item-info p {
+      margin: 3px 0;
+      font-size: 12px;
+      color: #65413e;
+      line-height: 1.4;
+    }
+
+    .cart-price {
+      font-weight: 700;
+      color: #502f2c !important;
+      margin-top: 7px !important;
+      font-size: 14px !important;
+    }
+
+    .qty-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 12px;
+      gap: 8px;
+    }
+
+    .qty-controls {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid #e3bec9;
+      border-radius: 50px;
+      overflow: hidden;
+      background: #fff7fa;
+    }
+
+    .qty-controls button {
+      width: 28px;
+      height: 28px;
+      border: none;
+      background: transparent;
+      color: #8b1e3f;
+      font-weight: 700;
+      cursor: pointer;
+      margin: 0;
+      padding: 0;
+    }
+
+    .qty-controls span {
+      min-width: 28px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .remove-item {
+      background: transparent !important;
+      color: #b3365a !important;
+      border: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      font-size: 12px;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .cart-summary {
+      padding: 20px 24px 24px;
+      background: #fff5f8;
+      border-top: 1px solid #f0d8df;
+      display: none;
+    }
+
+    .cart-summary.show {
+      display: block;
+    }
+
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 18px;
+      font-weight: 700;
+      color: #502f2c;
+      margin-bottom: 16px;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      padding: 14px 18px;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(90deg, #8b1e3f, #b3365a);
+      color: white;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(139, 30, 63, 0.28);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .checkout-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(139, 30, 63, 0.35);
+    }
+
+    .continue-shopping-btn {
+      width: 100%;
+      padding: 12px 18px;
+      border: 1px solid #8b1e3f;
+      border-radius: 50px;
+      background: white;
+      color: #8b1e3f;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .cart-toast {
+      position: fixed;
+      top: 110px;
+      right: 24px;
+      background: #8b1e3f;
+      color: white;
+      padding: 14px 18px;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+      z-index: 2500;
+      opacity: 0;
+      transform: translateY(-12px);
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .cart-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 500px) {
+      .cart-toast {
+        left: 16px;
+        right: 16px;
+        top: 100px;
+        text-align: center;
+      }
+    }
+
+  
+    @media (max-width: 768px) {
+      .product-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+
+    
+  </style>
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Block Prints by Afifa">
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <div></div><div></div><div></div>
+    </div>
+  <nav id="main-nav">
+  <a href="index.html">HOME</a>
+  <a href="aboutus.html">ABOUT</a>
+  <a href="stitched.html">STITCHED</a>
+  <a href="unstitched.html">UNSTITCHED</a>
+  <a href="homedecor.html">HOME DECOR</a>
+  <a href="totebag.html">TOTE BAG</a>
+  <a href="contactus.html">CONTACT</a>
+  <a href="dupandstole.html">STOLES AND DUPPATTA</a>
+ <a href="#" class="cart-nav-link" onclick="toggleCartSidebar(event)"><i class="fa-solid fa-cart-shopping"></i><span id="cart-count">0</span></a>
+
+</nav>
+  </header>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+  
+
+ <main class="product-container">
+    <div class="gallery">
+      <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="images/b1.jpeg" alt="Sapphire front view" />
+          </div>
+          <div class="swiper-slide">
+            <img src="images/b2.jpeg" alt="Sapphire detail view" />
+          </div>
+          <div class="swiper-slide">
+            <img src="images/b3.jpeg" alt="Sapphire dupatta view" />
+          </div>
+        </div>
+      </div>
+      <div thumbsSlider="" class="swiper swiper-thumb mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="images/b1.jpeg" alt="Sapphire thumbnail 1" />
+          </div>
+          <div class="swiper-slide">
+            <img src="images/b2.jpeg" alt="Sapphire thumbnail 2" />
+          </div>
+          <div class="swiper-slide">
+            <img src="images/b3.jpeg" alt="Sapphire thumbnail 3" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="details">
+      <h1>Sapphire</h1>
+      <p class="price">PKR 5,999</p>
+      <p><strong>3-piece set</strong></p>
+
+      <h4>Shirt Fabric:</h4>
+      <div class="options-group">
+        <button class="option-button">Cotton Silk</button>
+        <button class="option-button">Cotton</button>
+        <button class="option-button">Raw Silk</button>
+      </div>
+
+      <h4>Dupatta Fabric:</h4>
+      <div class="options-group">
+        <button class="option-button">Khaddi Net</button>
+        <button class="option-button">Cotton Net</button>
+        <button class="option-button">Chiffon</button>
+        <button class="option-button">Organza</button>
+        <button class="option-button">Cotton</button>
+      </div>
+
+      <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+
+      <div class="description-box">
+        <h3>Description</h3>
+        <p>Sapphire is a refined 3-piece block print outfit inspired by deep, elegant tones and timeless handcrafted detail. The printed shirt and matching dupatta create a polished traditional look, suitable for family occasions, semi-formal gatherings, and graceful everyday styling.</p>
+      </div>
+    </div>
+  </main>
+   <section style="padding: 40px 6%; background-color: #fff5f8;">
+    <h2 style="text-align: center; font-family: 'Playfair Display', serif; font-size: 32px; color: #8b1e3f; margin-bottom: 30px;">You May Also Like</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px;">
+      <a href="classicdou.html" style="text-decoration: none;">
+        <div style="background-color: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden; cursor: pointer;">
+          <img src="images/h1.jpeg" alt="Classic Duo" style="width: 100%; height: auto;">
+          <div style="padding: 15px;">
+            <h3 style="color: #8b1e3f; margin: 0 0 10px; font-size: 18px;">Classic Duo</h3>
+            <p style="color: #502f2c; margin: 0;">PKR 5,999</p>
+          </div>
+        </div>
+      </a>
+      <a href="product-citrus-charm.html" style="text-decoration: none;">
+        <div style="background-color: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden; cursor: pointer;">
+          <img src="images/hover1.jpeg" alt="Citrus Charm" style="width: 100%; height: auto;">
+          <div style="padding: 15px;">
+            <h3 style="color: #8b1e3f; margin: 0 0 10px; font-size: 18px;">Citrus Charm</h3>
+            <p style="color: #502f2c; margin: 0;">PKR 5,999</p>
+          </div>
+        </div>
+      </a>
+      <a href="gul-e-rang.html" style="text-decoration: none;">
+        <div style="background-color: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden; cursor: pointer;">
+          <img src="images/g1.jpeg" alt="Gul-e-rang" style="width: 100%; height: auto;">
+          <div style="padding: 15px;">
+            <h3 style="color: #8b1e3f; margin: 0 0 10px; font-size: 18px;">Gul-e-rang</h3>
+            <p style="color: #502f2c; margin: 0;">PKR 5,999</p>
+          </div>
+        </div>
+      </a>
+      <a href="product-midnight-bloom.html" style="text-decoration: none;">
+        <div style="background-color: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden; cursor: pointer;">
+          <img src="images/mb1.jpeg" alt="Midnight Bloom" style="width: 100%; height: auto;">
+          <div style="padding: 15px;">
+            <h3 style="color: #8b1e3f; margin: 0 0 10px; font-size: 18px;">Midnight Bloom</h3>
+            <p style="color: #502f2c; margin: 0;">PKR 5,999</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+<!-- ===== FOOTER SECTION ===== -->
+<footer class="site-footer">
+  <div class="footer-container">
+
+    <!-- Brand Info -->
+    <div class="footer-brand">
+      <img src="images/logo.png" alt="Block Prints by Afifa Logo" class="footer-logo">
+      <p>Handcrafted block prints rooted in tradition and made with love in Karachi.</p>
+      <p><strong>Email:</strong> <a href="mailto:blockprintsbyafifa@hotmail.com">blockprintsbyafifa@hotmail.com</a></p>
+      <p><strong>Phone:</strong> <a href="tel:+923252041288">+923252041288</a></p>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/blockprintsbyafifa/" target="_blank">
+          <img src="images/instagram.svg" alt="Instagram">
+        </a>
+        <a href="https://www.facebook.com/blockprintsbyafifa" target="_blank">
+          <img src="images/facebook.svg" alt="Facebook">
+        </a>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+           <li><a href="index.html">Home</a></li>
+        <li><a href="aboutus.html">About</a></li>
+        <li><a href="contactus.html">Contact</a></li>
+        <li><a href="unstitched.html">unstitched</a></li>
+        <li><a href="totebag.html">Totebag</a></li>
+         <li><a href="dupandstole.html">Duppatta and Stoles</a></li>
+              <li><a href="homedecor.html">Home Decor</a></li>
+                   <li><a href="stitched.html">Stitched</a></li>
+         
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 Block Prints by Afifa. All rights reserved.</p>
+  </div>
+</footer>
+
+
+  <script>
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    function toggleMenu() {
+      document.getElementById('main-nav').classList.toggle('show');
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.section, .sale-banner').forEach(sec => {
+      observer.observe(sec);
+    });
+
+    function saveCart() {
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }
+
+    function formatPrice(amount) {
+      return 'PKR ' + amount.toLocaleString();
+    }
+
+    function getSelectedOption(groupIndex) {
+      const groups = document.querySelectorAll('.options-group');
+      const selected = groups[groupIndex]?.querySelector('.option-button.active');
+      return selected ? selected.textContent.trim() : 'Not selected';
+    }
+
+    function addToCart() {
+      const product = {
+        id: 'sapphire',
+        name: 'Sapphire',
+        price: 5999,
+        image: 'images/b1.jpeg',
+        shirtFabric: getSelectedOption(0),
+        dupattaFabric: getSelectedOption(1),
+        quantity: 1
+      };
+
+      const existingItem = cartItems.find(item =>
+        item.id === product.id &&
+        item.shirtFabric === product.shirtFabric &&
+        item.dupattaFabric === product.dupattaFabric
+      );
+
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cartItems.push(product);
+      }
+
+      saveCart();
+      renderCart();
+      openCartSidebar();
+      showCartToast('Sapphire added to cart');
+    }
+
+    function renderCart() {
+      const cartContent = document.getElementById('cart-content');
+      const cartSummary = document.getElementById('cart-summary');
+      const cartCount = document.getElementById('cart-count');
+      const cartTotal = document.getElementById('cart-total');
+
+      if (!cartContent || !cartSummary || !cartCount || !cartTotal) return;
+
+      const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+      const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      cartCount.textContent = totalQuantity;
+      cartTotal.textContent = formatPrice(subtotal);
+
+      if (cartItems.length === 0) {
+        cartContent.innerHTML = `
+          <div class="empty-cart">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <p>Your cart is currently empty.</p>
+            <p>Add your favourite block print outfit to continue.</p>
+          </div>
+        `;
+        cartSummary.classList.remove('show');
+        return;
+      }
+
+      cartSummary.classList.add('show');
+      cartContent.innerHTML = cartItems.map((item, index) => `
+        <div class="cart-item">
+          <img src="${item.image}" alt="${item.name}">
+          <div class="cart-item-info">
+            <h4>${item.name}</h4>
+            <p><strong>Shirt:</strong> ${item.shirtFabric}</p>
+            <p><strong>Dupatta:</strong> ${item.dupattaFabric}</p>
+            <p class="cart-price">${formatPrice(item.price)}</p>
+            <div class="qty-row">
+              <div class="qty-controls">
+                <button onclick="changeQuantity(${index}, -1)">−</button>
+                <span>${item.quantity}</span>
+                <button onclick="changeQuantity(${index}, 1)">+</button>
+              </div>
+              <button class="remove-item" onclick="removeFromCart(${index})">Remove</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function changeQuantity(index, change) {
+      if (!cartItems[index]) return;
+      cartItems[index].quantity += change;
+
+      if (cartItems[index].quantity <= 0) {
+        cartItems.splice(index, 1);
+      }
+
+      saveCart();
+      renderCart();
+    }
+
+    function removeFromCart(index) {
+      cartItems.splice(index, 1);
+      saveCart();
+      renderCart();
+    }
+
+    function openCartSidebar() {
+      document.getElementById('cart-sidebar').classList.add('open');
+      document.getElementById('cart-overlay').classList.add('open');
+    }
+
+    function toggleCartSidebar(event) {
+      if (event) event.preventDefault();
+      document.getElementById('cart-sidebar').classList.toggle('open');
+      document.getElementById('cart-overlay').classList.toggle('open');
+      renderCart();
+    }
+
+    function closeCartSidebar() {
+      document.getElementById('cart-sidebar').classList.remove('open');
+      document.getElementById('cart-overlay').classList.remove('open');
+    }
+
+    function proceedToCheckout() {
+      if (cartItems.length === 0) {
+        alert('Your cart is empty. Please add an item first.');
+        return;
+      }
+
+      localStorage.setItem('checkoutCart', JSON.stringify(cartItems));
+      window.location.href = 'checkout.html';
+    }
+
+    function showCartToast(message) {
+      const toast = document.getElementById('cart-toast');
+      if (!toast) return;
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 1800);
+    }
+
+    function toggleWishlistSidebar() {
+      document.getElementById('wishlist-sidebar').classList.toggle('open');
+    }
+
+    function closeWishlistSidebar() {
+      document.getElementById('wishlist-sidebar').classList.remove('open');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.options-group').forEach(group => {
+        group.querySelectorAll('.option-button').forEach(button => {
+          button.addEventListener('click', () => {
+            group.querySelectorAll('.option-button').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+          });
+        });
+      });
+
+      renderCart();
+    });
+  </script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      loop: true,
+      spaceBetween: 10,
+      slidesPerView: 3,
+      freeMode: true,
+      watchSlidesProgress: true,
+    });
+    var swiper2 = new Swiper(".mySwiper2", {
+      loop: true,
+      spaceBetween: 10,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      thumbs: {
+        swiper: swiper,
+      },
+    });
+  </script>
+<!-- Cart Sidebar -->
+<div id="cart-overlay" class="cart-overlay" onclick="closeCartSidebar()"></div>
+<div id="cart-sidebar" class="sidebar">
+  <div class="cart-header">
+    <h2>Your Cart</h2>
+    <button class="cart-close-icon" onclick="closeCartSidebar()" aria-label="Close cart">&times;</button>
+  </div>
+
+  <div id="cart-content" class="cart-content">
+    <div class="empty-cart">
+      <i class="fa-solid fa-bag-shopping"></i>
+      <p>Your cart is currently empty.</p>
+      <p>Add your favourite block print outfit to continue.</p>
+    </div>
+  </div>
+
+  <div id="cart-summary" class="cart-summary">
+    <div class="summary-line">
+      <span>Subtotal</span>
+      <span id="cart-total">PKR 0</span>
+    </div>
+    <button class="checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+    <button class="continue-shopping-btn" onclick="closeCartSidebar()">Continue Shopping</button>
+  </div>
+</div>
+
+<div id="cart-toast" class="cart-toast">Item added to cart</div>
+
+<!-- Wishlist Sidebar -->
+<div id="wishlist-sidebar" class="sidebar">
+  <h2>Your Wishlist</h2>
+  <p id="wishlist-content">No items liked yet.</p>
+  <button onclick="closeWishlistSidebar()">Close</button>
+</div>
+
+</body>
+</html>  
+
+
+
+
+
+
+
+
+
+

@@ -3,12 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
   <title>Block Prints by Afifa</title>
   <link rel="icon" href="images/logo.png" type="image/png"/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  
 
 
   <style>
@@ -84,12 +82,7 @@
       color: var(--accent-color);
     }
 
- 
-
- 
-
-
-
+    
 .site-footer {
   background-color: #8b1e3f;
   color: #fff;
@@ -217,95 +210,6 @@
   border-radius: 4px;
   cursor: pointer;
 }
-  .slide-gallery {
-      display: flex;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    .slide-card {
-      flex: 1;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      transition: flex 0.6s ease;
-      cursor: pointer;
-    }
-
-    .slide-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.2);
-      transition: background 0.3s ease;
-    }
-
-    .slide-card:hover::before {
-      background: rgba(0,0,0,0.5);
-    }
-
-    .slide-card:hover {
-      flex: 5;
-    }
-
-    .slide-gallery:hover .slide-card {
-      flex: 1;
-    }
-
-    .slide-content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      color: white;
-      z-index: 1;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      padding: 20px;
-    }
-
-    .slide-card:hover .slide-content {
-      opacity: 1;
-    }
-
-    .slide-content h2 {
-      font-size: 36px;
-      margin-bottom: 10px;
-      color: #ff5cb1;
-    }
-
-    .slide-content p {
-      font-size: 16px;
-      line-height: 1.5;
-    }
-
-@media (max-width: 768px) {
-  .slide-gallery {
-    flex-direction: column;
-    height: auto;
-  }
-
-  .slide-card {
-    width: 100%;
-    height: 60vh;
-    flex: none;
-  }
-
-  .slide-card:hover {
-    flex: none; /* Disable horizontal expansion on mobile */
-  }
-
-  .slide-card:hover::before {
-    background: rgba(0,0,0,0.5); /* Keep the overlay */
-  }
-
-  .slide-content {
-    opacity: 1; /* Always show content on mobile */
-    padding: 30px;
-  }
-}
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -351,7 +255,131 @@
 
       
 
+
+    
     }
+
+        .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      background: #fff;
+    }
+
+    .view-toggle button {
+      background: #fff;
+      border: 1px solid #ccc;
+      margin-left: 10px;
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px 5%;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .product-images {
+      position: relative;
+      width: 100%;
+      padding-top: 130%;
+      overflow: hidden;
+    }
+
+    .product-images img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .product-images img:first-child {
+      opacity: 1;
+    }
+
+    .product-card:hover img:nth-child(1) { opacity: 0; }
+    .product-card:hover img:nth-child(2) { opacity: 1; transition-delay: 0.3s; }
+    .product-card:hover img:nth-child(3) { opacity: 1; transition-delay: 0.6s; }
+
+    .product-info {
+      padding: 15px;
+    }
+
+    .product-info h4 {
+      margin: 0 0 8px;
+      font-size: 17px;
+      color: #8b1e3f;
+    }
+
+    .product-info p {
+      margin: 0;
+      font-size: 14px;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .product-price {
+      margin-top: 10px;
+      color: #000;
+      font-weight: 600;
+    }
+
+    .quick-view {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #8b1e3f;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    /* List View Mode */
+    .list-view .product-grid {
+      display: block;
+    }
+
+    .list-view .product-card {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 20px;
+    }
+
+    .list-view .product-images {
+      flex: 1;
+      padding-top: 0;
+      height: 220px;
+    }
+
+    .list-view .product-images img {
+      height: 100%;
+    }
+
+    .list-view .product-info {
+      flex: 2;
+      padding: 20px;
+    }
+  </style>
   </style>
 
 
@@ -666,46 +694,88 @@
 </nav>
   </header>
 
-<section class="slide-gallery">
-  <div class="slide-card" style="background-image: url('images/IMG-20250619-WA0011.jpg');">
-    <div class="slide-content">
-      <h2>Our Story</h2>
-      <p>Rooted in tradition, inspired by heritage, crafted with soul.</p>
-    </div>
-  </div>
-  <div class="slide-card" style="background-image: url('images/IMG-20250619-WA0012.jpg');">
-    <div class="slide-content">
-      <h2>Our Craft</h2>
-      <p>Every detail is block printed by hand with dedication and love.</p>
-    </div>
-  </div>
-  <div class="slide-card" style="background-image: url('images/IMG-20250619-WA0013.jpg');">
-    <div class="slide-content">
-      <h2>Our Vision</h2>
-      <p>Designing timeless textiles that celebrate culture and community.</p>
-    </div>
-  </div>
-  <div class="slide-card" style="background-image: url('images/IMG-20250619-WA0015.jpg');">
-    <div class="slide-content">
-      <h2>Our Hands</h2>
-      <p>Women artisans from Pakistan bring these creations to life.</p>
-    </div>
+
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<style> .category-row { display: flex; flex-direction: row; justify-content: center; align-items: center; flex-wrap: nowrap; gap: 30px; overflow-x: auto; padding: 10px 20px; -webkit-overflow-scrolling: touch; white-space: nowrap; } .category-item { text-align: center; flex: 0 0 auto; min-width: 120px; cursor: pointer; } .category-item img { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.2s ease; } .category-item p { margin-top: 10px; font-weight: 600; font-size: 14px; } /* 📱 Responsive: Smaller circles on phones */ @media (max-width: 600px) { .category-item img { width: 80px; height: 80px; } .category-item p { font-size: 12px; } } </style> <section style="padding: 40px 0; background-color: white;"> <div class="category-row">
+
+<!-- Totebag -->
+<div class="category-item" onclick="filterProducts('tote')">
+  <img src="images/decor1.jpeg" alt="Totebag" />
+  <p>Tray<br>Collection</p>
+</div>
+
+
+
+<!-- Show All -->
+<div class="category-item" onclick="filterProducts('all')">
+  <img src="images/logo.png" alt="Show All" />
+  <p>Show<br>All</p>
+</div>
+</div> </section>
+
   </div>
 </section>
+  <div class="toolbar">
+    <div><strong>Sort By:</strong>
+      <select>
+        <option>New Arrival</option>
+        <option>Top Sellers</option>
+        <option>Most Popular</option>
+        <option>Price Low to High</option>
+        <option>Price High to Low</option>
+      </select>
+    </div>
+    <div class="view-toggle">
+      <button onclick="setGrid()">🔲 Grid</button>
+      <button onclick="setList()">📋 List</button>
+    </div>
+  </div>
+
+  <div class="product-grid" id="productContainer">
+    <!-- Product 1 -->
+    <div class="product-card tote" onclick="addHomeDecorToCart(event, 'blue-willow')">
+      <button class="quick-view">Quick View</button>
+      <div class="product-images">
+        <img src="images/decor1.jpeg" />
+        <img src="images/decor2.jpeg" />
+      
+      </div>
+      <div class="product-info">
+        <h4>Blue Willow</h4>
+        <p>Tray<br>
+<br>
+        </p>
+        <div class="product-price">PKR 1300 </div>
+        <button class="listing-add-to-cart" onclick="addHomeDecorToCart(event, 'blue-willow')">Add to Cart</button>
+      </div>
+    </div>
 
 
-<style>
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-</style>
+
+    
+
+    
+
+  </div>
+
+
+
+    <script>
+    function setGrid() {
+      document.body.classList.remove('list-view');
+    }
+    function setList() {
+      document.body.classList.add('list-view');
+    }
+  </script>
+
+
+
+
+
 
 <!-- ===== FOOTER SECTION ===== -->
 <footer class="site-footer">
@@ -731,7 +801,7 @@
     <div class="footer-links">
       <h4>Quick Links</h4>
       <ul>
-         <li><a href="index.html">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="aboutus.html">About</a></li>
         <li><a href="contactus.html">Contact</a></li>
         <li><a href="unstitched.html">unstitched</a></li>
@@ -740,6 +810,11 @@
               <li><a href="homedecor.html">Home Decor</a></li>
                    <li><a href="stitched.html">Stitched</a></li>
          
+
+         
+    
+
+
       </ul>
     </div>
 
@@ -785,18 +860,12 @@ function closeWishlistSidebar() {
 }
 
   </script>
-<script>
-  if (window.innerWidth <= 768) {
-    const slideCards = document.querySelectorAll('.slide-card');
-    slideCards.forEach(card => {
-      card.addEventListener('click', () => {
-        card.scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-  }
-</script>
-
-
+<script> 
+function filterProducts(category) 
+{ const products = document.querySelectorAll('.product-card'); 
+products.forEach(product => { if (category === 'all') { product.style.display = 'block'; } 
+else if (product.classList.contains(category)) { product.style.display = 'block'; } else { product.style.display = 'none'; } }); }
+ </script>
 
 
 <!-- Cart Overlay and Sidebar -->
@@ -987,6 +1056,30 @@ function closeWishlistSidebar() {
   document.addEventListener('DOMContentLoaded', updateCartUI);
 </script>
 
+
+<script>
+  const homeDecorProducts = {
+    'blue-willow': {
+      id: 'home-decor-blue-willow',
+      name: 'Blue Willow',
+      category: 'Home Decor',
+      type: 'Tray',
+      details: 'Tray',
+      price: 1300,
+      image: 'images/decor1.jpeg',
+      source: 'home-decor'
+    }
+  };
+
+  function addHomeDecorToCart(event, productId) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    const product = homeDecorProducts[productId];
+    if (product) addProductToCart(product);
+  }
+</script>
 
 </body>
 </html>  
