@@ -2,1001 +2,310 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-  <title>Block Prints by Afifa</title>
-  <link rel="icon" href="images/logo.png" type="image/png"/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  
-
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Discover the story, craft and values behind Block Prints by Afifa, handcrafted in Karachi." />
+  <title>About Us | Block Prints by Afifa</title>
+  <link rel="icon" href="images/logo.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     :root {
-      --primary-color: #8b1e3f;
-      --accent-color: #b3365a;
-      --light-color: #ffffff;
-      --text-dark: #502f2c;
-      --background-pink: #f8ddea;
-      --background-darkpink: #c1557f;
+      --primary: #8b1e3f;
+      --accent: #b3365a;
+      --rose: #c1557f;
+      --blush: #f8ddea;
+      --soft: #fff7fa;
+      --white: #ffffff;
+      --text: #502f2c;
+      --muted: #765d59;
+      --border: #efd2dc;
+      --shadow: 0 18px 45px rgba(139, 30, 63, 0.13);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Montserrat', sans-serif; color: var(--text); background: var(--white); line-height: 1.7; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
 
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: var(--light-color);
-      color: var(--text-dark);
-    }
-
-    /* ===== HEADER ===== */
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      background-color: rgba(139, 30, 63, 0.75);
-      padding: 20px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 17px 30px; background: rgba(139, 30, 63, 0.90);
+      box-shadow: 0 4px 18px rgba(0,0,0,.09); backdrop-filter: blur(10px);
     }
+    .logo img { height: 70px; }
+    nav { display: flex; align-items: center; gap: 23px; }
+    nav a { color: #fff; text-decoration: none; font-size: 13px; font-weight: 600; white-space: nowrap; transition: .25s; }
+    nav a:hover, nav a.active { color: #ffdce9; transform: translateY(-1px); }
+    .menu-toggle { display: none; width: 30px; height: 22px; flex-direction: column; justify-content: space-between; cursor: pointer; }
+    .menu-toggle span { height: 3px; background: #fff; border-radius: 3px; }
+    .cart-nav-link { position: relative; display: inline-flex; align-items: center; justify-content: center; font-size: 17px; }
+    #cart-count { position: absolute; top: -12px; right: -14px; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 50px; background: #fff; color: var(--primary); font-size: 11px; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; }
 
-    .logo img {
-      height: 70px;
+    .hero {
+      min-height: 760px; padding: 165px 7% 90px; display: flex; align-items: center;
+      background: linear-gradient(90deg, rgba(62,16,29,.87), rgba(139,30,63,.52)), url('images/IMG-20250619-WA0011.jpg') center/cover no-repeat;
+      color: #fff; position: relative; overflow: hidden;
     }
+    .hero::after { content:""; position:absolute; width:340px; height:340px; border:1px solid rgba(255,255,255,.22); border-radius:50%; right:-80px; bottom:-110px; }
+    .hero-content { max-width: 690px; position: relative; z-index: 1; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; text-transform: uppercase; letter-spacing: 3px; font-size: 12px; font-weight: 700; margin-bottom: 22px; }
+    .eyebrow::before { content:""; width: 42px; height: 1px; background: currentColor; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(48px, 7vw, 84px); line-height: 1.04; margin-bottom: 24px; }
+    .hero p { max-width: 610px; font-size: 17px; color: #fff4f8; margin-bottom: 34px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 28px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 13px; transition: .25s; }
+    .btn-light { background: #fff; color: var(--primary); }
+    .btn-light:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,.2); }
+    .btn-primary { background: linear-gradient(90deg, var(--primary), var(--accent)); color: #fff; }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(139,30,63,.25); }
 
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      width: 30px;
-      height: 21px;
-      justify-content: space-between;
-      cursor: pointer;
+    .section { padding: 100px 7%; }
+    .section-soft { background: var(--soft); }
+    .section-heading { max-width: 760px; margin: 0 auto 54px; text-align: center; }
+    .section-heading .eyebrow { color: var(--accent); justify-content: center; }
+    .section-heading h2, .story-copy h2, .founder-copy h2 { font-family: 'Playfair Display', serif; color: var(--primary); font-size: clamp(36px, 5vw, 58px); line-height: 1.15; margin-bottom: 18px; }
+    .section-heading p { color: var(--muted); }
+
+    .story-grid, .founder-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .image-frame { position: relative; }
+    .image-frame::before { content:""; position:absolute; inset: 24px -24px -24px 24px; background: var(--blush); border-radius: 28px; z-index:0; }
+    .image-frame img { position:relative; z-index:1; width:100%; min-height:570px; object-fit:cover; border-radius:28px; box-shadow:var(--shadow); }
+    .story-copy p, .founder-copy p { color: var(--muted); margin-bottom: 18px; }
+    .story-note { margin-top: 28px; padding: 20px 22px; border-left: 4px solid var(--accent); background: var(--soft); border-radius: 0 14px 14px 0; font-family: 'Playfair Display', serif; font-size: 21px; color: var(--primary); }
+
+    .craft-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+    .craft-card { padding: 38px 30px; background: #fff; border: 1px solid var(--border); border-radius: 22px; box-shadow: 0 12px 32px rgba(139,30,63,.08); transition: .3s; }
+    .craft-card:hover { transform: translateY(-7px); box-shadow: var(--shadow); }
+    .craft-icon { width: 62px; height: 62px; border-radius: 18px; display:flex; align-items:center; justify-content:center; background: var(--blush); color: var(--primary); font-size: 24px; margin-bottom: 24px; }
+    .craft-card h3 { font-family:'Playfair Display', serif; color:var(--primary); font-size:28px; margin-bottom:12px; }
+    .craft-card p { color: var(--muted); font-size: 14px; }
+
+    .values-wrap { max-width: 1180px; margin: 0 auto; display:grid; grid-template-columns: .85fr 1.15fr; gap: 65px; align-items:center; }
+    .values-image { min-height: 590px; border-radius: 28px; background: url('images/IMG-20250619-WA0013.jpg') center/cover no-repeat; box-shadow: var(--shadow); }
+    .values-list { display:grid; grid-template-columns: 1fr 1fr; gap:18px; margin-top:30px; }
+    .value { padding:24px; border-radius:18px; background:#fff; border:1px solid var(--border); }
+    .value i { color:var(--accent); font-size:20px; margin-bottom:12px; }
+    .value h3 { color:var(--primary); font-family:'Playfair Display',serif; font-size:22px; margin-bottom:7px; }
+    .value p { color:var(--muted); font-size:13px; }
+
+    .founder-grid { grid-template-columns: 1.05fr .95fr; }
+    .founder-photo img { width:100%; min-height:550px; object-fit:cover; border-radius: 50% 50% 24px 24px; box-shadow:var(--shadow); }
+    .signature { margin-top: 24px; font-family:'Playfair Display',serif; font-style:italic; font-size:28px; color:var(--accent); }
+
+    .cta { margin: 0 7% 100px; min-height: 390px; border-radius: 30px; padding: 70px 7%; display:flex; align-items:center; justify-content:center; text-align:center; color:#fff; background: linear-gradient(135deg, rgba(139,30,63,.95), rgba(179,54,90,.86)), url('images/IMG-20250619-WA0015.jpg') center/cover; box-shadow:var(--shadow); }
+    .cta-inner { max-width:760px; }
+    .cta h2 { font-family:'Playfair Display',serif; font-size:clamp(38px,5vw,60px); line-height:1.15; margin-bottom:18px; }
+    .cta p { margin-bottom:28px; color:#fff0f6; }
+
+    .site-footer { background:var(--primary); color:#fff; padding:60px 6% 30px; }
+    .footer-container { display:flex; flex-wrap:wrap; justify-content:space-between; gap:40px; }
+    .footer-brand { flex:1 1 340px; }
+    .footer-logo { width:120px; margin-bottom:20px; }
+    .footer-brand p { font-size:14px; margin-bottom:10px; }
+    .footer-brand a, .footer-links a { color:#fff; text-decoration:none; }
+    .footer-links { flex:1 1 220px; }
+    .footer-links h4 { font-family:'Playfair Display',serif; font-size:20px; margin-bottom:14px; }
+    .footer-links ul { list-style:none; columns:2; }
+    .footer-links li { margin-bottom:8px; }
+    .footer-links a { font-size:14px; }
+    .social-icons { margin-top:16px; display:flex; gap:14px; }
+    .social-icons a { width:38px; height:38px; border:1px solid rgba(255,255,255,.35); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; }
+    .footer-bottom { margin-top:42px; padding-top:22px; border-top:1px solid rgba(255,255,255,.16); text-align:center; font-size:13px; color:#f8ddea; }
+
+    .cart-overlay { position:fixed; inset:0; background:rgba(0,0,0,.38); opacity:0; visibility:hidden; z-index:1800; transition:.3s; }
+    .cart-overlay.open { opacity:1; visibility:visible; }
+    .sidebar { position:fixed; top:0; right:-430px; width:390px; max-width:92vw; height:100%; background:#fff; box-shadow:-6px 0 25px rgba(0,0,0,.18); z-index:2000; transition:right .3s; overflow-y:auto; }
+    .sidebar.open { right:0; }
+    .cart-header { background:linear-gradient(135deg,var(--primary),var(--accent)); color:#fff; padding:24px 22px; display:flex; justify-content:space-between; align-items:center; }
+    .cart-header h2 { font-family:'Playfair Display',serif; font-size:28px; }
+    .cart-close-icon { border:none; background:transparent; color:#fff; font-size:32px; cursor:pointer; }
+    .cart-content { padding:20px; }
+    .empty-cart { text-align:center; padding:55px 15px; color:var(--primary); }
+    .empty-cart i { font-size:42px; margin-bottom:14px; }
+    .empty-cart p { color:var(--text); }
+    .cart-item { display:flex; gap:13px; padding:15px 0; border-bottom:1px solid #f3d6e1; }
+    .cart-item img { width:74px; height:92px; object-fit:cover; border-radius:10px; }
+    .cart-item-info { flex:1; }
+    .cart-item-info h4 { color:var(--primary); margin-bottom:5px; }
+    .cart-item-info p { font-size:12px; color:var(--muted); }
+    .cart-price { font-weight:700; font-size:14px!important; }
+    .quantity-row { display:flex; align-items:center; gap:8px; margin-top:8px; }
+    .quantity-row button { width:27px; height:27px; border-radius:50%; border:1px solid var(--primary); background:#fff; color:var(--primary); cursor:pointer; }
+    .remove-item { margin-top:7px; border:none; background:transparent; color:var(--accent); text-decoration:underline; cursor:pointer; }
+    .cart-summary { display:none; padding:20px; background:#fff7fa; border-top:1px solid #f3d6e1; position:sticky; bottom:0; }
+    .cart-summary.show { display:block; }
+    .cart-total-row { display:flex; justify-content:space-between; font-weight:700; margin-bottom:14px; }
+    .checkout-button, .continue-shopping-button { width:100%; border:none; border-radius:30px; padding:13px 18px; margin-top:8px; font-weight:700; cursor:pointer; }
+    .checkout-button { background:linear-gradient(90deg,var(--primary),var(--accent)); color:#fff; }
+    .continue-shopping-button { background:var(--text); color:#fff; }
+
+    .reveal { opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+
+    @media (max-width: 1080px) {
+      nav { gap:14px; }
+      nav a { font-size:11px; }
+      .story-grid, .founder-grid, .values-wrap { gap:40px; }
     }
-
-    .menu-toggle div {
-      height: 3px;
-      background-color: var(--light-color);
-      border-radius: 2px;
+    @media (max-width: 820px) {
+      header { padding:15px 20px; }
+      .logo img { height:60px; }
+      .menu-toggle { display:flex; }
+      nav { display:none; position:absolute; top:100%; left:0; width:100%; flex-direction:column; gap:0; background:rgba(139,30,63,.98); padding:15px 0 22px; }
+      nav.show { display:flex; }
+      nav a { width:100%; padding:10px; text-align:center; font-size:13px; }
+      .hero { min-height:680px; padding-top:150px; }
+      .story-grid, .founder-grid, .values-wrap { grid-template-columns:1fr; }
+      .image-frame { margin-right:20px; }
+      .founder-grid .founder-photo { order:-1; }
+      .craft-grid { grid-template-columns:1fr; }
+      .values-list { grid-template-columns:1fr 1fr; }
+      .values-image { min-height:480px; }
     }
-
-    nav {
-      display: flex;
-      gap: 30px;
-    }
-
-    nav a {
-      color: var(--light-color);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 14px;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: var(--accent-color);
-    }
-
- 
-
- 
-
-
-
-.site-footer {
-  background-color: #8b1e3f;
-  color: #fff;
-  padding: 60px 6% 30px;
-  font-family: 'Montserrat', sans-serif;
-}
-
-.footer-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 40px;
-}
-
-.footer-brand {
-  flex: 1 1 300px;
-}
-
-.footer-logo {
-  width: 120px;
-  margin-bottom: 20px;
-}
-
-.footer-brand p {
-  font-size: 15px;
-  line-height: 1.7;
-  margin-bottom: 10px;
-}
-
-.footer-brand a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.footer-brand a:hover {
-  text-decoration: underline;
-}
-
-.social-icons {
-  margin-top: 15px;
-}
-
-.social-icons a {
-  margin-right: 15px;
-  display: inline-block;
-}
-
-.social-icons img {
-  width: 24px;
-  height: 24px;
-  filter: brightness(0) invert(1);
-  transition: opacity 0.3s;
-}
-
-.social-icons img:hover {
-  opacity: 0.7;
-}
-
-.footer-links {
-  flex: 1 1 200px;
-}
-
-.footer-links h4 {
-  font-size: 18px;
-  margin-bottom: 15px;
-  font-family: 'Playfair Display', serif;
-}
-
-.footer-links ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-links li {
-  margin-bottom: 10px;
-}
-
-.footer-links a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 15px;
-}
-
-.footer-links a:hover {
-  text-decoration: underline;
-}
-
-.footer-bottom {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 14px;
-  color: #f8ddea;
-}
-
-
-.sidebar {
-  position: fixed;
-  top: 0;
-  right: -350px;
-  width: 300px;
-  height: 100%;
-  background: white;
-  box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-  padding: 20px;
-  z-index: 2000;
-  transition: right 0.3s ease;
-  overflow-y: auto;
-}
-
-.sidebar.open {
-  right: 0;
-}
-
-.sidebar h2 {
-  font-size: 22px;
-  margin-bottom: 15px;
-}
-
-.sidebar button {
-  margin-top: 20px;
-  padding: 10px 15px;
-  background-color: #8b1e3f;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-  .slide-gallery {
-      display: flex;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    .slide-card {
-      flex: 1;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      transition: flex 0.6s ease;
-      cursor: pointer;
-    }
-
-    .slide-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.2);
-      transition: background 0.3s ease;
-    }
-
-    .slide-card:hover::before {
-      background: rgba(0,0,0,0.5);
-    }
-
-    .slide-card:hover {
-      flex: 5;
-    }
-
-    .slide-gallery:hover .slide-card {
-      flex: 1;
-    }
-
-    .slide-content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      color: white;
-      z-index: 1;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      padding: 20px;
-    }
-
-    .slide-card:hover .slide-content {
-      opacity: 1;
-    }
-
-    .slide-content h2 {
-      font-size: 36px;
-      margin-bottom: 10px;
-      color: #ff5cb1;
-    }
-
-    .slide-content p {
-      font-size: 16px;
-      line-height: 1.5;
-    }
-
-@media (max-width: 768px) {
-  .slide-gallery {
-    flex-direction: column;
-    height: auto;
-  }
-
-  .slide-card {
-    width: 100%;
-    height: 60vh;
-    flex: none;
-  }
-
-  .slide-card:hover {
-    flex: none; /* Disable horizontal expansion on mobile */
-  }
-
-  .slide-card:hover::before {
-    background: rgba(0,0,0,0.5); /* Keep the overlay */
-  }
-
-  .slide-content {
-    opacity: 1; /* Always show content on mobile */
-    padding: 30px;
-  }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .footer-links {
-    margin-top: 30px;
-  }
-
-  .social-icons {
-    justify-content: center;
-  }
-}
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex;
-      }
-
-      nav {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: rgba(139, 30, 63, 0.95);
-        position: absolute;
-        top: 100%;
-        left: 0;
-        text-align: center;
-        padding: 20px 0;
-      }
-
-      nav.show {
-        display: flex;
-      }
-
-      nav a {
-        padding: 10px 0;
-      }
-
-      
-
+    @media (max-width: 560px) {
+      .section { padding:75px 6%; }
+      .hero { min-height:640px; padding-left:6%; padding-right:6%; }
+      .hero h1 { font-size:46px; }
+      .hero p { font-size:15px; }
+      .image-frame img, .founder-photo img { min-height:420px; }
+      .values-list { grid-template-columns:1fr; }
+      .values-image { min-height:410px; }
+      .cta { margin:0 5% 70px; padding:55px 7%; }
+      .footer-links ul { columns:1; }
     }
   </style>
-
-
-<style>
-  /* ===== SHARED CART STYLING ===== */
-  .cart-nav-link {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  #cart-count {
-    position: absolute;
-    top: -12px;
-    right: -13px;
-    min-width: 19px;
-    height: 19px;
-    padding: 0 5px;
-    border-radius: 50%;
-    background: #fff;
-    color: #8b1e3f;
-    border: 1px solid #f8ddea;
-    font-size: 11px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-  }
-
-  .cart-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.35);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    z-index: 1800;
-  }
-
-  .cart-overlay.open {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .sidebar {
-    position: fixed;
-    top: 0;
-    right: -430px;
-    width: 390px;
-    max-width: 92vw;
-    height: 100%;
-    background: #fff;
-    box-shadow: -6px 0 25px rgba(0,0,0,0.18);
-    z-index: 2000;
-    transition: right 0.3s ease;
-    overflow-y: auto;
-    padding: 0;
-  }
-
-  .sidebar.open {
-    right: 0;
-  }
-
-  .cart-header {
-    background: linear-gradient(135deg, #8b1e3f, #b3365a);
-    color: white;
-    padding: 24px 22px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .cart-header h2 {
-    margin: 0;
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-  }
-
-  .cart-close-icon {
-    background: transparent !important;
-    color: white !important;
-    border: none;
-    font-size: 32px;
-    line-height: 1;
-    cursor: pointer;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  .cart-content {
-    padding: 20px;
-  }
-
-  .empty-cart {
-    text-align: center;
-    padding: 55px 15px;
-    color: #8b1e3f;
-  }
-
-  .empty-cart i {
-    font-size: 42px;
-    margin-bottom: 14px;
-    opacity: 0.8;
-  }
-
-  .empty-cart p {
-    color: #502f2c;
-    font-size: 15px;
-  }
-
-  .cart-item {
-    display: flex;
-    gap: 13px;
-    padding: 15px 0;
-    border-bottom: 1px solid #f3d6e1;
-  }
-
-  .cart-item img {
-    width: 74px;
-    height: 92px;
-    object-fit: cover;
-    border-radius: 10px;
-    background: #f8ddea;
-  }
-
-  .cart-item-info {
-    flex: 1;
-  }
-
-  .cart-item-info h4 {
-    margin: 0 0 6px;
-    color: #8b1e3f;
-    font-size: 15px;
-  }
-
-  .cart-item-info p {
-    margin: 3px 0;
-    font-size: 12px;
-    color: #6b4a47;
-    line-height: 1.45;
-  }
-
-  .cart-price {
-    font-weight: 700;
-    color: #502f2c !important;
-    font-size: 14px !important;
-  }
-
-  .quantity-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 9px;
-  }
-
-  .quantity-row button {
-    width: 27px;
-    height: 27px;
-    border-radius: 50%;
-    border: 1px solid #8b1e3f;
-    background: white;
-    color: #8b1e3f;
-    cursor: pointer;
-    font-weight: 700;
-    margin: 0;
-    padding: 0;
-  }
-
-  .quantity-row span {
-    min-width: 18px;
-    text-align: center;
-    font-size: 13px;
-    font-weight: 700;
-  }
-
-  .remove-item {
-    margin-top: 8px;
-    background: transparent !important;
-    color: #b3365a !important;
-    border: none !important;
-    padding: 0 !important;
-    cursor: pointer;
-    font-size: 12px;
-    text-decoration: underline;
-  }
-
-  .cart-summary {
-    display: none;
-    padding: 20px;
-    border-top: 1px solid #f3d6e1;
-    background: #fff7fa;
-    position: sticky;
-    bottom: 0;
-  }
-
-  .cart-summary.show {
-    display: block;
-  }
-
-  .cart-total-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 17px;
-    font-weight: 700;
-    color: #502f2c;
-    margin-bottom: 15px;
-  }
-
-  .checkout-button,
-  .continue-shopping-button {
-    width: 100%;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: 700;
-    padding: 13px 18px;
-    margin-top: 8px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .checkout-button {
-    background: linear-gradient(90deg, #8b1e3f, #b3365a);
-    color: white;
-    box-shadow: 0 8px 18px rgba(139,30,63,0.25);
-  }
-
-  .continue-shopping-button {
-    background: #502f2c;
-    color: white;
-  }
-
-  .checkout-button:hover,
-  .continue-shopping-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 22px rgba(139,30,63,0.25);
-  }
-
-  .listing-add-to-cart {
-    margin-top: 14px;
-    width: 100%;
-    padding: 11px 14px;
-    border: none;
-    border-radius: 24px;
-    background: linear-gradient(90deg, #8b1e3f, #b3365a);
-    color: #fff;
-    font-weight: 700;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .listing-add-to-cart:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 18px rgba(139,30,63,0.22);
-  }
-
-  .cart-toast {
-    position: fixed;
-    right: 24px;
-    bottom: 28px;
-    background: #8b1e3f;
-    color: white;
-    padding: 12px 18px;
-    border-radius: 28px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(16px);
-    transition: 0.3s ease;
-    z-index: 3000;
-    font-size: 14px;
-  }
-
-  .cart-toast.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  @media (max-width: 768px) {
-    .sidebar {
-      width: 92vw;
-      right: -100vw;
-    }
-  }
-</style>
-
 </head>
 <body>
-
-  <!-- ===== HEADER ===== -->
   <header>
-    <div class="logo">
-      <img src="images/logo.png" alt="Block Prints by Afifa">
-    </div>
-    <div class="menu-toggle" onclick="toggleMenu()">
-      <div></div><div></div><div></div>
-    </div>
-<nav id="main-nav">
-  <a href="index.html">HOME</a>
-  <a href="aboutus.html">ABOUT</a>
-  <a href="stitched.html">STITCHED</a>
-  <a href="unstitched.html">UNSTITCHED</a>
-  <a href="homedecor.html">HOME DECOR</a>
-  <a href="totebag.html">TOTE BAG</a>
-  <a href="contactus.html">CONTACT</a>
-  <a href="dupandstole.html">STOLES AND DUPPATTA</a>
- <a href="#" class="cart-nav-link" onclick="toggleCartSidebar(event)"><i class="fa-solid fa-cart-shopping"></i><span id="cart-count">0</span></a>
-
-</nav>
+    <a class="logo" href="index.html"><img src="images/logo.png" alt="Block Prints by Afifa logo" /></a>
+    <div class="menu-toggle" onclick="toggleMenu()" aria-label="Open navigation"><span></span><span></span><span></span></div>
+    <nav id="main-nav">
+      <a href="index.html">HOME</a><a href="aboutus.html" class="active">ABOUT</a><a href="stitched.html">STITCHED</a><a href="unstitched.html">UNSTITCHED</a><a href="homedecor.html">HOME DECOR</a><a href="totebag.html">TOTE BAG</a><a href="contactus.html">CONTACT</a><a href="dupandstole.html">STOLES AND DUPATTA</a>
+      <a href="#" class="cart-nav-link" onclick="toggleCartSidebar(event)" aria-label="Open cart"><i class="fa-solid fa-cart-shopping"></i><span id="cart-count">0</span></a>
+    </nav>
   </header>
 
-<section class="slide-gallery">
-  <div class="slide-card" style="background-image: url('images/IMG-20250619-WA0011.jpg');">
-    <div class="slide-content">
-      <h2>Our Story</h2>
-      <p>Rooted in tradition, inspired by heritage, crafted with soul.</p>
-    </div>
-  </div>
-  <div class="slide-card" style="background-image: url('images/IMG-20250619-WA0012.jpg');">
-    <div class="slide-content">
-      <h2>Our Craft</h2>
-      <p>Every detail is block printed by hand with dedication and love.</p>
-    </div>
-  </div>
-  <div class="slide-card" style="background-image: url('images/IMG-20250619-WA0013.jpg');">
-    <div class="slide-content">
-      <h2>Our Vision</h2>
-      <p>Designing timeless textiles that celebrate culture and community.</p>
-    </div>
-  </div>
-  <div class="slide-card" style="background-image: url('images/IMG-20250619-WA0015.jpg');">
-    <div class="slide-content">
-      <h2>Our Hands</h2>
-      <p>Women artisans from Pakistan bring these creations to life.</p>
-    </div>
-  </div>
-</section>
-
-
-<style>
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-</style>
-
-<!-- ===== FOOTER SECTION ===== -->
-<footer class="site-footer">
-  <div class="footer-container">
-
-    <!-- Brand Info -->
-    <div class="footer-brand">
-      <img src="images/logo.png" alt="Block Prints by Afifa Logo" class="footer-logo">
-      <p>Handcrafted block prints rooted in tradition and made with love in Karachi.</p>
-      <p><strong>Email:</strong> <a href="mailto:blockprintsbyafifa@hotmail.com">blockprintsbyafifa@hotmail.com</a></p>
-      <p><strong>Phone:</strong> <a href="tel:+923252041288">+923252041288</a></p>
-      <div class="social-icons">
-        <a href="https://www.instagram.com/blockprintsbyafifa/" target="_blank">
-          <img src="images/instagram.svg" alt="Instagram">
-        </a>
-        <a href="https://www.facebook.com/blockprintsbyafifa" target="_blank">
-          <img src="images/facebook.svg" alt="Facebook">
-        </a>
+  <main>
+    <section class="hero">
+      <div class="hero-content reveal">
+        <span class="eyebrow">Our Story</span>
+        <h1>Crafted by Hand,<br />Created with Heart.</h1>
+        <p>Block Prints by Afifa brings together traditional artistry and contemporary design, creating meaningful textiles that celebrate colour, character and Pakistani craftsmanship.</p>
+        <a href="unstitched.html" class="btn btn-light">Explore the Collection <i class="fa-solid fa-arrow-right"></i></a>
       </div>
-    </div>
+    </section>
 
-    <!-- Quick Links -->
-    <div class="footer-links">
-      <h4>Quick Links</h4>
-      <ul>
-         <li><a href="index.html">Home</a></li>
-        <li><a href="aboutus.html">About</a></li>
-        <li><a href="contactus.html">Contact</a></li>
-        <li><a href="unstitched.html">unstitched</a></li>
-        <li><a href="totebag.html">Totebag</a></li>
-         <li><a href="dupandstole.html">Duppatta and Stoles</a></li>
-              <li><a href="homedecor.html">Home Decor</a></li>
-                   <li><a href="stitched.html">Stitched</a></li>
-         
-      </ul>
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    <p>&copy; 2025 Block Prints by Afifa. All rights reserved.</p>
-  </div>
-</footer>
-
-
-  <script>
-    function toggleMenu() {
-      document.getElementById('main-nav').classList.toggle('show');
-    }
-
-     const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.section, .sale-banner').forEach(sec => {
-      observer.observe(sec);
-    });
-
-    function toggleCartSidebar() {
-  document.getElementById('cart-sidebar').classList.toggle('open');
-}
-
-function closeCartSidebar() {
-  document.getElementById('cart-sidebar').classList.remove('open');
-}
-
-function toggleWishlistSidebar() {
-  document.getElementById('wishlist-sidebar').classList.toggle('open');
-}
-
-function closeWishlistSidebar() {
-  document.getElementById('wishlist-sidebar').classList.remove('open');
-}
-
-  </script>
-<script>
-  if (window.innerWidth <= 768) {
-    const slideCards = document.querySelectorAll('.slide-card');
-    slideCards.forEach(card => {
-      card.addEventListener('click', () => {
-        card.scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-  }
-</script>
-
-
-
-
-<!-- Cart Overlay and Sidebar -->
-<div id="cart-overlay" class="cart-overlay" onclick="closeCartSidebar()"></div>
-<div id="cart-sidebar" class="sidebar">
-  <div class="cart-header">
-    <h2>Your Cart</h2>
-    <button class="cart-close-icon" onclick="closeCartSidebar()" aria-label="Close cart">&times;</button>
-  </div>
-
-  <div id="cart-content" class="cart-content">
-    <div class="empty-cart">
-      <i class="fa-solid fa-cart-shopping"></i>
-      <p>Your cart is currently empty.</p>
-    </div>
-  </div>
-
-  <div id="cart-summary" class="cart-summary">
-    <div class="cart-total-row">
-      <span>Subtotal</span>
-      <span id="cart-total">PKR 0</span>
-    </div>
-    <button class="checkout-button" onclick="proceedToCheckout()">Proceed to Checkout</button>
-    <button class="continue-shopping-button" onclick="closeCartSidebar()">Continue Shopping</button>
-  </div>
-</div>
-
-<div id="cart-toast" class="cart-toast">Item added to cart</div>
-
-<!-- Wishlist Sidebar -->
-<div id="wishlist-sidebar" class="sidebar">
-  <div class="cart-header">
-    <h2>Your Wishlist</h2>
-    <button class="cart-close-icon" onclick="closeWishlistSidebar()" aria-label="Close wishlist">&times;</button>
-  </div>
-  <div class="cart-content">
-    <div class="empty-cart">
-      <i class="fa-regular fa-heart"></i>
-      <p>No items liked yet.</p>
-    </div>
-  </div>
-</div>
-
-
-<script>
-  let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-
-  function formatPrice(amount) {
-    return 'PKR ' + Number(amount).toLocaleString('en-PK');
-  }
-
-  function saveCart() {
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
-    updateCartUI();
-  }
-
-  function updateCartUI() {
-    const cartContent = document.getElementById('cart-content');
-    const cartSummary = document.getElementById('cart-summary');
-    const cartCount = document.getElementById('cart-count');
-    const cartTotal = document.getElementById('cart-total');
-
-    if (!cartContent || !cartSummary || !cartCount || !cartTotal) return;
-
-    const totalQuantity = cartItems.reduce((sum, item) => sum + Number(item.quantity || 1), 0);
-    const subtotal = cartItems.reduce((sum, item) => sum + (Number(item.price) * Number(item.quantity || 1)), 0);
-
-    cartCount.textContent = totalQuantity;
-    cartTotal.textContent = formatPrice(subtotal);
-
-    if (!cartItems.length) {
-      cartContent.innerHTML = `
-        <div class="empty-cart">
-          <i class="fa-solid fa-cart-shopping"></i>
-          <p>Your cart is currently empty.</p>
-        </div>`;
-      cartSummary.classList.remove('show');
-      return;
-    }
-
-    cartSummary.classList.add('show');
-    cartContent.innerHTML = cartItems.map((item, index) => `
-      <div class="cart-item">
-        <img src="${item.image}" alt="${item.name}">
-        <div class="cart-item-info">
-          <h4>${item.name}</h4>
-          <p>${item.category || item.type || 'Block print item'}</p>
-          ${item.details ? `<p>${item.details}</p>` : ''}
-          ${item.shirtFabric ? `<p><strong>Shirt:</strong> ${item.shirtFabric}</p>` : ''}
-          ${item.dupattaFabric ? `<p><strong>Dupatta:</strong> ${item.dupattaFabric}</p>` : ''}
-          <p class="cart-price">${formatPrice(item.price)}</p>
-          <div class="quantity-row">
-            <button onclick="changeCartQuantity(${index}, -1)">−</button>
-            <span>${item.quantity || 1}</span>
-            <button onclick="changeCartQuantity(${index}, 1)">+</button>
-          </div>
-          <button class="remove-item" onclick="removeCartItem(${index})">Remove</button>
+    <section class="section">
+      <div class="story-grid">
+        <div class="image-frame reveal"><img src="images/IMG-20250619-WA0012.jpg" alt="Handcrafted block printed fabric" /></div>
+        <div class="story-copy reveal">
+          <span class="eyebrow" style="color:var(--accent)">Where it began</span>
+          <h2>A love for print, pattern and heritage.</h2>
+          <p>Block Prints by Afifa was created from a deep appreciation for handcrafted textiles and the beauty found in thoughtful details. Each collection is designed to feel distinctive while remaining easy to wear, style and cherish.</p>
+          <p>Based in Karachi, the brand reimagines traditional block printing through carefully selected colours, fabrics and motifs. The result is a collection that feels rooted in culture but made for modern everyday life.</p>
+          <div class="story-note">“Every print carries the warmth of the hands that created it.”</div>
         </div>
       </div>
-    `).join('');
-  }
+    </section>
 
-  function addProductToCart(product) {
-    const existingItem = cartItems.find(item => item.id === product.id);
+    <section class="section section-soft">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Our Craft</span>
+        <h2>Made slowly. Made thoughtfully.</h2>
+        <p>Our process values patience, individuality and the small variations that make every hand-printed piece unique.</p>
+      </div>
+      <div class="craft-grid">
+        <article class="craft-card reveal"><div class="craft-icon"><i class="fa-solid fa-pencil-ruler"></i></div><h3>Thoughtful Design</h3><p>Motifs, colour stories and fabric combinations are selected to create pieces that feel balanced, expressive and timeless.</p></article>
+        <article class="craft-card reveal"><div class="craft-icon"><i class="fa-solid fa-hand-sparkles"></i></div><h3>Printed by Hand</h3><p>Traditional blocks are carefully placed by hand, giving every textile its own subtle character rather than a factory-perfect finish.</p></article>
+        <article class="craft-card reveal"><div class="craft-icon"><i class="fa-solid fa-scissors"></i></div><h3>Finished with Care</h3><p>From fabric selection to final presentation, each detail is considered so that the finished piece feels beautiful and dependable.</p></article>
+      </div>
+    </section>
 
-    if (existingItem) {
-      existingItem.quantity = Number(existingItem.quantity || 1) + 1;
-    } else {
-      cartItems.push({
-        ...product,
-        quantity: 1
-      });
+    <section class="section">
+      <div class="values-wrap">
+        <div class="values-image reveal" role="img" aria-label="Traditional block printed textile"></div>
+        <div class="reveal">
+          <span class="eyebrow" style="color:var(--accent)">What matters to us</span>
+          <h2 style="font-family:'Playfair Display',serif;color:var(--primary);font-size:clamp(36px,5vw,58px);line-height:1.15">Beauty with meaning.</h2>
+          <p style="color:var(--muted);margin-top:18px">We believe a beautiful product should also tell a genuine story—one shaped by craft, intention and respect for tradition.</p>
+          <div class="values-list">
+            <div class="value"><i class="fa-solid fa-fingerprint"></i><h3>Authenticity</h3><p>We celebrate the individuality and human touch of handmade work.</p></div>
+            <div class="value"><i class="fa-solid fa-gem"></i><h3>Quality</h3><p>We focus on fabrics and finishing that customers can enjoy with confidence.</p></div>
+            <div class="value"><i class="fa-solid fa-seedling"></i><h3>Thoughtfulness</h3><p>We favour considered collections over unnecessary excess.</p></div>
+            <div class="value"><i class="fa-solid fa-landmark"></i><h3>Heritage</h3><p>We keep traditional craft relevant through fresh, wearable design.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="founder-grid">
+        <div class="founder-copy reveal">
+          <span class="eyebrow" style="color:var(--accent)">Meet the founder</span>
+          <h2>Designed with a personal point of view.</h2>
+          <p>Afifa founded the brand with a simple purpose: to share the beauty of block-printed textiles in a way that feels personal, elegant and accessible.</p>
+          <p>Her creative direction blends a respect for traditional techniques with an instinct for colour and modern styling. Every collection reflects the belief that handcrafted pieces can be both culturally meaningful and naturally suited to contemporary homes and wardrobes.</p>
+          <div class="signature">— Afifa</div>
+        </div>
+        <div class="founder-photo reveal"><img src="images/IMG-20250619-WA0015.jpg" alt="Creative work behind Block Prints by Afifa" /></div>
+      </div>
+    </section>
+
+    <section class="cta reveal">
+      <div class="cta-inner">
+        <span class="eyebrow" style="justify-content:center">Discover our world</span>
+        <h2>Pieces made with patience, creativity and tradition.</h2>
+        <p>Explore handcrafted clothing, accessories and home textiles designed to bring colour and character into everyday life.</p>
+        <a href="stitched.html" class="btn btn-light">Shop the Collection <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="images/logo.png" alt="Block Prints by Afifa" class="footer-logo" />
+        <p>Handcrafted block prints rooted in tradition and made with love in Karachi.</p>
+        <p><strong>Email:</strong> <a href="mailto:blockprintsbyafifa@hotmail.com">blockprintsbyafifa@hotmail.com</a></p>
+        <p><strong>Phone:</strong> <a href="tel:+923252041288">+92 325 2041288</a></p>
+        <div class="social-icons"><a href="https://www.instagram.com/blockprintsbyafifa/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="https://www.facebook.com/blockprintsbyafifa" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a></div>
+      </div>
+      <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="aboutus.html">About</a></li><li><a href="contactus.html">Contact</a></li><li><a href="unstitched.html">Unstitched</a></li><li><a href="stitched.html">Stitched</a></li><li><a href="totebag.html">Tote Bags</a></li><li><a href="dupandstole.html">Dupatta & Stoles</a></li><li><a href="homedecor.html">Home Decor</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2026 Block Prints by Afifa. All rights reserved.</p></div>
+  </footer>
+
+  <div id="cart-overlay" class="cart-overlay" onclick="closeCartSidebar()"></div>
+  <aside id="cart-sidebar" class="sidebar">
+    <div class="cart-header"><h2>Your Cart</h2><button class="cart-close-icon" onclick="closeCartSidebar()" aria-label="Close cart">&times;</button></div>
+    <div id="cart-content" class="cart-content"><div class="empty-cart"><i class="fa-solid fa-cart-shopping"></i><p>Your cart is currently empty.</p></div></div>
+    <div id="cart-summary" class="cart-summary"><div class="cart-total-row"><span>Subtotal</span><span id="cart-total">PKR 0</span></div><button class="checkout-button" onclick="proceedToCheckout()">Proceed to Checkout</button><button class="continue-shopping-button" onclick="closeCartSidebar()">Continue Shopping</button></div>
+  </aside>
+
+  <script>
+    function toggleMenu(){ document.getElementById('main-nav').classList.toggle('show'); }
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); } }), {threshold:.12});
+    reveals.forEach(el => observer.observe(el));
+
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    function formatPrice(amount){ return 'PKR ' + Number(amount).toLocaleString('en-PK'); }
+    function saveCart(){ localStorage.setItem('cartItems', JSON.stringify(cartItems)); updateCartUI(); }
+    function updateCartUI(){
+      const content=document.getElementById('cart-content'), summary=document.getElementById('cart-summary'), count=document.getElementById('cart-count'), total=document.getElementById('cart-total');
+      const qty=cartItems.reduce((s,i)=>s+Number(i.quantity||1),0), subtotal=cartItems.reduce((s,i)=>s+Number(i.price)*Number(i.quantity||1),0);
+      count.textContent=qty; total.textContent=formatPrice(subtotal);
+      if(!cartItems.length){ content.innerHTML='<div class="empty-cart"><i class="fa-solid fa-cart-shopping"></i><p>Your cart is currently empty.</p></div>'; summary.classList.remove('show'); return; }
+      summary.classList.add('show');
+      content.innerHTML=cartItems.map((item,index)=>`<div class="cart-item"><img src="${item.image}" alt="${item.name}"><div class="cart-item-info"><h4>${item.name}</h4><p>${item.category||item.type||'Block print item'}</p><p class="cart-price">${formatPrice(item.price)}</p><div class="quantity-row"><button onclick="changeCartQuantity(${index},-1)">−</button><span>${item.quantity||1}</span><button onclick="changeCartQuantity(${index},1)">+</button></div><button class="remove-item" onclick="removeCartItem(${index})">Remove</button></div></div>`).join('');
     }
-
-    saveCart();
-    openCartSidebar();
-    showCartToast(product.name + ' added to cart');
-  }
-
-  function changeCartQuantity(index, amount) {
-    if (!cartItems[index]) return;
-    cartItems[index].quantity = Number(cartItems[index].quantity || 1) + amount;
-
-    if (cartItems[index].quantity <= 0) {
-      cartItems.splice(index, 1);
-    }
-
-    saveCart();
-  }
-
-  function removeCartItem(index) {
-    cartItems.splice(index, 1);
-    saveCart();
-  }
-
-  function openCartSidebar() {
-    const sidebar = document.getElementById('cart-sidebar');
-    const overlay = document.getElementById('cart-overlay');
-    if (sidebar) sidebar.classList.add('open');
-    if (overlay) overlay.classList.add('open');
-    updateCartUI();
-  }
-
-  function toggleCartSidebar(event) {
-    if (event) event.preventDefault();
-    const sidebar = document.getElementById('cart-sidebar');
-    const overlay = document.getElementById('cart-overlay');
-    if (sidebar) sidebar.classList.toggle('open');
-    if (overlay) overlay.classList.toggle('open');
-    updateCartUI();
-  }
-
-  function closeCartSidebar() {
-    const sidebar = document.getElementById('cart-sidebar');
-    const overlay = document.getElementById('cart-overlay');
-    if (sidebar) sidebar.classList.remove('open');
-    if (overlay) overlay.classList.remove('open');
-  }
-
-  function toggleWishlistSidebar() {
-    const wishlist = document.getElementById('wishlist-sidebar');
-    if (wishlist) wishlist.classList.toggle('open');
-  }
-
-  function closeWishlistSidebar() {
-    const wishlist = document.getElementById('wishlist-sidebar');
-    if (wishlist) wishlist.classList.remove('open');
-  }
-
-  function proceedToCheckout() {
-    if (!cartItems.length) {
-      alert('Your cart is empty. Please add an item first.');
-      return;
-    }
-
-    localStorage.setItem('checkoutCart', JSON.stringify(cartItems));
-    window.location.href = 'checkout.html';
-  }
-
-  function showCartToast(message) {
-    const toast = document.getElementById('cart-toast');
-    if (!toast) return;
-    toast.textContent = message;
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 1800);
-  }
-
-  document.addEventListener('DOMContentLoaded', updateCartUI);
-</script>
-
-
+    function changeCartQuantity(index,amount){ if(!cartItems[index])return; cartItems[index].quantity=Number(cartItems[index].quantity||1)+amount; if(cartItems[index].quantity<=0)cartItems.splice(index,1); saveCart(); }
+    function removeCartItem(index){ cartItems.splice(index,1); saveCart(); }
+    function toggleCartSidebar(event){ if(event)event.preventDefault(); document.getElementById('cart-sidebar').classList.toggle('open'); document.getElementById('cart-overlay').classList.toggle('open'); updateCartUI(); }
+    function closeCartSidebar(){ document.getElementById('cart-sidebar').classList.remove('open'); document.getElementById('cart-overlay').classList.remove('open'); }
+    function proceedToCheckout(){ if(!cartItems.length){ alert('Your cart is empty. Please add an item first.'); return; } localStorage.setItem('checkoutCart',JSON.stringify(cartItems)); window.location.href='checkout(2).html'; }
+    document.addEventListener('DOMContentLoaded', updateCartUI);
+  </script>
 </body>
-</html>  
-
-
-
-
-
-
-
-
-
-
+</html>

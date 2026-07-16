@@ -198,100 +198,21 @@
       border: 1px solid var(--border-color);
     }
 
-    /* ===== FOOTER ===== */
-    .site-footer {
-      background-color: var(--primary-color);
-      color: #fff;
-      padding: 60px 6% 30px;
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    .footer-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 40px;
-    }
-
-    .footer-brand {
-      flex: 1 1 300px;
-    }
-
-    .footer-logo {
-      width: 120px;
-      margin-bottom: 20px;
-    }
-
-    .footer-brand p {
-      font-size: 15px;
-      line-height: 1.7;
-      margin-bottom: 10px;
-    }
-
-    .footer-brand a {
-      color: #fff;
-      text-decoration: none;
-    }
-
-    .footer-brand a:hover {
-      text-decoration: underline;
-    }
-
-    .social-icons {
-      margin-top: 15px;
-    }
-
-    .social-icons a {
-      margin-right: 15px;
-      display: inline-block;
-    }
-
-    .social-icons img {
-      width: 24px;
-      height: 24px;
-      filter: brightness(0) invert(1);
-      transition: opacity 0.3s;
-    }
-
-    .social-icons img:hover {
-      opacity: 0.7;
-    }
-
-    .footer-links {
-      flex: 1 1 200px;
-    }
-
-    .footer-links h4 {
-      font-size: 18px;
-      margin-bottom: 15px;
-      font-family: 'Playfair Display', serif;
-    }
-
-    .footer-links ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .footer-links li {
-      margin-bottom: 10px;
-    }
-
-    .footer-links a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 15px;
-    }
-
-    .footer-links a:hover {
-      text-decoration: underline;
-    }
-
-    .footer-bottom {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 14px;
-      color: var(--background-pink);
-    }
+    /* ===== FOOTER — MATCHES ABOUT US PAGE ===== */
+    .site-footer { background: var(--primary-color); color: #fff; padding: 60px 6% 30px; }
+    .footer-container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; }
+    .footer-brand { flex: 1 1 340px; }
+    .footer-logo { width: 120px; margin-bottom: 20px; }
+    .footer-brand p { font-size: 14px; margin-bottom: 10px; }
+    .footer-brand a, .footer-links a { color: #fff; text-decoration: none; }
+    .footer-links { flex: 1 1 220px; }
+    .footer-links h4 { font-family: 'Playfair Display', serif; font-size: 20px; margin-bottom: 14px; }
+    .footer-links ul { list-style: none; columns: 2; padding: 0; }
+    .footer-links li { margin-bottom: 8px; }
+    .footer-links a { font-size: 14px; }
+    .social-icons { margin-top: 16px; display: flex; gap: 14px; }
+    .social-icons a { width: 38px; height: 38px; border: 1px solid rgba(255,255,255,.35); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; }
+    .footer-bottom { margin-top: 42px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.16); text-align: center; font-size: 13px; color: #f8ddea; }
 
     /* ===== CART SIDEBAR ===== */
     .cart-overlay {
@@ -795,38 +716,15 @@
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-brand">
-        <img src="images/logo.png" alt="Block Prints by Afifa Logo" class="footer-logo">
+        <img src="images/logo.png" alt="Block Prints by Afifa" class="footer-logo" />
         <p>Handcrafted block prints rooted in tradition and made with love in Karachi.</p>
         <p><strong>Email:</strong> <a href="mailto:blockprintsbyafifa@hotmail.com">blockprintsbyafifa@hotmail.com</a></p>
-        <p><strong>Phone:</strong> <a href="tel:+923252041288">+923252041288</a></p>
-        <div class="social-icons">
-          <a href="https://www.instagram.com/blockprintsbyafifa/" target="_blank">
-            <img src="images/instagram.svg" alt="Instagram">
-          </a>
-          <a href="https://www.facebook.com/blockprintsbyafifa" target="_blank">
-            <img src="images/facebook.svg" alt="Facebook">
-          </a>
-        </div>
+        <p><strong>Phone:</strong> <a href="tel:+923252041288">+92 325 2041288</a></p>
+        <div class="social-icons"><a href="https://www.instagram.com/blockprintsbyafifa/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="https://www.facebook.com/blockprintsbyafifa" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a></div>
       </div>
-
-      <div class="footer-links">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="aboutus.html">About</a></li>
-          <li><a href="contactus.html">Contact</a></li>
-          <li><a href="stitched.html">Stitched</a></li>
-          <li><a href="unstitched.html">Unstitched</a></li>
-          <li><a href="totebag.html">Totebag</a></li>
-          <li><a href="dupandstole.html">Dupatta and Stoles</a></li>
-          <li><a href="homedecor.html">Home Decor</a></li>
-        </ul>
-      </div>
+      <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="aboutus.html">About</a></li><li><a href="contactus.html">Contact</a></li><li><a href="unstitched.html">Unstitched</a></li><li><a href="stitched.html">Stitched</a></li><li><a href="totebag.html">Tote Bags</a></li><li><a href="dupandstole.html">Dupatta &amp; Stoles</a></li><li><a href="homedecor.html">Home Decor</a></li></ul></div>
     </div>
-
-    <div class="footer-bottom">
-      <p>&copy; 2025 Block Prints by Afifa. All rights reserved.</p>
-    </div>
+    <div class="footer-bottom"><p>&copy; 2026 Block Prints by Afifa. All rights reserved.</p></div>
   </footer>
 
   <!-- Cart Sidebar -->

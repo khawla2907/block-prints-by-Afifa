@@ -632,6 +632,30 @@
         margin-top: 20px;
       }
     }
+  
+/* ===== MATCHING PREMIUM FOOTER ===== */
+.site-footer { background:#8b1e3f; color:#fff; padding:60px 6% 30px; font-family:'Montserrat',sans-serif; }
+.footer-container { display:flex; flex-wrap:wrap; justify-content:space-between; gap:40px; }
+.footer-brand { flex:1 1 340px; }
+.footer-logo { width:120px; margin-bottom:20px; }
+.footer-brand p { font-size:14px; line-height:1.7; margin-bottom:10px; }
+.footer-brand a, .footer-links a { color:#fff; text-decoration:none; }
+.footer-links { flex:1 1 220px; }
+.footer-links h4 { font-family:'Playfair Display',serif; font-size:20px; margin-bottom:14px; }
+.footer-links ul { list-style:none; padding:0; columns:2; }
+.footer-links li { margin-bottom:8px; }
+.footer-links a { font-size:14px; }
+.footer-links a:hover { text-decoration:underline; }
+.social-icons { margin-top:16px; display:flex; gap:14px; }
+.social-icons a { width:38px; height:38px; border:1px solid rgba(255,255,255,.35); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; transition:transform .25s ease, background .25s ease; }
+.social-icons a:hover { transform:translateY(-3px); background:rgba(255,255,255,.12); }
+.footer-bottom { margin-top:42px; padding-top:22px; border-top:1px solid rgba(255,255,255,.16); text-align:center; font-size:13px; color:#f8ddea; }
+.submit-status { display:none; margin-top:15px; padding:13px 15px; border-radius:10px; font-size:14px; line-height:1.6; }
+.submit-status.show { display:block; }
+.submit-status.success { background:#edf9f0; color:#1d6b37; border:1px solid #b9e2c5; }
+.submit-status.error { background:#fff0f2; color:#8b1e3f; border:1px solid #efc2cc; }
+button.is-loading { opacity:.7; cursor:wait; }
+
   </style>
 </head>
 <body>
@@ -654,7 +678,7 @@
       <a href="totebag.html">TOTE BAG</a>
       <a href="contactus.html">CONTACT</a>
       <a href="dupandstole.html">STOLES AND DUPPATTA</a>
-      <a href="checkout.html" class="cart-nav-link active"><i class="fa-solid fa-cart-shopping"></i><span id="cart-count">0</span></a>
+      <a href="checkout(2).html" class="cart-nav-link active"><i class="fa-solid fa-cart-shopping"></i><span id="cart-count">0</span></a>
     </nav>
   </header>
 
@@ -676,17 +700,17 @@
           <div class="form-grid">
             <div class="form-group">
               <label for="fullName">Full Name *</label>
-              <input type="text" id="fullName" placeholder="Enter your full name" required />
+              <input type="text" id="fullName" name="fullName" autocomplete="name" placeholder="Enter your full name" required />
             </div>
 
             <div class="form-group">
               <label for="phone">Phone Number *</label>
-              <input type="tel" id="phone" placeholder="03XXXXXXXXX" required />
+              <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="03XXXXXXXXX" required />
             </div>
 
             <div class="form-group full">
               <label for="email">Email Address *</label>
-              <input type="email" id="email" placeholder="example@email.com" required />
+              <input type="email" id="email" name="email" autocomplete="email" placeholder="example@email.com" required />
             </div>
           </div>
 
@@ -694,12 +718,12 @@
           <div class="form-grid">
             <div class="form-group full">
               <label for="address">Complete Address *</label>
-              <textarea id="address" placeholder="House / apartment, street, area" required></textarea>
+              <textarea id="address" name="address" autocomplete="street-address" placeholder="House / apartment, street, area" required></textarea>
             </div>
 
             <div class="form-group">
               <label for="city">City *</label>
-              <select id="city" required>
+              <select id="city" name="city" required>
                 <option value="">Select city</option>
                 <option>Karachi</option>
                 <option>Lahore</option>
@@ -716,12 +740,12 @@
 
             <div class="form-group">
               <label for="postalCode">Postal Code</label>
-              <input type="text" id="postalCode" placeholder="Optional" />
+              <input type="text" id="postalCode" name="postalCode" autocomplete="postal-code" placeholder="Optional" />
             </div>
 
             <div class="form-group full">
               <label for="notes">Order Notes</label>
-              <textarea id="notes" placeholder="Any fabric, delivery or gift note? Optional"></textarea>
+              <textarea id="notes" name="notes" placeholder="Any fabric, delivery or gift note? Optional"></textarea>
             </div>
           </div>
 
@@ -744,11 +768,11 @@
             </label>
           </div>
 
-          <button type="submit" class="place-order-btn">Place Order</button>
+          <button type="submit" class="place-order-btn" id="place-order-btn">Place Order</button>
 
           <div class="secure-note">
             <i class="fa-solid fa-lock"></i>
-            <span>This is a front-end checkout page for your website. It does not process real online payments unless connected to a payment gateway or backend later.</span>
+            <span>Your order details are submitted securely. Bank-transfer instructions can be shared after order confirmation.</span>
           </div>
 
           <div class="success-message" id="success-message"></div>
@@ -783,45 +807,34 @@
     </section>
   </main>
 
-  <!-- ===== FOOTER SECTION ===== -->
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-brand">
-        <img src="images/logo.png" alt="Block Prints by Afifa Logo" class="footer-logo" />
+        <img src="images/logo.png" alt="Block Prints by Afifa" class="footer-logo" />
         <p>Handcrafted block prints rooted in tradition and made with love in Karachi.</p>
         <p><strong>Email:</strong> <a href="mailto:blockprintsbyafifa@hotmail.com">blockprintsbyafifa@hotmail.com</a></p>
-        <p><strong>Phone:</strong> <a href="tel:+923252041288">+923252041288</a></p>
+        <p><strong>Phone:</strong> <a href="tel:+923252041288">+92 325 2041288</a></p>
         <div class="social-icons">
-          <a href="https://www.instagram.com/blockprintsbyafifa/" target="_blank">
-            <img src="images/instagram.svg" alt="Instagram" />
-          </a>
-          <a href="https://www.facebook.com/blockprintsbyafifa" target="_blank">
-            <img src="images/facebook.svg" alt="Facebook" />
-          </a>
+          <a href="https://www.instagram.com/blockprintsbyafifa/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.facebook.com/blockprintsbyafifa" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
         </div>
       </div>
-
       <div class="footer-links">
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="aboutus.html">About</a></li>
-          <li><a href="contactus.html">Contact</a></li>
-          <li><a href="unstitched.html">Unstitched</a></li>
-          <li><a href="totebag.html">Totebag</a></li>
-          <li><a href="dupandstole.html">Duppatta and Stoles</a></li>
-          <li><a href="homedecor.html">Home Decor</a></li>
-          <li><a href="stitched.html">Stitched</a></li>
+          <li><a href="index.html">Home</a></li><li><a href="aboutus.html">About</a></li>
+          <li><a href="contactus.html">Contact</a></li><li><a href="unstitched.html">Unstitched</a></li>
+          <li><a href="stitched.html">Stitched</a></li><li><a href="totebag.html">Tote Bags</a></li>
+          <li><a href="dupandstole.html">Dupatta &amp; Stoles</a></li><li><a href="homedecor.html">Home Decor</a></li>
         </ul>
       </div>
     </div>
-
-    <div class="footer-bottom">
-      <p>&copy; 2025 Block Prints by Afifa. All rights reserved.</p>
-    </div>
+    <div class="footer-bottom"><p>&copy; 2026 Block Prints by Afifa. All rights reserved.</p></div>
   </footer>
 
   <script>
+    // Paste the Google Apps Script Web App URL created from google-sheets-script.gs here.
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyskwMvXxNOElRkbbYZLFl6xJ2YknS6SZ5IJ2bjmxRLKyP9uajhbYNtirmQddjsDpKfLw/exec';
     const deliveryCharge = 200;
     let checkoutCart = loadCheckoutCart();
 
@@ -926,7 +939,7 @@
       renderCheckout();
     }
 
-    document.getElementById('checkout-form').addEventListener('submit', function(event) {
+    document.getElementById('checkout-form').addEventListener('submit', async function(event) {
       event.preventDefault();
 
       if (!checkoutCart.length) {
@@ -934,26 +947,78 @@
         return;
       }
 
+      const successBox = document.getElementById('success-message');
+      const button = document.getElementById('place-order-btn');
+
+      if (GOOGLE_SCRIPT_URL.includes('PASTE_YOUR')) {
+        successBox.innerHTML = '<strong>Google Sheets is not connected yet.</strong><br>Paste your Apps Script Web App URL into this checkout file.';
+        successBox.classList.add('show');
+        return;
+      }
+
       const selectedPayment = document.querySelector('input[name="payment"]:checked').value;
-      const orderNumber = 'BPA-' + Math.floor(100000 + Math.random() * 900000);
-      const total = cartSubtotal() + deliveryCharge;
+      const orderNumber = 'BPA-' + Date.now().toString().slice(-8);
+      const subtotal = cartSubtotal();
+      const delivery = subtotal > 0 ? deliveryCharge : 0;
+      const total = subtotal + delivery;
       const customerName = document.getElementById('fullName').value.trim();
       const city = document.getElementById('city').value;
-      const successBox = document.getElementById('success-message');
 
-      successBox.innerHTML = `
-        <strong>Thank you, ${customerName}!</strong><br>
-        Your order <strong>${orderNumber}</strong> has been placed successfully for <strong>${formatPrice(total)}</strong>.<br>
-        Payment method: <strong>${selectedPayment}</strong>. Delivery city: <strong>${city}</strong>.
-      `;
-      successBox.classList.add('show');
+      const itemsForSheet = checkoutCart.map(item => ({
+        name: item.name || '',
+        category: item.category || item.type || '',
+        quantity: Number(item.quantity || 1),
+        unitPrice: Number(item.price || 0),
+        lineTotal: Number(item.price || 0) * Number(item.quantity || 1),
+        shirtFabric: item.shirtFabric || '',
+        dupattaFabric: item.dupattaFabric || ''
+      }));
 
-      localStorage.removeItem('cartItems');
-      localStorage.removeItem('checkoutCart');
-      checkoutCart = [];
-      renderCheckout();
-      this.reset();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const data = new URLSearchParams({
+        formType: 'order',
+        submittedAt: new Date().toISOString(),
+        orderNumber,
+        fullName: customerName,
+        phone: document.getElementById('phone').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        address: document.getElementById('address').value.trim(),
+        city,
+        postalCode: document.getElementById('postalCode').value.trim(),
+        notes: document.getElementById('notes').value.trim(),
+        paymentMethod: selectedPayment,
+        items: JSON.stringify(itemsForSheet),
+        subtotal: String(subtotal),
+        delivery: String(delivery),
+        total: String(total),
+        page: window.location.href
+      });
+
+      button.disabled = true;
+      button.classList.add('is-loading');
+      button.textContent = 'Submitting Order...';
+
+      try {
+        await fetch(GOOGLE_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: data });
+        successBox.innerHTML = `
+          <strong>Thank you, ${customerName}!</strong><br>
+          Your order <strong>${orderNumber}</strong> has been submitted for <strong>${formatPrice(total)}</strong>.<br>
+          Payment method: <strong>${selectedPayment}</strong>. Delivery city: <strong>${city}</strong>.
+        `;
+        successBox.classList.add('show');
+        localStorage.removeItem('cartItems');
+        localStorage.removeItem('checkoutCart');
+        checkoutCart = [];
+        this.reset();
+        renderCheckout();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } catch (error) {
+        successBox.innerHTML = '<strong>Order not submitted.</strong><br>Please check your internet connection and try again.';
+        successBox.classList.add('show');
+      } finally {
+        button.disabled = false;
+        button.classList.remove('is-loading');
+        button.textContent = 'Place Order';
+      }
     });
 
     renderCheckout();

@@ -760,6 +760,30 @@
       .contact-card h2, .contact-form-card h2, .map-card h2 { font-size: 29px; }
     }
 
+  
+/* ===== MATCHING PREMIUM FOOTER ===== */
+.site-footer { background:#8b1e3f; color:#fff; padding:60px 6% 30px; font-family:'Montserrat',sans-serif; }
+.footer-container { display:flex; flex-wrap:wrap; justify-content:space-between; gap:40px; }
+.footer-brand { flex:1 1 340px; }
+.footer-logo { width:120px; margin-bottom:20px; }
+.footer-brand p { font-size:14px; line-height:1.7; margin-bottom:10px; }
+.footer-brand a, .footer-links a { color:#fff; text-decoration:none; }
+.footer-links { flex:1 1 220px; }
+.footer-links h4 { font-family:'Playfair Display',serif; font-size:20px; margin-bottom:14px; }
+.footer-links ul { list-style:none; padding:0; columns:2; }
+.footer-links li { margin-bottom:8px; }
+.footer-links a { font-size:14px; }
+.footer-links a:hover { text-decoration:underline; }
+.social-icons { margin-top:16px; display:flex; gap:14px; }
+.social-icons a { width:38px; height:38px; border:1px solid rgba(255,255,255,.35); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; transition:transform .25s ease, background .25s ease; }
+.social-icons a:hover { transform:translateY(-3px); background:rgba(255,255,255,.12); }
+.footer-bottom { margin-top:42px; padding-top:22px; border-top:1px solid rgba(255,255,255,.16); text-align:center; font-size:13px; color:#f8ddea; }
+.submit-status { display:none; margin-top:15px; padding:13px 15px; border-radius:10px; font-size:14px; line-height:1.6; }
+.submit-status.show { display:block; }
+.submit-status.success { background:#edf9f0; color:#1d6b37; border:1px solid #b9e2c5; }
+.submit-status.error { background:#fff0f2; color:#8b1e3f; border:1px solid #efc2cc; }
+button.is-loading { opacity:.7; cursor:wait; }
+
   </style>
 </head>
 <body>
@@ -833,7 +857,7 @@
 
       <div class="contact-form-card">
         <h2>Send a Message</h2>
-        <form id="contact-form" onsubmit="submitContactForm(event)">
+        <form id="contact-form">
           <div class="form-row">
             <div class="form-group">
               <label for="name">Full Name</label>
@@ -868,8 +892,9 @@
             <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
           </div>
 
-          <button type="submit" class="primary-btn">Send Message</button>
-          <p class="form-note">This is a static form for your website layout. To receive messages online, connect it later with Formspree, EmailJS, PHP, or a backend service.</p>
+          <button type="submit" class="primary-btn" id="contact-submit">Send Message</button>
+          <div id="contact-status" class="submit-status" role="status" aria-live="polite"></div>
+          <p class="form-note">Your enquiry will be securely recorded for the Block Prints by Afifa team.</p>
         </form>
       </div>
     </div>
@@ -886,42 +911,29 @@
     </div>
   </section>
 
-  <!-- ===== FOOTER SECTION ===== -->
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-brand">
-        <img src="images/logo.png" alt="Block Prints by Afifa Logo" class="footer-logo">
+        <img src="images/logo.png" alt="Block Prints by Afifa" class="footer-logo" />
         <p>Handcrafted block prints rooted in tradition and made with love in Karachi.</p>
         <p><strong>Email:</strong> <a href="mailto:blockprintsbyafifa@hotmail.com">blockprintsbyafifa@hotmail.com</a></p>
-        <p><strong>Phone:</strong> <a href="tel:+923252041288">+923252041288</a></p>
+        <p><strong>Phone:</strong> <a href="tel:+923252041288">+92 325 2041288</a></p>
         <div class="social-icons">
-          <a href="https://www.instagram.com/blockprintsbyafifa/" target="_blank">
-            <img src="images/instagram.svg" alt="Instagram">
-          </a>
-          <a href="https://www.facebook.com/blockprintsbyafifa" target="_blank">
-            <img src="images/facebook.svg" alt="Facebook">
-          </a>
+          <a href="https://www.instagram.com/blockprintsbyafifa/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.facebook.com/blockprintsbyafifa" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
         </div>
       </div>
-
       <div class="footer-links">
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="aboutus.html">About</a></li>
-          <li><a href="contactus.html">Contact</a></li>
-          <li><a href="stitched.html">Stitched</a></li>
-          <li><a href="unstitched.html">Unstitched</a></li>
-          <li><a href="totebag.html">Totebag</a></li>
-          <li><a href="dupandstole.html">Dupatta and Stoles</a></li>
-          <li><a href="homedecor.html">Home Decor</a></li>
+          <li><a href="index.html">Home</a></li><li><a href="aboutus.html">About</a></li>
+          <li><a href="contactus.html">Contact</a></li><li><a href="unstitched.html">Unstitched</a></li>
+          <li><a href="stitched.html">Stitched</a></li><li><a href="totebag.html">Tote Bags</a></li>
+          <li><a href="dupandstole.html">Dupatta &amp; Stoles</a></li><li><a href="homedecor.html">Home Decor</a></li>
         </ul>
       </div>
     </div>
-
-    <div class="footer-bottom">
-      <p>&copy; 2025 Block Prints by Afifa. All rights reserved.</p>
-    </div>
+    <div class="footer-bottom"><p>&copy; 2026 Block Prints by Afifa. All rights reserved.</p></div>
   </footer>
 
   <!-- Cart Sidebar -->
@@ -1066,7 +1078,7 @@
         return;
       }
       localStorage.setItem('checkoutCart', JSON.stringify(cartItems));
-      window.location.href = 'checkout.html';
+      window.location.href = 'checkout(2).html';
     }
 
     function showCartToast(message) {
@@ -1079,14 +1091,52 @@
 
     document.addEventListener('DOMContentLoaded', renderCart);
   </script>
-
   <script>
-    function submitContactForm(event) {
+    // Paste the Google Apps Script Web App URL created from google-sheets-script.gs here.
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyskwMvXxNOElRkbbYZLFl6xJ2YknS6SZ5IJ2bjmxRLKyP9uajhbYNtirmQddjsDpKfLw/exec';
+
+    document.getElementById('contact-form').addEventListener('submit', async function (event) {
       event.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      alert('Thank you, ' + name + '! Your message has been prepared. Please connect this form to an email service before publishing.');
-      document.getElementById('contact-form').reset();
-    }
+      const form = this;
+      const button = document.getElementById('contact-submit');
+      const status = document.getElementById('contact-status');
+
+      if (GOOGLE_SCRIPT_URL.includes('PASTE_YOUR')) {
+        status.textContent = 'Google Sheets is not connected yet. Paste your Apps Script Web App URL into this HTML file.';
+        status.className = 'submit-status show error';
+        return;
+      }
+
+      button.disabled = true;
+      button.classList.add('is-loading');
+      button.textContent = 'Sending...';
+      status.className = 'submit-status';
+
+      const data = new URLSearchParams({
+        formType: 'contact',
+        submittedAt: new Date().toISOString(),
+        name: document.getElementById('name').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value.trim(),
+        page: window.location.href
+      });
+
+      try {
+        await fetch(GOOGLE_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: data });
+        status.textContent = 'Thank you! Your message has been sent successfully.';
+        status.className = 'submit-status show success';
+        form.reset();
+      } catch (error) {
+        status.textContent = 'Your message could not be sent. Please check your internet connection or contact us by phone.';
+        status.className = 'submit-status show error';
+      } finally {
+        button.disabled = false;
+        button.classList.remove('is-loading');
+        button.textContent = 'Send Message';
+      }
+    });
   </script>
 
 </body>
