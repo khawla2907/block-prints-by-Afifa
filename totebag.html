@@ -37,12 +37,12 @@
       left: 0;
       width: 100%;
       z-index: 1000;
-      background-color: rgba(139, 30, 63, 0.84);
+      background-color: rgba(139, 30, 63, 0.85);
       padding: 18px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 3px 18px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
       backdrop-filter: blur(8px);
     }
 
@@ -111,29 +111,49 @@
       border-radius: 2px;
     }
 
-    .page-spacer {
-      height: 126px;
-    }
-
-    .page-heading {
+    .page-hero {
+      min-height: 380px;
+      padding: 110px 6% 80px;
+      background: linear-gradient(135deg, rgba(139,30,63,0.90), rgba(179,54,90,0.75)), url('images/hero.png') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 44px 6% 30px;
-      background: linear-gradient(135deg, #fff5f8, #f8ddea);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
     }
 
-    .page-heading h1 {
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.10);
+      right: -90px;
+      bottom: -90px;
+    }
+
+    .page-hero-content {
+      max-width: 850px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-hero h1 {
       font-family: 'Playfair Display', serif;
-      color: var(--primary-color);
-      font-size: clamp(34px, 5vw, 58px);
-      margin-bottom: 10px;
+      font-size: clamp(40px, 6vw, 68px);
+      margin-bottom: 16px;
+      letter-spacing: 0.8px;
     }
 
-    .page-heading p {
-      max-width: 760px;
+    .page-hero p {
+      font-size: 18px;
+      max-width: 680px;
       margin: 0 auto;
-      line-height: 1.7;
-      color: #6f4a47;
-      font-size: 15px;
+      opacity: 0.96;
+      line-height: 1.6;
     }
 
     .category-section {
@@ -774,8 +794,9 @@
         height: 58px;
       }
 
-      .page-spacer {
-        height: 98px;
+      .page-hero {
+        min-height: 320px;
+        padding: 95px 24px 60px;
       }
 
       .category-item img {
@@ -849,11 +870,11 @@
     </nav>
   </header>
 
-  <div class="page-spacer"></div>
-
-  <section class="page-heading reveal">
-    <h1>Tote Bag Collection</h1>
-    <p>Explore handcrafted cotton tote bags and pouches with traditional block print charm.</p>
+  <section class="page-hero reveal">
+    <div class="page-hero-content">
+      <h1>Tote Bag Collection</h1>
+      <p>Explore handcrafted cotton tote bags and pouches with traditional block-print charm.</p>
+    </div>
   </section>
 
   <section class="category-section reveal">

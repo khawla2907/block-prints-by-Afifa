@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Unstitched Collection | Block Prints by Afifa</title>
+  <title>Shop Unstitched Collection | Block Prints by Afifa</title>
   <link rel="icon" href="images/logo.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -39,13 +39,13 @@
       left: 0;
       width: 100%;
       z-index: 1000;
-      background-color: rgba(139, 30, 63, 0.82);
+      background-color: rgba(139, 30, 63, 0.85);
       padding: 18px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-      backdrop-filter: blur(6px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(8px);
     }
 
     .logo img {
@@ -113,32 +113,54 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.18);
     }
 
-    .page-spacer {
-      height: 135px;
-    }
-
-    .page-heading {
+    .page-hero {
+      min-height: 380px;
+      padding: 110px 6% 80px;
+      background:
+        linear-gradient(135deg, rgba(139,30,63,0.90), rgba(179,54,90,0.75)),
+        url('images/hero.png') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 34px 6% 22px;
-      background: linear-gradient(135deg, #fff5f8, #f8ddea);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
     }
 
-    .page-heading h1 {
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.10);
+      right: -90px;
+      bottom: -90px;
+    }
+
+    .page-hero-content {
+      max-width: 850px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-hero h1 {
       font-family: 'Playfair Display', serif;
-      color: var(--primary-color);
-      font-size: clamp(34px, 5vw, 58px);
-      margin-bottom: 10px;
+      font-size: clamp(40px, 6vw, 68px);
+      margin-bottom: 16px;
+      letter-spacing: 0.8px;
     }
 
-    .page-heading p {
-      max-width: 720px;
+    .page-hero p {
+      font-size: 18px;
+      max-width: 680px;
       margin: 0 auto;
-      line-height: 1.7;
-      color: #6f4a47;
-      font-size: 15px;
+      opacity: 0.96;
+      line-height: 1.6;
     }
 
-    /* ===== TOOLBAR ===== */
+/* ===== TOOLBAR ===== */
     .toolbar {
       display: flex;
       justify-content: space-between;
@@ -185,8 +207,7 @@
       background: var(--primary-color);
       color: #fff;
     }
-
-    /* ===== PRODUCT GRID ===== */
+/* ===== PRODUCT GRID ===== */
     .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -268,8 +289,7 @@
       padding: 0 17px 18px;
     }
 
-    .details-btn,
-    .add-listing-btn {
+    .details-btn {
       flex: 1;
       text-align: center;
       border-radius: 30px;
@@ -291,15 +311,47 @@
       background: #fdf1f5;
     }
 
-    .add-listing-btn {
-      border: none;
-      color: white;
-      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+
+
+    .product-image-link,
+    .product-title-link {
+      color: inherit;
+      text-decoration: none;
+      display: block;
     }
 
-    .add-listing-btn:hover {
+    .product-image-link:focus-visible,
+    .product-title-link:focus-visible,
+    .details-btn:focus-visible {
+      outline: 3px solid rgba(139, 30, 63, 0.28);
+      outline-offset: 4px;
+      border-radius: 12px;
+    }
+
+    .product-title-link h4 {
+      transition: color 0.25s ease;
+    }
+
+    .product-title-link:hover h4 {
+      color: var(--accent-color);
+    }
+
+    .full-width-btn {
+      flex: 1 1 100%;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      color: #fff;
+      border: none;
+      box-shadow: 0 8px 18px rgba(139, 30, 63, 0.18);
+    }
+
+    .full-width-btn:hover {
+      background: linear-gradient(90deg, #741733, #9f294c);
+      color: #fff;
       transform: translateY(-2px);
-      box-shadow: 0 8px 18px rgba(139, 30, 63, 0.25);
+    }
+
+    .product-card {
+      cursor: default;
     }
 
     /* List View Mode */
@@ -565,6 +617,8 @@
       transform: translateX(-50%) translateY(0);
     }
 
+
+
     /* ===== FOOTER ===== */
     .site-footer {
       background: var(--primary-color);
@@ -652,12 +706,7 @@
         padding: 10px 0;
         font-size: 13px;
       }
-
-      .page-spacer {
-        height: 108px;
-      }
-
-      .toolbar {
+.toolbar {
         flex-direction: column;
         align-items: stretch;
       }
@@ -719,13 +768,13 @@
       </a>
     </nav>
   </header>
-
-  <div class="page-spacer"></div>
-
-  <section class="page-heading reveal">
-    <h1>Unstitched Collection</h1>
-    <p>Explore handcrafted three-piece block print sets with elegant shirts and beautifully paired dupattas. Add directly to cart or open each product for full details.</p>
+  <section class="page-hero reveal">
+    <div class="page-hero-content">
+      <h1>Unstitched Collection</h1>
+      <p>Handcrafted block-print designs with flexible one-piece, two-piece and complete three-piece options.</p>
+    </div>
   </section>
+
 
   <div class="toolbar reveal">
     <div>
@@ -743,8 +792,7 @@
       <button onclick="setList()">📋 List</button>
     </div>
   </div>
-
-  <div class="product-grid reveal" id="productContainer"></div>
+<div class="product-grid reveal" id="productContainer"></div>
 
   <!-- ===== FOOTER SECTION ===== -->
   <footer class="site-footer reveal">
@@ -760,6 +808,8 @@
     </div>
     <div class="footer-bottom"><p>&copy; 2026 Block Prints by Afifa. All rights reserved.</p></div>
   </footer>
+
+
 
   <!-- Cart Sidebar -->
   <div id="cart-overlay" class="cart-overlay" onclick="closeCartSidebar()"></div>
@@ -793,46 +843,46 @@
       {
         id: 'classic-duo',
         name: 'Classic Duo',
-        price: 5999,
+        price: 7999,
         url: 'classicdou.html',
         images: ['images/h1.jpeg', 'images/h2.jpeg', 'images/h3.jpeg'],
-        description: '3-piece set<br>Shirt: Cotton Silk / Cotton / Raw Silk<br>Dupatta: Khaddi Net / Cotton Net / Chiffon / Organza / Cotton',
+        description: 'Available in multiple set and fabric options.',
         popularity: 5
       },
       {
         id: 'citrus-charm',
         name: 'Citrus Charm',
-        price: 5999,
+        price: 7999,
         url: 'product-citrus-charm.html',
         images: ['images/hover1.jpeg', 'images/hover2.jpeg', 'images/hover3.jpeg'],
-        description: '3-piece set<br>Shirt: Cotton Silk / Cotton / Raw Silk<br>Dupatta: Khaddi Net / Cotton Net / Chiffon / Organza / Cotton',
+        description: 'Available in multiple set and fabric options.',
         popularity: 4
       },
       {
         id: 'gul-e-rang',
         name: 'Gul-e-rang',
-        price: 5999,
+        price: 7999,
         url: 'gul-e-rang.html',
         images: ['images/g1.jpeg', 'images/g2.jpeg', 'images/g3.jpeg'],
-        description: '3-piece set<br>Shirt: Cotton Silk / Cotton / Raw Silk<br>Dupatta: Khaddi Net / Cotton Net / Chiffon / Organza / Cotton',
+        description: 'Available in multiple set and fabric options.',
         popularity: 3
       },
       {
         id: 'sapphire',
         name: 'Sapphire',
-        price: 5999,
+        price: 7999,
         url: 'product-sapphire.html',
         images: ['images/b1.jpeg', 'images/b2.jpeg', 'images/b3.jpeg'],
-        description: '3-piece set<br>Shirt: Cotton Silk / Cotton / Raw Silk<br>Dupatta: Khaddi Net / Cotton Net / Chiffon / Organza / Cotton',
+        description: 'Available in multiple set and fabric options.',
         popularity: 2
       },
       {
         id: 'midnight-bloom',
         name: 'Midnight Bloom',
-        price: 5999,
+        price: 7999,
         url: 'product-midnight-bloom.html',
         images: ['images/mb1.jpeg', 'images/mb1.jpeg', 'images/mb1.jpeg'],
-        description: '3-piece set<br>Shirt: Cotton Silk / Cotton / Raw Silk<br>Dupatta: Khaddi Net / Cotton Net / Chiffon / Organza / Cotton',
+        description: 'Available in multiple set and fabric options.',
         popularity: 1
       }
     ];
@@ -860,19 +910,24 @@
       const container = document.getElementById('productContainer');
       container.innerHTML = visibleProducts.map(product => `
         <div class="product-card">
-          <div class="product-images">
-            <img src="${product.images[0]}" alt="${product.name}" />
-            <img src="${product.images[1]}" alt="${product.name}" />
-            <img src="${product.images[2]}" alt="${product.name}" />
-          </div>
+          <a href="${product.url}" class="product-image-link" aria-label="View ${product.name}">
+            <div class="product-images">
+              <img src="${product.images[0]}" alt="${product.name}" />
+              <img src="${product.images[1]}" alt="${product.name}" />
+              <img src="${product.images[2]}" alt="${product.name}" />
+            </div>
+          </a>
           <div class="product-info">
-            <h4>${product.name}</h4>
-            <p>${product.description}</p>
-            <div class="product-price">${formatPrice(product.price)}</div>
+            <a href="${product.url}" class="product-title-link">
+              <h4>${product.name}</h4>
+            </a>
+            <p>Available in one-piece, two-piece and complete three-piece options with multiple fabric choices.</p>
+            <div class="product-price">From ${formatPrice(2999)}</div>
           </div>
           <div class="product-actions">
-            <a class="details-btn" href="${product.url}">View Details</a>
-            <button class="add-listing-btn" onclick="addProductToCart('${product.id}')">Add to Cart</button>
+            <a class="details-btn full-width-btn" href="${product.url}">
+              View Product
+            </a>
           </div>
         </div>
       `).join('');
@@ -898,31 +953,6 @@
       updateCartUI();
     }
 
-    function addProductToCart(productId) {
-      const selectedProduct = products.find(product => product.id === productId);
-      if (!selectedProduct) return;
-
-      const existingItem = cartItems.find(item => item.id === selectedProduct.id && item.source === 'listing');
-
-      if (existingItem) {
-        existingItem.quantity += 1;
-      } else {
-        cartItems.push({
-          id: selectedProduct.id,
-          source: 'listing',
-          name: selectedProduct.name,
-          price: selectedProduct.price,
-          image: selectedProduct.images[0],
-          quantity: 1,
-          shirtFabric: 'Standard fabric options',
-          dupattaFabric: 'Standard dupatta options'
-        });
-      }
-
-      saveCart();
-      openCartSidebar();
-      showCartToast(selectedProduct.name + ' added to cart');
-    }
 
     function updateCartUI() {
       const cartContent = document.getElementById('cart-content');
@@ -953,9 +983,12 @@
           <img src="${item.image || 'images/logo.png'}" alt="${item.name}" />
           <div class="cart-item-info">
             <h4>${item.name}</h4>
+            <p><strong>Set:</strong> ${item.setType || '3 Piece'}</p>
+            <p><strong>Selection:</strong> ${item.selectionDetail || 'Complete set'}</p>
             <p><strong>Shirt:</strong> ${item.shirtFabric || 'Not selected'}</p>
             <p><strong>Dupatta:</strong> ${item.dupattaFabric || 'Not selected'}</p>
-            <p class="cart-price">${formatPrice(item.price)}</p>
+            <p><strong>Trouser:</strong> ${item.trouserIncluded ? 'Included' : 'Not included'}</p>
+            <p class="cart-price">${formatPrice(item.price)} each</p>
             <div class="quantity-row">
               <button class="qty-btn" onclick="changeQuantity(${index}, -1)">−</button>
               <span class="qty-number">${item.quantity}</span>
@@ -1016,6 +1049,13 @@
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 1800);
     }
+
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeCartSidebar();
+      }
+    });
 
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {

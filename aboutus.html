@@ -304,7 +304,7 @@
     function removeCartItem(index){ cartItems.splice(index,1); saveCart(); }
     function toggleCartSidebar(event){ if(event)event.preventDefault(); document.getElementById('cart-sidebar').classList.toggle('open'); document.getElementById('cart-overlay').classList.toggle('open'); updateCartUI(); }
     function closeCartSidebar(){ document.getElementById('cart-sidebar').classList.remove('open'); document.getElementById('cart-overlay').classList.remove('open'); }
-    function proceedToCheckout(){ if(!cartItems.length){ alert('Your cart is empty. Please add an item first.'); return; } localStorage.setItem('checkoutCart',JSON.stringify(cartItems)); window.location.href='checkout(2).html'; }
+    function proceedToCheckout(){ if(!cartItems.length){ alert('Your cart is empty. Please add an item first.'); return; } localStorage.setItem('checkoutCart',JSON.stringify(cartItems)); window.location.href='checkout.html'; }
     document.addEventListener('DOMContentLoaded', updateCartUI);
   </script>
 </body>

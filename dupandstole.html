@@ -37,12 +37,12 @@
       left: 0;
       width: 100%;
       z-index: 1000;
-      background-color: rgba(139, 30, 63, 0.84);
+      background-color: rgba(139, 30, 63, 0.85);
       padding: 18px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 3px 18px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
       backdrop-filter: blur(8px);
     }
 
@@ -111,33 +111,33 @@
       border-radius: 2px;
     }
 
-    .page-spacer {
-      height: 126px;
+    .page-hero{
+      min-height:380px;
+      padding:110px 6% 80px;
+      background:linear-gradient(135deg,rgba(139,30,63,.90),rgba(179,54,90,.75)),url('images/hero.png') center/cover no-repeat;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:#fff;
+      position:relative;
     }
-
-    .page-heading {
-      text-align: center;
-      padding: 44px 6% 30px;
-      background: linear-gradient(135deg, #fff5f8, #f8ddea);
+    .page-hero-content{max-width:760px;position:relative;z-index:2;}
+    .page-hero h1{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(44px,6vw,72px);
+      margin-bottom:16px;
     }
-
-    .page-heading h1 {
-      font-family: 'Playfair Display', serif;
-      color: var(--primary-color);
-      font-size: clamp(34px, 5vw, 58px);
-      margin-bottom: 10px;
-    }
-
-    .page-heading p {
-      max-width: 760px;
-      margin: 0 auto;
-      line-height: 1.7;
-      color: #6f4a47;
-      font-size: 15px;
+    .page-hero p{
+      max-width:680px;
+      margin:0 auto;
+      line-height:1.7;
+      font-size:18px;
+      opacity:.96;
     }
 
     .category-section {
-      padding: 34px 5% 14px;
+      padding: 42px 5% 18px;
       background-color: white;
     }
 
@@ -774,8 +774,9 @@
         height: 58px;
       }
 
-      .page-spacer {
-        height: 98px;
+      .page-hero{
+        min-height:320px;
+        padding:95px 24px 60px;
       }
 
       .category-item img {
@@ -793,34 +794,7 @@
         flex-direction: column;
       }
     }
-  
-
-    /* ===== MATCHING PREMIUM FOOTER ===== */
-    .site-footer {
-      background: var(--primary-color);
-      color: #fff;
-      padding: 60px 6% 30px;
-      font-family: 'Montserrat', sans-serif;
-    }
-    .footer-container { display:flex; flex-wrap:wrap; justify-content:space-between; gap:40px; }
-    .footer-brand { flex:1 1 340px; }
-    .footer-logo { width:120px; margin-bottom:20px; }
-    .footer-brand p { font-size:14px; line-height:1.7; margin-bottom:10px; }
-    .footer-brand a, .footer-links a { color:#fff; text-decoration:none; }
-    .footer-brand a:hover, .footer-links a:hover { text-decoration:underline; }
-    .footer-links { flex:1 1 220px; }
-    .footer-links h4 { font-family:'Playfair Display',serif; font-size:20px; margin-bottom:14px; }
-    .footer-links ul { list-style:none; padding:0; columns:2; }
-    .footer-links li { margin-bottom:8px; }
-    .footer-links a { font-size:14px; }
-    .social-icons { margin-top:16px; display:flex; gap:14px; }
-    .social-icons a { width:38px; height:38px; border:1px solid rgba(255,255,255,.35); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; transition:transform .25s ease,background .25s ease; }
-    .social-icons a:hover { transform:translateY(-3px); background:rgba(255,255,255,.12); text-decoration:none; }
-    .footer-bottom { margin-top:42px; padding-top:22px; border-top:1px solid rgba(255,255,255,.16); text-align:center; font-size:13px; color:var(--background-pink); }
-    .reveal { opacity:0; transform:translateY(28px); transition:opacity .7s ease,transform .7s ease; }
-    .reveal.visible { opacity:1; transform:none; }
-    @media(max-width:768px){ .footer-container{flex-direction:column;align-items:center;text-align:center}.footer-links{margin-top:20px}.footer-links ul{columns:1}.social-icons{justify-content:center} }
-</style>
+  </style>
 </head>
 
 <body>
@@ -849,14 +823,14 @@
     </nav>
   </header>
 
-  <div class="page-spacer"></div>
-
-  <section class="page-heading reveal">
-    <h1>Dupatta and Stoles</h1>
-    <p>Discover soft cotton stoles and dupattas designed with timeless handcrafted prints.</p>
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <h1>Dupatta &amp; Stoles</h1>
+      <p>Discover beautifully handcrafted cotton stoles and dupattas featuring timeless block-print artistry.</p>
+    </div>
   </section>
 
-  <section class="category-section reveal">
+  <section class="category-section">
     <div class="category-row">
 
       <button class="category-item" onclick="filterProducts('stole')">
@@ -876,7 +850,7 @@
     </div>
   </section>
 
-  <div class="toolbar reveal">
+  <div class="toolbar">
     <div>
       <strong>Sort By:</strong>
       <select id="sortSelect" onchange="sortProducts()">
@@ -894,20 +868,43 @@
     </div>
   </div>
 
-  <main class="product-grid reveal" id="productContainer"></main>
+  <main class="product-grid" id="productContainer"></main>
 
-  <footer class="site-footer reveal">
+  <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-brand">
-        <img src="images/logo.png" alt="Block Prints by Afifa" class="footer-logo" />
+        <img src="images/logo.png" alt="Block Prints by Afifa Logo" class="footer-logo">
         <p>Handcrafted block prints rooted in tradition and made with love in Karachi.</p>
         <p><strong>Email:</strong> <a href="mailto:blockprintsbyafifa@hotmail.com">blockprintsbyafifa@hotmail.com</a></p>
-        <p><strong>Phone:</strong> <a href="tel:+923252041288">+92 325 2041288</a></p>
-        <div class="social-icons"><a href="https://www.instagram.com/blockprintsbyafifa/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="https://www.facebook.com/blockprintsbyafifa" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a></div>
+        <p><strong>Phone:</strong> <a href="tel:+923252041288">+923252041288</a></p>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/blockprintsbyafifa/" target="_blank">
+            <img src="images/instagram.svg" alt="Instagram">
+          </a>
+          <a href="https://www.facebook.com/blockprintsbyafifa" target="_blank">
+            <img src="images/facebook.svg" alt="Facebook">
+          </a>
+        </div>
       </div>
-      <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="aboutus.html">About</a></li><li><a href="contactus.html">Contact</a></li><li><a href="unstitched.html">Unstitched</a></li><li><a href="stitched.html">Stitched</a></li><li><a href="totebag.html">Tote Bags</a></li><li><a href="dupandstole.html">Dupatta &amp; Stoles</a></li><li><a href="homedecor.html">Home Decor</a></li></ul></div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="aboutus.html">About</a></li>
+          <li><a href="contactus.html">Contact</a></li>
+          <li><a href="unstitched.html">Unstitched</a></li>
+          <li><a href="totebag.html">Totebag</a></li>
+          <li><a href="dupandstole.html">Dupatta and Stoles</a></li>
+          <li><a href="homedecor.html">Home Decor</a></li>
+          <li><a href="stitched.html">Stitched</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-bottom"><p>&copy; 2026 Block Prints by Afifa. All rights reserved.</p></div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Block Prints by Afifa. All rights reserved.</p>
+    </div>
   </footer>
 
   <div id="cart-overlay" class="cart-overlay" onclick="closeCartSidebar()"></div>
@@ -1046,7 +1043,7 @@
               <div class="product-price">${formatPrice(product.price)}</div>
             </div>
             <div class="product-actions">
-              <button class="details-btn" onclick="openQuickView('${product.id}')">View Details</button>
+              <button class="details-btn" onclick="openQuickView('${product.id}')">Quick View</button>
               <button class="add-listing-btn" onclick="addProductToCart('${product.id}')">Add to Cart</button>
             </div>
           </div>
@@ -1228,24 +1225,5 @@
     renderProducts();
     updateCartUI();
   </script>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const revealItems = document.querySelectorAll('.reveal');
-    if (!('IntersectionObserver' in window)) {
-      revealItems.forEach(item => item.classList.add('visible'));
-      return;
-    }
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    revealItems.forEach(item => revealObserver.observe(item));
-  });
-</script>
 </body>
 </html>
