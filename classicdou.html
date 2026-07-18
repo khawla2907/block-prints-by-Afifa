@@ -958,8 +958,10 @@
         max-width: 760px;
       }
 
+      .gallery-card,
       .details-card {
         position: static;
+        top: auto;
       }
     }
 
@@ -1003,25 +1005,80 @@
       }
 
       .product-container {
-        padding: 20px 16px 45px;
-        gap: 22px;
+        display: flex;
+        flex-direction: column;
+        padding: 18px 14px 44px;
+        gap: 18px;
+      }
+
+      .gallery-card {
+        order: 1;
+        width: 100%;
+        padding: 0;
+        position: static;
+        top: auto;
       }
 
       .details-card {
-        padding: 20px 16px;
+        order: 2;
+        width: 100%;
+        padding: 18px 14px 20px;
+        position: static;
+        top: auto;
+      }
+
+      .main-gallery .swiper-slide {
+        aspect-ratio: auto;
+        height: auto;
+      }
+
+      .main-gallery img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+
+      .thumb-gallery .swiper-slide {
+        height: 72px;
       }
 
       .set-options {
         grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .set-option label,
+      .complete-option label {
+        min-height: 0;
+        width: 100%;
+        padding: 14px;
+        flex-direction: row;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .set-option label > span:first-child,
+      .complete-option label > span:first-child {
+        flex: 1;
+        min-width: 0;
       }
 
       .complete-option {
         grid-column: auto;
       }
 
-      .complete-option label {
-        flex-direction: column;
+      .fabric-select {
+        min-height: 46px;
+        font-size: 16px;
+      }
+
+      .summary-item {
         align-items: flex-start;
+      }
+
+      .summary-item strong {
+        max-width: 58%;
+        overflow-wrap: anywhere;
       }
 
       .quantity-price-row {
@@ -1030,6 +1087,15 @@
 
       .total-box {
         text-align: left;
+        padding: 12px 14px;
+        border-radius: 12px;
+        background: var(--soft-pink);
+        border: 1px solid var(--border-soft);
+      }
+
+      .add-to-cart {
+        min-height: 48px;
+        font-size: 15px;
       }
 
       .product-notes,
@@ -1051,6 +1117,94 @@
         justify-content: center;
       }
     }
+
+    @media (max-width: 480px) {
+      .breadcrumb {
+        padding: 14px 14px 0;
+        font-size: 12px;
+      }
+
+      .details-card h1 {
+        font-size: 31px;
+      }
+
+      .set-option strong {
+        font-size: 14px;
+      }
+
+      .set-option-price {
+        font-size: 12px;
+      }
+
+      .product-notes {
+        grid-template-columns: 1fr;
+      }
+    }
+
+
+    /* ===== DEFINITIVE RESPONSIVE OVERLAP FIX ===== */
+    .gallery-card,
+    .details-card {
+      position: static !important;
+      top: auto !important;
+    }
+
+    @media (max-width: 1200px) {
+      .product-container {
+        grid-template-columns: 1fr !important;
+        max-width: 760px;
+      }
+
+      .gallery-card,
+      .details-card {
+        width: 100%;
+        position: static !important;
+        top: auto !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .product-container {
+        display: flex !important;
+        flex-direction: column !important;
+      }
+
+      .gallery-card {
+        order: 1 !important;
+      }
+
+      .details-card {
+        order: 2 !important;
+      }
+
+      .main-gallery,
+      .main-gallery .swiper-wrapper,
+      .main-gallery .swiper-slide {
+        position: relative !important;
+        height: auto !important;
+        min-height: 0 !important;
+      }
+
+      .main-gallery .swiper-slide {
+        aspect-ratio: auto !important;
+      }
+
+      .main-gallery img {
+        position: relative !important;
+        width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important;
+      }
+
+      .set-options,
+      .selection-section,
+      .selection-summary,
+      .quantity-price-row {
+        position: relative !important;
+        z-index: auto !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -1667,6 +1821,9 @@
 
     new Swiper('.main-gallery', {
       spaceBetween: 10,
+      autoHeight: true,
+      observer: true,
+      observeParents: true,
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev'
