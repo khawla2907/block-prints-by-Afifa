@@ -292,10 +292,17 @@
     }
 
     .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 20px 5%;
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(280px,320px));
+      justify-content:center;
+      gap:28px;
+      padding:30px 5% 60px;
+    }
+
+    .product-card{
+      width:100%;
+      max-width:320px;
+      margin:0 auto;
     }
 
     .product-card {
@@ -355,19 +362,6 @@
       margin-top: 10px;
       color: #000;
       font-weight: 600;
-    }
-
-    .quick-view {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: #8b1e3f;
-      color: white;
-      border: none;
-      padding: 6px 10px;
-      font-size: 12px;
-      cursor: pointer;
-      border-radius: 4px;
     }
 
     /* List View Mode */
@@ -718,7 +712,130 @@
 </div>
 </section>
 
-<style> .category-row { display: flex; flex-direction: row; justify-content: center; align-items: center; flex-wrap: nowrap; gap: 30px; overflow-x: auto; padding: 10px 20px; -webkit-overflow-scrolling: touch; white-space: nowrap; } .category-item { text-align: center; flex: 0 0 auto; min-width: 120px; cursor: pointer; } .category-item img { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.2s ease; } .category-item p { margin-top: 10px; font-weight: 600; font-size: 14px; } /* 📱 Responsive: Smaller circles on phones */ @media (max-width: 600px) { .category-item img { width: 80px; height: 80px; } .category-item p { font-size: 12px; } } </style> <section style="padding: 40px 0; background-color: white;"> <div class="category-row">
+<style> .category-row { display: flex; flex-direction: row; justify-content: center; align-items: center; flex-wrap: nowrap; gap: 30px; overflow-x: auto; padding: 10px 20px; -webkit-overflow-scrolling: touch; white-space: nowrap; } .category-item { text-align: center; flex: 0 0 auto; min-width: 120px; cursor: pointer; } .category-item img { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.2s ease; } .category-item p { margin-top: 10px; font-weight: 600; font-size: 14px; } /* 📱 Responsive: Smaller circles on phones */ @media (max-width: 600px) { .category-item img { width: 80px; height: 80px; } .category-item p { font-size: 12px; } } 
+/* ===== CLEAN SHARED FOOTER ===== */
+.site-footer {
+  background: #8b1e3f;
+  color: #fff;
+  padding: 56px 6% 28px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.footer-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(260px, .7fr);
+  gap: 70px;
+  align-items: start;
+}
+
+.footer-brand,
+.footer-links {
+  min-width: 0;
+}
+
+.footer-logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: 18px;
+}
+
+.footer-brand p {
+  font-size: 14px;
+  line-height: 1.75;
+  margin: 0 0 9px;
+}
+
+.footer-brand a,
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-brand a:hover,
+.footer-links a:hover {
+  color: #ffdce9;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.social-icons a {
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.social-icons i {
+  font-size: 17px;
+}
+
+.footer-links h4 {
+  margin: 0 0 18px;
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  gap: 12px 34px;
+}
+
+.footer-links li {
+  margin: 0;
+}
+
+.footer-links a {
+  font-size: 14px;
+}
+
+.footer-bottom {
+  max-width: 1180px;
+  margin: 38px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,.18);
+  text-align: center;
+  font-size: 13px;
+  color: #f8ddea;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .footer-links ul {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+</style> <section style="padding: 40px 0; background-color: white;"> <div class="category-row">
 
 <!-- Totebag -->
 <div class="category-item" onclick="filterProducts('tote')">
@@ -752,26 +869,28 @@
       <button onclick="setList()">📋 List</button>
     </div>
   </div>
+<div class="product-grid" id="productContainer">
 
-  <div class="product-grid" id="productContainer">
-    <!-- Product 1 -->
-    <div class="product-card tote" onclick="addHomeDecorToCart(event, 'blue-willow')">
-      <button class="quick-view">Quick View</button>
-      <div class="product-images">
-        <img src="images/decor1.jpeg" />
-        <img src="images/decor2.jpeg" />
-      
-      </div>
-      <div class="product-info">
-        <h4>Blue Willow</h4>
-        <p>Tray<br>
-<br>
-        </p>
-        <div class="product-price">PKR 1300 </div>
-        <button class="listing-add-to-cart" onclick="addHomeDecorToCart(event, 'blue-willow')">Add to Cart</button>
-      </div>
-    </div>
+<div class="product-card tote" role="link" tabindex="0"
+     onclick="window.location.href='product-blue-willow.html'"
+     onkeydown="if(event.key==='Enter'){window.location.href='product-blue-willow.html'}">
+<div class="product-images">
+    <img src="images/decor1.jpeg" alt="Blue Willow Tray">
+    <img src="images/decor2.jpeg" alt="Blue Willow Tray">
+  </div>
 
+  <div class="product-info">
+    <h4>Blue Willow</h4>
+    <p>Tray</p>
+
+    <div class="product-price">PKR 1300</div>
+
+    <button class="listing-add-to-cart"
+            onclick="event.stopPropagation(); window.location.href='product-blue-willow.html';">
+      View Details
+    </button>
+  </div>
+</div>
 
 
     
@@ -796,51 +915,41 @@
 
 
 
-<!-- ===== FOOTER SECTION ===== -->
 <footer class="site-footer">
   <div class="footer-container">
-
-    <!-- Brand Info -->
     <div class="footer-brand">
       <img src="images/logo.png" alt="Block Prints by Afifa Logo" class="footer-logo">
       <p>Handcrafted block prints rooted in tradition and made with love in Karachi.</p>
       <p><strong>Email:</strong> <a href="mailto:blockprintsbyafifa@hotmail.com">blockprintsbyafifa@hotmail.com</a></p>
-      <p><strong>Phone:</strong> <a href="tel:+923252041288">+923252041288</a></p>
+      <p><strong>Phone:</strong> <a href="tel:+923252041288">+92 325 2041288</a></p>
+
       <div class="social-icons">
-        <a href="https://www.instagram.com/blockprintsbyafifa/" target="_blank">
-          <img src="images/instagram.svg" alt="Instagram">
+        <a href="https://www.instagram.com/blockprintsbyafifa/" target="_blank" rel="noopener" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
         </a>
-        <a href="https://www.facebook.com/blockprintsbyafifa" target="_blank">
-          <img src="images/facebook.svg" alt="Facebook">
+        <a href="https://www.facebook.com/blockprintsbyafifa" target="_blank" rel="noopener" aria-label="Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
         </a>
       </div>
     </div>
 
-    <!-- Quick Links -->
     <div class="footer-links">
       <h4>Quick Links</h4>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="aboutus.html">About</a></li>
         <li><a href="contactus.html">Contact</a></li>
-        <li><a href="unstitched.html">unstitched</a></li>
-        <li><a href="totebag.html">Totebag</a></li>
-         <li><a href="dupandstole.html">Duppatta and Stoles</a></li>
-              <li><a href="homedecor.html">Home Decor</a></li>
-                   <li><a href="stitched.html">Stitched</a></li>
-         
-
-         
-    
-
-
+        <li><a href="unstitched.html">Unstitched</a></li>
+        <li><a href="stitched.html">Stitched</a></li>
+        <li><a href="totebag.html">Tote Bags</a></li>
+        <li><a href="dupandstole.html">Dupatta &amp; Stoles</a></li>
+        <li><a href="homedecor.html">Home Decor</a></li>
       </ul>
     </div>
-
   </div>
 
   <div class="footer-bottom">
-    <p>&copy; 2025 Block Prints by Afifa. All rights reserved.</p>
+    <p>&copy; 2026 Block Prints by Afifa. All rights reserved.</p>
   </div>
 </footer>
 

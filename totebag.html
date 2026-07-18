@@ -956,19 +956,7 @@
     </div>
   </div>
 
-  <div id="quick-modal" class="quick-modal" onclick="closeQuickView(event)">
-    <div class="quick-modal-card">
-      <img id="quick-image" src="images/logo.png" alt="Product preview">
-      <div class="quick-modal-body">
-        <h3 id="quick-title"></h3>
-        <p id="quick-description"></p>
-        <p class="product-price" id="quick-price"></p>
-        <div class="quick-modal-actions">
-          <button class="add-listing-btn" id="quick-add-btn">Add to Cart</button>
-          <button class="details-btn" onclick="closeQuickView()">Close</button>
-        </div>
-      </div>
-    </div>
+  
   </div>
 
   <div id="cart-toast" class="cart-toast">Item added to cart</div>
@@ -989,7 +977,8 @@
             "categoryLabel": "Tote Bag",
             "material": "Cotton",
             "popularity": 3,
-            "order": 1
+            "order": 1,
+            "page": "product-blush-tote-bag.html"
       },
       {
             "id": "midnight-bloom-tote",
@@ -1005,7 +994,8 @@
             "categoryLabel": "Tote Bag",
             "material": "Cotton",
             "popularity": 2,
-            "order": 2
+            "order": 2,
+            "page": "product-midnight-bloom-tote.html"
       },
       {
             "id": "scarlet-pouch",
@@ -1021,7 +1011,8 @@
             "categoryLabel": "Pouch / Bag",
             "material": "Cotton",
             "popularity": 1,
-            "order": 3
+            "order": 3,
+            "page": "product-scarlet-pouch.html"
       }
 ];
 
@@ -1055,7 +1046,7 @@
       container.innerHTML = visibleProducts.map(product => {
         const images = getSafeImages(product);
         return `
-          <div class="product-card ${product.category}">
+          <div class="product-card ${product.category}" onclick="window.location.href='${product.page}'" style="cursor:pointer;">
             <div class="product-images">
               <img src="${images[0]}" alt="${product.name}" />
               <img src="${images[1]}" alt="${product.name}" />
@@ -1067,8 +1058,10 @@
               <div class="product-price">${formatPrice(product.price)}</div>
             </div>
             <div class="product-actions">
-              <button class="details-btn" onclick="openQuickView('${product.id}')">View Details</button>
-              <button class="add-listing-btn" onclick="addProductToCart('${product.id}')">Add to Cart</button>
+              <button class="add-listing-btn" style="width:100%;flex:none;"
+                onclick="event.stopPropagation(); window.location.href='${product.page}'">
+                View Details
+              </button>
             </div>
           </div>
         `;
@@ -1215,28 +1208,6 @@
 
       localStorage.setItem('checkoutCart', JSON.stringify(cartItems));
       window.location.href = 'checkout(2).html';
-    }
-
-    function openQuickView(productId) {
-      const product = products.find(item => item.id === productId);
-      if (!product) return;
-
-      document.getElementById('quick-image').src = product.images[0];
-      document.getElementById('quick-title').textContent = product.name;
-      document.getElementById('quick-description').innerHTML = product.description;
-      document.getElementById('quick-price').textContent = formatPrice(product.price);
-      document.getElementById('quick-add-btn').onclick = function() {
-        addProductToCart(product.id);
-        closeQuickView();
-      };
-
-      document.getElementById('quick-modal').classList.add('open');
-    }
-
-    function closeQuickView(event) {
-      if (!event || event.target.id === 'quick-modal') {
-        document.getElementById('quick-modal').classList.remove('open');
-      }
     }
 
     function showCartToast(message) {

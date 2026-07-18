@@ -794,7 +794,139 @@
         flex-direction: column;
       }
     }
-  </style>
+  
+    .product-actions .add-listing-btn {
+      width: 100%;
+      flex: none;
+    }
+
+
+/* ===== CLEAN SHARED FOOTER ===== */
+.site-footer {
+  background: #8b1e3f;
+  color: #fff;
+  padding: 56px 6% 28px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.footer-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(260px, .7fr);
+  gap: 70px;
+  align-items: start;
+}
+
+.footer-brand,
+.footer-links {
+  min-width: 0;
+}
+
+.footer-logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: 18px;
+}
+
+.footer-brand p {
+  font-size: 14px;
+  line-height: 1.75;
+  margin: 0 0 9px;
+}
+
+.footer-brand a,
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-brand a:hover,
+.footer-links a:hover {
+  color: #ffdce9;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.social-icons a {
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.social-icons i {
+  font-size: 17px;
+}
+
+.footer-links h4 {
+  margin: 0 0 18px;
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  gap: 12px 34px;
+}
+
+.footer-links li {
+  margin: 0;
+}
+
+.footer-links a {
+  font-size: 14px;
+}
+
+.footer-bottom {
+  max-width: 1180px;
+  margin: 38px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,.18);
+  text-align: center;
+  font-size: 13px;
+  color: #f8ddea;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .footer-links ul {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+
+.product-card { cursor: pointer; }
+
+</style>
 </head>
 
 <body>
@@ -871,41 +1003,42 @@
   <main class="product-grid" id="productContainer"></main>
 
   <footer class="site-footer">
-    <div class="footer-container">
-      <div class="footer-brand">
-        <img src="images/logo.png" alt="Block Prints by Afifa Logo" class="footer-logo">
-        <p>Handcrafted block prints rooted in tradition and made with love in Karachi.</p>
-        <p><strong>Email:</strong> <a href="mailto:blockprintsbyafifa@hotmail.com">blockprintsbyafifa@hotmail.com</a></p>
-        <p><strong>Phone:</strong> <a href="tel:+923252041288">+923252041288</a></p>
-        <div class="social-icons">
-          <a href="https://www.instagram.com/blockprintsbyafifa/" target="_blank">
-            <img src="images/instagram.svg" alt="Instagram">
-          </a>
-          <a href="https://www.facebook.com/blockprintsbyafifa" target="_blank">
-            <img src="images/facebook.svg" alt="Facebook">
-          </a>
-        </div>
-      </div>
+  <div class="footer-container">
+    <div class="footer-brand">
+      <img src="images/logo.png" alt="Block Prints by Afifa Logo" class="footer-logo">
+      <p>Handcrafted block prints rooted in tradition and made with love in Karachi.</p>
+      <p><strong>Email:</strong> <a href="mailto:blockprintsbyafifa@hotmail.com">blockprintsbyafifa@hotmail.com</a></p>
+      <p><strong>Phone:</strong> <a href="tel:+923252041288">+92 325 2041288</a></p>
 
-      <div class="footer-links">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="aboutus.html">About</a></li>
-          <li><a href="contactus.html">Contact</a></li>
-          <li><a href="unstitched.html">Unstitched</a></li>
-          <li><a href="totebag.html">Totebag</a></li>
-          <li><a href="dupandstole.html">Dupatta and Stoles</a></li>
-          <li><a href="homedecor.html">Home Decor</a></li>
-          <li><a href="stitched.html">Stitched</a></li>
-        </ul>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/blockprintsbyafifa/" target="_blank" rel="noopener" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/blockprintsbyafifa" target="_blank" rel="noopener" aria-label="Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
       </div>
     </div>
 
-    <div class="footer-bottom">
-      <p>&copy; 2025 Block Prints by Afifa. All rights reserved.</p>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutus.html">About</a></li>
+        <li><a href="contactus.html">Contact</a></li>
+        <li><a href="unstitched.html">Unstitched</a></li>
+        <li><a href="stitched.html">Stitched</a></li>
+        <li><a href="totebag.html">Tote Bags</a></li>
+        <li><a href="dupandstole.html">Dupatta &amp; Stoles</a></li>
+        <li><a href="homedecor.html">Home Decor</a></li>
+      </ul>
     </div>
-  </footer>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 Block Prints by Afifa. All rights reserved.</p>
+  </div>
+</footer>
 
   <div id="cart-overlay" class="cart-overlay" onclick="closeCartSidebar()"></div>
 
@@ -932,21 +1065,6 @@
     </div>
   </div>
 
-  <div id="quick-modal" class="quick-modal" onclick="closeQuickView(event)">
-    <div class="quick-modal-card">
-      <img id="quick-image" src="images/logo.png" alt="Product preview">
-      <div class="quick-modal-body">
-        <h3 id="quick-title"></h3>
-        <p id="quick-description"></p>
-        <p class="product-price" id="quick-price"></p>
-        <div class="quick-modal-actions">
-          <button class="add-listing-btn" id="quick-add-btn">Add to Cart</button>
-          <button class="details-btn" onclick="closeQuickView()">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div id="cart-toast" class="cart-toast">Item added to cart</div>
 
   <script>
@@ -965,7 +1083,8 @@
             "categoryLabel": "Stole",
             "material": "Cotton",
             "popularity": 3,
-            "order": 1
+            "order": 1,
+            "page": "product-vintage-rust.html"
       },
       {
             "id": "indigo-stole",
@@ -981,7 +1100,8 @@
             "categoryLabel": "Stole",
             "material": "Cotton",
             "popularity": 2,
-            "order": 2
+            "order": 2,
+            "page": "product-indigo-stole.html"
       },
       {
             "id": "black-dupatta",
@@ -997,7 +1117,8 @@
             "categoryLabel": "Dupatta",
             "material": "Cotton",
             "popularity": 1,
-            "order": 3
+            "order": 3,
+            "page": "product-black-dupatta.html"
       }
 ];
 
@@ -1031,7 +1152,7 @@
       container.innerHTML = visibleProducts.map(product => {
         const images = getSafeImages(product);
         return `
-          <div class="product-card ${product.category}">
+          <div class="product-card ${product.category}" onclick="window.location.href='${product.page}'">
             <div class="product-images">
               <img src="${images[0]}" alt="${product.name}" />
               <img src="${images[1]}" alt="${product.name}" />
@@ -1043,8 +1164,10 @@
               <div class="product-price">${formatPrice(product.price)}</div>
             </div>
             <div class="product-actions">
-              <button class="details-btn" onclick="openQuickView('${product.id}')">Quick View</button>
-              <button class="add-listing-btn" onclick="addProductToCart('${product.id}')">Add to Cart</button>
+              <button class="add-listing-btn"
+                      onclick="event.stopPropagation(); window.location.href='${product.page}'">
+                View Details
+              </button>
             </div>
           </div>
         `;
@@ -1191,28 +1314,6 @@
 
       localStorage.setItem('checkoutCart', JSON.stringify(cartItems));
       window.location.href = 'checkout.html';
-    }
-
-    function openQuickView(productId) {
-      const product = products.find(item => item.id === productId);
-      if (!product) return;
-
-      document.getElementById('quick-image').src = product.images[0];
-      document.getElementById('quick-title').textContent = product.name;
-      document.getElementById('quick-description').innerHTML = product.description;
-      document.getElementById('quick-price').textContent = formatPrice(product.price);
-      document.getElementById('quick-add-btn').onclick = function() {
-        addProductToCart(product.id);
-        closeQuickView();
-      };
-
-      document.getElementById('quick-modal').classList.add('open');
-    }
-
-    function closeQuickView(event) {
-      if (!event || event.target.id === 'quick-modal') {
-        document.getElementById('quick-modal').classList.remove('open');
-      }
     }
 
     function showCartToast(message) {
