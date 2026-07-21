@@ -795,6 +795,42 @@
       pointer-events: none;
     }
 
+
+    /* ===== MOBILE CONTENT VISIBILITY FIX ===== */
+    .reveal,
+    .reveal.visible {
+      opacity: 1 !important;
+      transform: none !important;
+      visibility: visible !important;
+    }
+
+    @media (max-width: 768px) {
+      .page-hero,
+      .toolbar,
+      .product-grid,
+      .site-footer {
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+      }
+
+      .page-hero {
+        min-height: 340px;
+        padding: 120px 22px 60px;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+        padding: 28px 16px 55px;
+      }
+
+      .product-card {
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -1157,16 +1193,9 @@
       }
     });
 
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
+    document.querySelectorAll('.reveal').forEach(element => {
+      element.classList.add('visible');
+    });
 
     renderProducts();
     updateCartUI();
