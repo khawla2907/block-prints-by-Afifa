@@ -742,7 +742,60 @@
         columns: 1;
       }
     }
-  </style>
+  
+    /* ===== OUT OF STOCK PRODUCT ===== */
+    .product-card.out-of-stock {
+      opacity: 0.78;
+    }
+
+    .product-card.out-of-stock .product-images::after {
+      content: "OUT OF STOCK";
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(80, 47, 44, 0.5);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+    }
+
+    .stock-status {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 12px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #f2e7e9;
+      color: #8b1e3f;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .out-of-stock-btn {
+      flex: 1 1 100%;
+      padding: 11px 10px;
+      border: 1px solid #cdb7bd;
+      border-radius: 30px;
+      background: #eee7e9;
+      color: #806b70;
+      font-size: 13px;
+      font-weight: 800;
+      text-align: center;
+      cursor: not-allowed;
+    }
+
+    .product-card.out-of-stock .product-image-link,
+    .product-card.out-of-stock .product-title-link {
+      pointer-events: none;
+    }
+
+</style>
 </head>
 <body>
 
@@ -841,13 +894,50 @@
   <script>
     const products = [
       {
+        id: 'neel-safar',
+        name: 'Neel Safar',
+        price: 7999,
+        url: 'product-neel-safar.html',
+        images: ['images/NEEL SAFAR.jpeg', 'images/NEEL SAFAR1.jpeg', 'images/NEEL SAFAR2.jpeg'],
+        description: 'Cool grey and deep blue handcrafted block-print design.',
+        popularity: 9
+      },
+      {
+        id: 'rang-e-khizaa',
+        name: 'Rang-e-Khizaa',
+        price: 7999,
+        url: 'product-rang-e-khizaa.html',
+        images: ['images/Rang-e-Khizaa.jpeg', 'images/Rang-e-Khizaa1.jpeg', 'images/Rang-e-Khizaa2.jpeg'],
+        description: 'Warm mustard and deep navy handcrafted block-print design.',
+        popularity: 8
+      },
+      {
+        id: 'gul-e-surkh',
+        name: 'Gul-e-Surkh',
+        price: 7999,
+        url: 'product-gul-e-surkh.html',
+        images: ['images/Gul-e-Surkh.jpeg','images/Gul-e-Surkh1.jpeg','images/Gul-e-Surkh2.jpeg'],
+        description: 'Rich red handcrafted block-print design.',
+        popularity: 7
+      },
+      {
+        id: 'zareen',
+        name: 'Zareen',
+        price: 7999,
+        url: 'product-zareen.html',
+        images: ['images/zareen1.jpeg', 'images/zareen2.jpeg', 'images/zareen3.jpeg', 'images/zareen4.jpeg'],
+        description: 'Elegant beige block-print design with coordinated trouser options.',
+        popularity: 6
+      },
+      {
         id: 'classic-duo',
         name: 'Classic Duo',
         price: 7999,
         url: 'classicdou.html',
         images: ['images/h1.jpeg', 'images/h2.jpeg', 'images/h3.jpeg'],
-        description: 'Available in multiple set and fabric options.',
-        popularity: 5
+        description: 'Currently unavailable.',
+        popularity: 5,
+        outOfStock: true
       },
       {
         id: 'citrus-charm',
@@ -909,8 +999,11 @@
     function renderProducts() {
       const container = document.getElementById('productContainer');
       container.innerHTML = visibleProducts.map(product => `
-        <div class="product-card">
-          <a href="${product.url}" class="product-image-link" aria-label="View ${product.name}">
+        <div class="product-card ${product.outOfStock ? 'out-of-stock' : ''}">
+          <a href="${product.outOfStock ? '#' : product.url}"
+             class="product-image-link"
+             aria-label="${product.outOfStock ? product.name + ' is out of stock' : 'View ' + product.name}"
+             ${product.outOfStock ? 'aria-disabled="true" tabindex="-1"' : ''}>
             <div class="product-images">
               <img src="${product.images[0]}" alt="${product.name}" />
               <img src="${product.images[1]}" alt="${product.name}" />
@@ -918,16 +1011,23 @@
             </div>
           </a>
           <div class="product-info">
-            <a href="${product.url}" class="product-title-link">
+            <a href="${product.outOfStock ? '#' : product.url}"
+               class="product-title-link"
+               ${product.outOfStock ? 'aria-disabled="true" tabindex="-1"' : ''}>
               <h4>${product.name}</h4>
             </a>
-            <p>Available in one-piece, two-piece and complete three-piece options with multiple fabric choices.</p>
-            <div class="product-price">From ${formatPrice(2999)}</div>
+            <p>${product.outOfStock
+              ? 'This design is currently unavailable.'
+              : 'Available in one-piece, two-piece and complete three-piece options with multiple fabric choices.'}
+            </p>
+            ${product.outOfStock
+              ? '<div class="stock-status">Out of Stock</div>'
+              : `<div class="product-price">From ${formatPrice(2999)}</div>`}
           </div>
           <div class="product-actions">
-            <a class="details-btn full-width-btn" href="${product.url}">
-              View Product
-            </a>
+            ${product.outOfStock
+              ? '<span class="out-of-stock-btn" aria-disabled="true">Out of Stock</span>'
+              : `<a class="details-btn full-width-btn" href="${product.url}">View Product</a>`}
           </div>
         </div>
       `).join('');
