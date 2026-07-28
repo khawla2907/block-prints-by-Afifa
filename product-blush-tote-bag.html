@@ -1422,6 +1422,9 @@
   .page-spacer { height:90px !important; }
 }
 
+
+/* currency selector placeholder */
+.site-currency-selector{display:inline-flex}.site-currency-selector select{min-width:72px;padding:7px;border-radius:999px;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.55)}
 </style>
 </head>
 
@@ -1816,5 +1819,9 @@
     renderCart();
   });
 </script>
+<script>(function(){const R=278,K='selectedCurrency';let c=localStorage.getItem(K)||'PKR';
+function f(v){return c==='USD'?'$'+(Number(v)/R).toFixed(2):'PKR '+Number(v).toLocaleString('en-PK')}
+function apply(root=document.body){root.querySelectorAll('*').forEach(e=>{if(e.children.length)return;let t=e.dataset.o||e.textContent;if(/PKR\s*[0-9]/i.test(t))e.dataset.o=t;if(!e.dataset.o)return;e.textContent=e.dataset.o.replace(/PKR\s*([0-9][0-9,]*)/gi,(_,n)=>f(n.replace(/,/g,'')));});let s=document.getElementById('siteCurrencySelect');if(s)s.value=c;}
+document.addEventListener('DOMContentLoaded',()=>{let nav=document.querySelector('header nav');if(nav&&!document.getElementById('siteCurrencySelect')){let d=document.createElement('div');d.className='site-currency-selector';d.innerHTML='<select id="siteCurrencySelect"><option>PKR</option><option>USD</option></select>';nav.appendChild(d);d.firstChild.onchange=e=>{c=e.target.value;localStorage.setItem(K,c);apply();};}apply();});})();</script>
 </body>
 </html>

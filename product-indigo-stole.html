@@ -1422,6 +1422,47 @@
   .page-spacer { height:90px !important; }
 }
 
+
+/* ===== SITE CURRENCY SELECTOR ===== */
+.site-currency-selector {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.site-currency-selector select {
+  width: auto !important;
+  min-width: 72px;
+  padding: 7px 9px !important;
+  border: 1px solid rgba(255,255,255,.55) !important;
+  border-radius: 999px !important;
+  background: rgba(255,255,255,.12) !important;
+  color: #fff !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  outline: none !important;
+  cursor: pointer;
+}
+
+.site-currency-selector select option {
+  color: #502f2c;
+  background: #fff;
+}
+
+@media (max-width: 768px) {
+  .site-currency-selector {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 0 14px;
+  }
+
+  .site-currency-selector select {
+    min-width: 110px;
+    text-align: center;
+  }
+}
+
 </style>
 </head>
 
@@ -1807,5 +1848,170 @@
     renderCart();
   });
 </script>
+
+<script>
+(function () {
+  'use strict';
+
+  const PKR_PER_USD = 278;
+  const STORAGE_KEY = 'selectedCurrency';
+  let selectedCurrency = localStorage.getItem(STORAGE_KEY) || 'PKR';
+  let applyingCurrency = false;
+
+  function formatCurrencyFromPKR(amount) {
+    const pkr = Number(amount) || 0;
+
+    if (selectedCurrency === 'USD') {
+      return '$' + (pkr / PKR_PER_USD).toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
+
+    return 'PKR ' + pkr.toLocaleString('en-PK', {
+      maximumFractionDigits: 0
+    });
+  }
+
+  function convertOriginalText(originalText) {
+    return originalText.replace(
+      /PKR\s*([0-9][0-9,]*(?:\.[0-9]+)?)/gi,
+      function (_, numberText) {
+        const amount = Number(numberText.replace(/,/g, ''));
+        return formatCurrencyFromPKR(amount);
+      }
+    );
+  }
+
+  function shouldSkip(element) {
+    return !element || Boolean(
+      element.closest('script, style, option, textarea, [data-no-currency-convert]')
+    );
+  }
+
+  function processElement(element) {
+    if (!element || element.nodeType !== 1 || shouldSkip(element)) return;
+    if (element.children.length > 0) return;
+
+    const currentText = element.textContent || '';
+
+    if (/PKR\s*[0-9]/i.test(currentText) && !element.dataset.pkrOriginalText) {
+      element.dataset.pkrOriginalText = currentText;
+    }
+
+    const originalText = element.dataset.pkrOriginalText;
+    if (!originalText) return;
+
+    element.textContent = selectedCurrency === 'USD'
+      ? convertOriginalText(originalText)
+      : originalText;
+  }
+
+  function applyCurrency(root) {
+    if (applyingCurrency) return;
+    applyingCurrency = true;
+
+    try {
+      const scope = root && root.nodeType === 1 ? root : document.body;
+      if (!scope) return;
+
+      processElement(scope);
+      scope.querySelectorAll('*').forEach(processElement);
+
+      const selector = document.getElementById('siteCurrencySelect');
+      if (selector) selector.value = selectedCurrency;
+    } finally {
+      applyingCurrency = false;
+    }
+  }
+
+  function refreshPageValues() {
+    [
+      'updateProductSelection',
+      'renderCart',
+      'updateCartUI',
+      'renderCheckout',
+      'renderProducts'
+    ].forEach(function (name) {
+      try {
+        if (typeof window[name] === 'function') {
+          window[name]();
+        }
+      } catch (error) {
+        console.warn('Currency refresh skipped for ' + name, error);
+      }
+    });
+
+    setTimeout(function () {
+      applyCurrency(document.body);
+    }, 30);
+  }
+
+  function changeCurrency(currency) {
+    selectedCurrency = currency === 'USD' ? 'USD' : 'PKR';
+    localStorage.setItem(STORAGE_KEY, selectedCurrency);
+    applyCurrency(document.body);
+    refreshPageValues();
+  }
+
+  function insertSelector() {
+    const nav = document.getElementById('main-nav') || document.querySelector('header nav');
+    if (!nav || document.getElementById('siteCurrencySelect')) return;
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'site-currency-selector';
+    wrapper.innerHTML = `
+      <label for="siteCurrencySelect" style="position:absolute;left:-9999px;">Currency</label>
+      <select id="siteCurrencySelect" aria-label="Select currency">
+        <option value="PKR">PKR</option>
+        <option value="USD">USD</option>
+      </select>
+    `;
+
+    const cartLink = nav.querySelector('.cart-nav-link');
+    if (cartLink) nav.insertBefore(wrapper, cartLink);
+    else nav.appendChild(wrapper);
+
+    const selector = wrapper.querySelector('select');
+    selector.value = selectedCurrency;
+    selector.addEventListener('change', function () {
+      changeCurrency(this.value);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    insertSelector();
+    applyCurrency(document.body);
+
+    const observer = new MutationObserver(function (mutations) {
+      if (applyingCurrency) return;
+
+      mutations.forEach(function (mutation) {
+        if (mutation.type === 'characterData') {
+          const parent = mutation.target.parentElement;
+          if (parent) processElement(parent);
+        } else {
+          mutation.addedNodes.forEach(function (node) {
+            if (node.nodeType === 1) applyCurrency(node);
+          });
+        }
+      });
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      characterData: true
+    });
+  });
+
+  window.changeSiteCurrency = changeCurrency;
+  window.getSelectedCurrency = function () {
+    return selectedCurrency;
+  };
+  window.formatDisplayCurrency = formatCurrencyFromPKR;
+})();
+</script>
+
 </body>
 </html>

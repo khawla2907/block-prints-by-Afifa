@@ -389,7 +389,10 @@
       flex: 2;
       padding: 20px;
     }
-  </style>
+  
+/* currency selector placeholder */
+.site-currency-selector{display:inline-flex}.site-currency-selector select{min-width:72px;padding:7px;border-radius:999px;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.55)}
+</style>
   </style>
 
 
@@ -835,22 +838,39 @@
   }
 }
 
-</style> <section style="padding: 40px 0; background-color: white;"> <div class="category-row">
 
-<!-- Totebag -->
-<div class="category-item" onclick="filterProducts('tote')">
-  <img src="images/decor1.jpeg" alt="Totebag" />
-  <p>Tray<br>Collection</p>
-</div>
+  @media (max-width: 600px) {
+    .product-grid {
+      grid-template-columns: 1fr;
+      padding: 24px 16px 50px;
+      gap: 22px;
+    }
 
+    .product-card {
+      max-width: 360px;
+    }
+  }
 
+</style> <section style="padding: 40px 0; background-color: white;">
+  <div class="category-row">
 
-<!-- Show All -->
-<div class="category-item" onclick="filterProducts('all')">
-  <img src="images/logo.png" alt="Show All" />
-  <p>Show<br>All</p>
-</div>
-</div> </section>
+    <div class="category-item" onclick="filterProducts('tray')">
+      <img src="images/decor1.jpeg" alt="Tray Collection" />
+      <p>Tray<br>Collection</p>
+    </div>
+
+    <div class="category-item" onclick="filterProducts('cushion')">
+      <img src="images/tribal-line.jpeg" alt="Cushion Collection" />
+      <p>Cushion<br>Collection</p>
+    </div>
+
+    <div class="category-item" onclick="filterProducts('all')">
+      <img src="images/logo.png" alt="Show All" />
+      <p>Show<br>All</p>
+    </div>
+
+  </div>
+</section>
 
   </div>
 </section>
@@ -871,37 +891,84 @@
   </div>
 <div class="product-grid" id="productContainer">
 
-<div class="product-card tote" role="link" tabindex="0"
-     onclick="window.location.href='product-blue-willow.html'"
-     onkeydown="if(event.key==='Enter'){window.location.href='product-blue-willow.html'}">
-<div class="product-images">
-    <img src="images/decor1.jpeg" alt="Blue Willow Tray">
-    <img src="images/decor2.jpeg" alt="Blue Willow Tray">
+  <div class="product-card tray" role="link" tabindex="0"
+       onclick="window.location.href='product-blue-willow.html'"
+       onkeydown="if(event.key==='Enter'){window.location.href='product-blue-willow.html'}">
+    <div class="product-images">
+      <img src="images/decor1.jpeg" alt="Blue Willow Tray">
+      <img src="images/decor2.jpeg" alt="Blue Willow Tray">
+    </div>
+    <div class="product-info">
+      <h4>Blue Willow</h4>
+      <p>Decorative Tray</p>
+      <div class="product-price">PKR 1,300</div>
+      <button class="listing-add-to-cart"
+              onclick="event.stopPropagation(); window.location.href='product-blue-willow.html';">
+        View Details
+      </button>
+    </div>
   </div>
 
-  <div class="product-info">
-    <h4>Blue Willow</h4>
-    <p>Tray</p>
-
-    <div class="product-price">PKR 1300</div>
-
-    <button class="listing-add-to-cart"
-            onclick="event.stopPropagation(); window.location.href='product-blue-willow.html';">
-      View Details
-    </button>
+  <div class="product-card cushion" role="link" tabindex="0"
+       onclick="window.location.href='product-tribal-line.html'"
+       onkeydown="if(event.key==='Enter'){window.location.href='product-tribal-line.html'}">
+    <div class="product-images">
+      <img src="images/tribal-line.jpeg" alt="Tribal Line Cushion">
+      <img src="images/tribal-line.jpeg" alt="Tribal Line Cushion">
+      <img src="images/tribal-line.jpeg" alt="Tribal Line Cushion">
+    </div>
+    <div class="product-info">
+      <h4>Tribal Line</h4>
+      <p>Decorative Cushion</p>
+      <div class="product-price">PKR 800</div>
+      <button class="listing-add-to-cart"
+              onclick="event.stopPropagation(); window.location.href='product-tribal-line.html';">
+        View Details
+      </button>
+    </div>
   </div>
+
+  <div class="product-card cushion" role="link" tabindex="0"
+       onclick="window.location.href='product-surajmukhi.html'"
+       onkeydown="if(event.key==='Enter'){window.location.href='product-surajmukhi.html'}">
+    <div class="product-images">
+      <img src="images/surajmukhi.jpeg" alt="Surajmukhi Cushion">
+      <img src="images/surajmukhi.jpeg" alt="Surajmukhi Cushion">
+      <img src="images/surajmukhi.jpeg" alt="Surajmukhi Cushion">
+    </div>
+    <div class="product-info">
+      <h4>Surajmukhi</h4>
+      <p>Decorative Cushion</p>
+      <div class="product-price">PKR 800</div>
+      <button class="listing-add-to-cart"
+              onclick="event.stopPropagation(); window.location.href='product-surajmukhi.html';">
+        View Details
+      </button>
+    </div>
+  </div>
+
+  <div class="product-card cushion" role="link" tabindex="0"
+       onclick="window.location.href='product-tukray.html'"
+       onkeydown="if(event.key==='Enter'){window.location.href='product-tukray.html'}">
+    <div class="product-images">
+      <img src="images/tukray.jpeg" alt="Tukray Cushion">
+      <img src="images/tukray.jpeg" alt="Tukray Cushion">
+      <img src="images/tukray.jpeg" alt="Tukray Cushion">
+    </div>
+    <div class="product-info">
+      <h4>Tukray</h4>
+      <p>Decorative Cushion</p>
+      <div class="product-price">PKR 800</div>
+      <button class="listing-add-to-cart"
+              onclick="event.stopPropagation(); window.location.href='product-tukray.html';">
+        View Details
+      </button>
+    </div>
+  </div>
+
 </div>
 
-
-    
-
-    
-
-  </div>
-
-
-
-    <script>
+<script>
     function setGrid() {
       document.body.classList.remove('list-view');
     }
@@ -1191,10 +1258,40 @@ else if (product.classList.contains(category)) { product.style.display = 'block'
       id: 'home-decor-blue-willow',
       name: 'Blue Willow',
       category: 'Home Decor',
-      type: 'Tray',
-      details: 'Tray',
+      type: 'Decorative Tray',
+      details: 'Decorative Tray',
       price: 1300,
       image: 'images/decor1.jpeg',
+      source: 'home-decor'
+    },
+    'tribal-line': {
+      id: 'home-decor-tribal-line',
+      name: 'Tribal Line',
+      category: 'Home Decor',
+      type: 'Decorative Cushion',
+      details: 'Decorative Cushion',
+      price: 800,
+      image: 'images/tribal-line.jpeg',
+      source: 'home-decor'
+    },
+    'surajmukhi': {
+      id: 'home-decor-surajmukhi',
+      name: 'Surajmukhi',
+      category: 'Home Decor',
+      type: 'Decorative Cushion',
+      details: 'Decorative Cushion',
+      price: 800,
+      image: 'images/surajmukhi.jpeg',
+      source: 'home-decor'
+    },
+    'tukray': {
+      id: 'home-decor-tukray',
+      name: 'Tukray',
+      category: 'Home Decor',
+      type: 'Decorative Cushion',
+      details: 'Decorative Cushion',
+      price: 800,
+      image: 'images/tukray.jpeg',
       source: 'home-decor'
     }
   };
@@ -1209,6 +1306,10 @@ else if (product.classList.contains(category)) { product.style.display = 'block'
   }
 </script>
 
+<script>(function(){const R=278,K='selectedCurrency';let c=localStorage.getItem(K)||'PKR';
+function f(v){return c==='USD'?'$'+(Number(v)/R).toFixed(2):'PKR '+Number(v).toLocaleString('en-PK')}
+function apply(root=document.body){root.querySelectorAll('*').forEach(e=>{if(e.children.length)return;let t=e.dataset.o||e.textContent;if(/PKR\s*[0-9]/i.test(t))e.dataset.o=t;if(!e.dataset.o)return;e.textContent=e.dataset.o.replace(/PKR\s*([0-9][0-9,]*)/gi,(_,n)=>f(n.replace(/,/g,'')));});let s=document.getElementById('siteCurrencySelect');if(s)s.value=c;}
+document.addEventListener('DOMContentLoaded',()=>{let nav=document.querySelector('header nav');if(nav&&!document.getElementById('siteCurrencySelect')){let d=document.createElement('div');d.className='site-currency-selector';d.innerHTML='<select id="siteCurrencySelect"><option>PKR</option><option>USD</option></select>';nav.appendChild(d);d.firstChild.onchange=e=>{c=e.target.value;localStorage.setItem(K,c);apply();};}apply();});})();</script>
 </body>
 </html>  
 
