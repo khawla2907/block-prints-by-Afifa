@@ -796,43 +796,283 @@
     }
 
 
-/* ===== SITE CURRENCY SELECTOR ===== */
-.site-currency-selector {
-  display: inline-flex;
-  align-items: center;
-  flex-shrink: 0;
+/* ===== UNIVERSAL MOBILE RESPONSIVE FIX ===== */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
-.site-currency-selector select {
-  width: auto !important;
-  min-width: 72px;
-  padding: 7px 9px !important;
-  border: 1px solid rgba(255,255,255,.55) !important;
-  border-radius: 999px !important;
-  background: rgba(255,255,255,.12) !important;
-  color: #fff !important;
-  font-family: 'Montserrat', sans-serif !important;
-  font-size: 12px !important;
-  font-weight: 700 !important;
-  outline: none !important;
-  cursor: pointer;
+header,
+.page-hero,
+.toolbar,
+.product-grid,
+.site-footer {
+  width: 100%;
+  max-width: 100%;
 }
 
-.site-currency-selector select option {
-  color: #502f2c;
-  background: #fff;
+img {
+  max-width: 100%;
+}
+
+#productContainer {
+  min-height: 1px;
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+
+.product-card,
+.product-images,
+.product-info,
+.product-actions {
+  min-width: 0;
+}
+
+@media (max-width: 920px) {
+  header {
+    padding: 14px 20px;
+  }
+
+  .logo img {
+    height: 60px;
+  }
+
+  .page-hero {
+    min-height: 330px;
+    padding: 105px 28px 58px;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(38px, 8vw, 54px);
+    line-height: 1.08;
+  }
+
+  .page-hero p {
+    max-width: 560px;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    padding: 30px 22px 65px;
+  }
 }
 
 @media (max-width: 768px) {
-  .site-currency-selector {
-    width: 100%;
-    justify-content: center;
-    padding: 10px 0 14px;
+  header {
+    min-height: 86px;
+    padding: 13px 18px;
   }
 
-  .site-currency-selector select {
-    min-width: 110px;
-    text-align: center;
+  .logo img {
+    height: 58px;
+  }
+
+  .menu-toggle {
+    width: 34px;
+    height: 25px;
+    flex-shrink: 0;
+  }
+
+  .menu-toggle div {
+    height: 3px;
+  }
+
+  nav {
+    max-height: calc(100vh - 84px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    gap: 0;
+    padding: 14px 0 22px;
+  }
+
+  nav a {
+    width: 100%;
+    padding: 10px 16px;
+  }
+
+  .page-hero {
+    min-height: 300px;
+    padding: 105px 22px 48px;
+    background-position: center;
+  }
+
+  .page-hero-content {
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .page-hero h1 {
+    margin-bottom: 18px;
+    font-size: clamp(35px, 11vw, 48px);
+    line-height: 1.08;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .page-hero p {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .toolbar {
+    padding: 22px 18px 24px;
+    gap: 16px;
+  }
+
+  .toolbar > div:first-child {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 10px;
+  }
+
+  .toolbar label,
+  .toolbar strong {
+    white-space: nowrap;
+  }
+
+  .toolbar select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .view-toggle {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .view-toggle button {
+    width: 100%;
+    margin: 0;
+    min-height: 44px;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 28px 16px 60px;
+  }
+
+  .product-card {
+    width: 100%;
+    max-width: 430px;
+    margin: 0 auto;
+  }
+
+  .product-images {
+    padding-top: 125%;
+  }
+
+  .product-info {
+    padding: 17px 17px 12px;
+  }
+
+  .product-actions {
+    padding: 0 17px 18px;
+  }
+
+  .details-btn,
+  .full-width-btn,
+  .out-of-stock-btn {
+    width: 100%;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .list-view .product-grid {
+    display: grid;
+  }
+
+  .list-view .product-card {
+    display: block;
+    grid-template-columns: 1fr;
+  }
+
+  .list-view .product-images {
+    min-height: 0;
+    height: auto;
+    padding-top: 125%;
+  }
+
+  .footer-links ul {
+    columns: 1;
+  }
+}
+
+@media (max-width: 430px) {
+  header {
+    min-height: 80px;
+    padding: 11px 15px;
+  }
+
+  .logo img {
+    height: 54px;
+  }
+
+  .page-hero {
+    min-height: 285px;
+    padding: 98px 17px 42px;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(33px, 11.5vw, 43px);
+  }
+
+  .page-hero p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .toolbar {
+    padding: 20px 15px 22px;
+  }
+
+  .product-grid {
+    padding: 24px 13px 55px;
+    gap: 20px;
+  }
+
+  .product-card {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .logo img {
+    height: 50px;
+  }
+
+  .menu-toggle {
+    width: 31px;
+  }
+
+  .page-hero {
+    min-height: 270px;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .page-hero h1 {
+    font-size: 32px;
+  }
+
+  .page-hero p {
+    font-size: 13px;
+  }
+
+  .toolbar > div:first-child {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -886,7 +1126,7 @@
       <button onclick="setList()">📋 List</button>
     </div>
   </div>
-<div class="product-grid reveal" id="productContainer"></div>
+<div class="product-grid visible" id="productContainer"></div>
 
   <!-- ===== FOOTER SECTION ===== -->
   <footer class="site-footer reveal">
@@ -1198,184 +1438,53 @@
       }
     });
 
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
-
+    // Render dynamic content before observing reveal elements.
     renderProducts();
     updateCartUI();
+
+    const revealItems = document.querySelectorAll('.reveal');
+
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.05,
+        rootMargin: '0px 0px 80px 0px'
+      });
+
+      revealItems.forEach((element) => revealObserver.observe(element));
+    } else {
+      revealItems.forEach((element) => element.classList.add('visible'));
+    }
+
+    // Safety fallback so no content stays hidden on small or unusual mobile browsers.
+    window.setTimeout(() => {
+      document.querySelectorAll('.reveal').forEach((element) => {
+        element.classList.add('visible');
+      });
+      document.getElementById('productContainer')?.classList.add('visible');
+    }, 500);
   </script>
 
 
 <script>
-(function () {
-  'use strict';
+document.addEventListener('DOMContentLoaded', function () {
+  const nav = document.getElementById('main-nav');
+  if (!nav) return;
 
-  const PKR_PER_USD = 278;
-  const STORAGE_KEY = 'selectedCurrency';
-  let selectedCurrency = localStorage.getItem(STORAGE_KEY) || 'PKR';
-  let applyingCurrency = false;
-
-  function formatCurrencyFromPKR(amount) {
-    const pkr = Number(amount) || 0;
-
-    if (selectedCurrency === 'USD') {
-      return '$' + (pkr / PKR_PER_USD).toLocaleString('en-US', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-      });
-    }
-
-    return 'PKR ' + pkr.toLocaleString('en-PK', {
-      maximumFractionDigits: 0
-    });
-  }
-
-  function convertOriginalText(originalText) {
-    return originalText.replace(
-      /PKR\s*([0-9][0-9,]*(?:\.[0-9]+)?)/gi,
-      function (_, numberText) {
-        const amount = Number(numberText.replace(/,/g, ''));
-        return formatCurrencyFromPKR(amount);
+  nav.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      if (window.innerWidth <= 768) {
+        nav.classList.remove('show');
       }
-    );
-  }
-
-  function shouldSkip(element) {
-    return !element || Boolean(
-      element.closest('script, style, option, textarea, [data-no-currency-convert]')
-    );
-  }
-
-  function processElement(element) {
-    if (!element || element.nodeType !== 1 || shouldSkip(element)) return;
-    if (element.children.length > 0) return;
-
-    const currentText = element.textContent || '';
-
-    if (/PKR\s*[0-9]/i.test(currentText) && !element.dataset.pkrOriginalText) {
-      element.dataset.pkrOriginalText = currentText;
-    }
-
-    const originalText = element.dataset.pkrOriginalText;
-    if (!originalText) return;
-
-    element.textContent = selectedCurrency === 'USD'
-      ? convertOriginalText(originalText)
-      : originalText;
-  }
-
-  function applyCurrency(root) {
-    if (applyingCurrency) return;
-    applyingCurrency = true;
-
-    try {
-      const scope = root && root.nodeType === 1 ? root : document.body;
-      if (!scope) return;
-
-      processElement(scope);
-      scope.querySelectorAll('*').forEach(processElement);
-
-      const selector = document.getElementById('siteCurrencySelect');
-      if (selector) selector.value = selectedCurrency;
-    } finally {
-      applyingCurrency = false;
-    }
-  }
-
-  function refreshPageValues() {
-    [
-      'updateProductSelection',
-      'renderCart',
-      'updateCartUI',
-      'renderCheckout',
-      'renderProducts'
-    ].forEach(function (name) {
-      try {
-        if (typeof window[name] === 'function') {
-          window[name]();
-        }
-      } catch (error) {
-        console.warn('Currency refresh skipped for ' + name, error);
-      }
-    });
-
-    setTimeout(function () {
-      applyCurrency(document.body);
-    }, 30);
-  }
-
-  function changeCurrency(currency) {
-    selectedCurrency = currency === 'USD' ? 'USD' : 'PKR';
-    localStorage.setItem(STORAGE_KEY, selectedCurrency);
-    applyCurrency(document.body);
-    refreshPageValues();
-  }
-
-  function insertSelector() {
-    const nav = document.getElementById('main-nav') || document.querySelector('header nav');
-    if (!nav || document.getElementById('siteCurrencySelect')) return;
-
-    const wrapper = document.createElement('div');
-    wrapper.className = 'site-currency-selector';
-    wrapper.innerHTML = `
-      <label for="siteCurrencySelect" style="position:absolute;left:-9999px;">Currency</label>
-      <select id="siteCurrencySelect" aria-label="Select currency">
-        <option value="PKR">PKR</option>
-        <option value="USD">USD</option>
-      </select>
-    `;
-
-    const cartLink = nav.querySelector('.cart-nav-link');
-    if (cartLink) nav.insertBefore(wrapper, cartLink);
-    else nav.appendChild(wrapper);
-
-    const selector = wrapper.querySelector('select');
-    selector.value = selectedCurrency;
-    selector.addEventListener('change', function () {
-      changeCurrency(this.value);
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', function () {
-    insertSelector();
-    applyCurrency(document.body);
-
-    const observer = new MutationObserver(function (mutations) {
-      if (applyingCurrency) return;
-
-      mutations.forEach(function (mutation) {
-        if (mutation.type === 'characterData') {
-          const parent = mutation.target.parentElement;
-          if (parent) processElement(parent);
-        } else {
-          mutation.addedNodes.forEach(function (node) {
-            if (node.nodeType === 1) applyCurrency(node);
-          });
-        }
-      });
-    });
-
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-      characterData: true
     });
   });
-
-  window.changeSiteCurrency = changeCurrency;
-  window.getSelectedCurrency = function () {
-    return selectedCurrency;
-  };
-  window.formatDisplayCurrency = formatCurrencyFromPKR;
-})();
+});
 </script>
 
 </body>
